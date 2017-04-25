@@ -1,0 +1,75 @@
+\documentclass[a4paper, twoside, 12pt]{report}
+
+\usepackage{titlesec}
+\usepackage{polski}
+\usepackage[english, polish]{babel}
+\usepackage{graphicx}
+\usepackage[hidelinks]{hyperref}
+\usepackage{pdfpages}
+\graphicspath{ {./images/} }
+\usepackage[utf8]{inputenc}
+\usepackage[margin=25mm]{geometry}
+\usepackage{indentfirst}
+\linespread{1}
+\titleformat*{\section}{\fontsize{14pt}{2}\bfseries}
+\titleformat*{\subsection}{\fontsize{13pt}{2}\bfseries}
+\titleformat*{\subsubsection}{\fontsize{13pt}{2}\bfseries}
+\usepackage[T1]{fontenc}
+% \usepackage{tgtermes}
+
+\newenvironment{abstractpage}
+  {\vspace*{\fill}\thispagestyle{empty}}
+    {\vfill}
+    \renewenvironment{abstract}[1]
+      {\bigskip\selectlanguage{#1}%
+             \begin{center}\bfseries\abstractname\end{center}}
+           {\par\bigskip}
+
+\begin{document}
+
+% \includepdf{stronatytulowa.pdf}
+
+
+\begin{abstractpage}
+\begin{abstract}{polish}
+\end{abstract}
+
+\begin{abstract}{english}
+\end{abstract}
+\end{abstractpage}
+
+\tableofcontents
+
+\listoffigures
+
+\chapter{Cel i~zakres pracy}
+    Celem niniejszej pracy jest przedstawienie zaprojektowanego protokołu kanału
+    ukrytego, działającego w~sieciach komputerowych i~ opartego o~ukrywanie wiadomości za pomocą długości pakietów UDP
+    zawierających wiadomości podstawowe. w~ramach tego celu zostaną wykonane:
+    \begin{itemize}
+        \item prezentacja steganografii, nauki o~ukrywaniu wiadomości w~różnego rodzaju nośnikach,
+            oraz steganoanalizy, nauki o~wykrywaniu, wraz z ewentualnym niszczeniem, kanałów
+            ukrytej komunikacji, wraz z najczęściej używanymi pojęciami
+        \item przedstawienie przykładowych, innych niż zaproponowany w~pracy,
+            sposobów organizacji kanałów ukrytych, z zakresu steganografii sieciowej,
+            z wykorzystaniem różnego rodzaju protokołów komunikacyjnych
+        \item zaprezentowanie projektu protokołu kanału ukrytego, ukrywającego
+            wiadomości ukryte za pomocą długości pakietów protokołu UDP, wraz
+            z opisem parametrów otrzymanego protokołu, oraz wyjaśnieniem pojęć
+            użytych do jego opisu
+        \item przeprowadzenie badań czynników wpływających na średnie opóźnienie
+            w~odbiorze wiadomości podstawowych i~ukrytych, wynikających z wykorzystania
+            przedstawionego kanału ukrytego, wraz z analizą wniosków
+            z nich płynących
+        \item przeprowadzenie analizy wykrywalności zaproponowanego kanału ukrytego,
+            wraz z zaproponowaniem sposobów jej zmniejszenia
+    \end{itemize}
+
+\chapter{Wstęp teoretyczny}
+\clearpage
+\addcontentsline{toc}{chapter}{Bibliografia}
+\bibliographystyle{plain}
+%\bibliography{bibliografia}
+
+
+\end{document}
