@@ -39,7 +39,7 @@
     przez użytkownika jest trudne, a niekiedy niemożliwe. Jednym z proponowanych rozwiązań tego problemu są systemy
     odpowiadające na pytania, w których zapytania formułowane są w formie pytań w języku naturalnym. Niniejsza
     praca zawiera krótkie przedstawienie dziedziny Question Answering, zajmującej się tworzeniem tego typu systemów,
-    wraz z opisem systemu "Borsuk" stworzonego na Politechnice Wrocławskiej.
+    wraz z opisem systemu ,,Borsuk'' stworzonego na Politechnice Wrocławskiej.
     W głównej części pracy opisana została propozycja nowego mechanizmu ekstrakcji odpowiedzi z fragmentów dokumentów,
     opartego na zmodyfikowanej odległości edycyjnej jako miary podobieństwa między pytaniem a zdaniami mogącymi zawierać
     odpowiedź. Modyfikacja polega na dynamicznym przypisywaniu kosztu operacjom edycji w zależność od słowa. Przeprowadzone
@@ -74,6 +74,8 @@
     \begin{itemize}
         \item prezentacja i ogólna charakterystyka dziedziny Question Answering wraz z przedstawieniem podstawowych
             pojęć,
+        \item opis działania systemów odpowiadających na pytania, wraz z wyróżnieniem poszczególnych faz przetwarznia
+            pytania i znajdowania odpowiedzi,
         \item przedstawienie przykładowych, innych niż zaproponowany w~pracy,
             sposobów ekstrakcji odpowiedzi na pytania z fragmentów dokumentów,
         \item zaprezentowanie mechanizmu ekstrakcji odpowiedzi z wykorzystaniem odległości edycyjnej między grafami
@@ -87,11 +89,45 @@
 
     \end{itemize}
 
-\chapter{Wstęp teoretyczny}
+\chapter{Wstęp}
+    \section{Przetwarzanie języka naturalnego}
+        \subsection{Podstawowe pojęcia}
+            \emph{Przetwarzanie języka naturalnego} jest to dziedzina informatyki korzystającą z osiągnięć
+            między innymi: sztucznej inteligencji, uczenia maszynowego, nauk kognitywnych
+            (zajmujących się obserwacją i~analizą działania ludzkich zmysłów), lingwistyki komputerowej oraz
+            wielu innych. Głównym obszarem zainteresowań tej dziedziny jest budowa systemów oraz narzędzi
+            umożliwiających wykonywanie użytecznych zadań wiążących się z wykorzystaniem języka naturalnego.
+            Obejmuje to zadania takie jak: komunikacja człowiek-komputer, wspomaganie komunikacji międzyludzkiej,
+            czy też przetwarzanie tekstu w języku naturalnym bądź mowy\cite{SPEECHANDLANGUAGEPROCESSING}.
+
+            \emph{Język naturalny} jest to język,
+            którym posługują się ludzie w codziennej komunikacji między sobą, w sposób naturalny (na przykład
+            język polski). Jest to cecha odróżniająca języki naturalne od \emph{języków sztucznych} stworzonych
+            do specyficznych zastosowań (na przykład język matematyczny), w tym do komunikacji z komputerem
+            (na przykład języki programowania: Assembler, C++, Python).
+
+            Aby umożliwić tworzenie nowych technik
+            przetwarzania języka naturalnego oraz ich testowanie niezbędny jest reprezentatywny i zbalansowany
+            zbiór tekstów w danym języku. Powinien on zawierać teksty na tyle zróżnicowane, aby pokazać zmienność
+            i różne zastosowania języka naturalnego. Przygotowanie takiego zbioru nie wystarczy jednak, aby
+            komputer zaczął rozumieć język naturalny. Do tekstów należy dodać metadane, które pozwolą komputerowi
+            łatwiej znaleźć wzorce i zależność występujące w danym języku. Jako przykład takich metadanych można
+            wymienić: oznaczenie części mowy oraz ich form gramatycznych czy też oznaczenie bytów nazwanych.
+            Zbiór danych przygotowany w ten sposób nazywane jest \emph{korpusem}\cite{NATURALLANGUGEANNOTATION}
+            i może zostać wykorzystany w różnego rodzaju algorytmach uczenia maszynowego.
+        \subsection {Zastosowanie}
+        \subsection{Wykorzystywane narzędzia}
+    \section{Odpowiadanie na pytania (Question Answering)}
+        \subsection{Podstawowe pojęcia}
+        \subsection{Zastosowanie}
+\chapter{Systemy odpowiadające na pytania}
+    \section{Budowa i działanie}
+    \section{System ,,Borsuk''}
+
 \clearpage
 \addcontentsline{toc}{chapter}{Bibliografia}
 \bibliographystyle{plain}
-%\bibliography{bibliografia}
+\bibliography{bibliografia}
 
 
 \end{document}
