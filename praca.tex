@@ -346,7 +346,143 @@
 
     \section{Odpowiadanie na pytania (Question Answering)}
         \subsection{Podstawowe pojęcia}
+            \emph{System odpowiadający na pytania} można zdefiniować jako system, który jest w stanie automatycznie
+            zrozumieć treść pytania zadanego w języku naturalnym, oraz w odpowiedzi dostarczyć żądane informacje\cite{HANDBOOKNLP}.
+
+            Dziedzina przetwarzania języka naturalnego zajmująca się odpowiadaniem na pytania zrodziła się z dwóch powodów.
+            Po pierwsze standardowe języki w których formułuje się zapytania do wyszukiwarek internetowych nie zawsze
+            pozwalają na wyrażenie \emph{potrzeby informacyjnej} użytkownika w prosty i przyjazny sposób. Dotyczy to
+            przede wszystkim przypadków gdy użytkownik potrzebuje bardzo szczegółowych informacji na przykład:
+            ,,Jak nazywa się żeński odpowiednik El Nino, który powoduje obniżenie temperatury i bardzo suchą pogodę?''.
+            Systemy odpowiadające na pytania potrafią wychwycić potrzebę informacyjną użytkownika użytkownika zawartą w
+            pytaniu i wyręczają go w formułowaniu zapytań do wyszukiwarki. Może on
+            wprowadzić swoje zapytanie w dokładnie taki sam sposób jakby pytał on drugiego człowieka.
+
+            Drugi powód również związany jest z poszukiwaniem szczegółowych informacji przez użytkownika. Tradycyjne
+            wyszukiwarki w odpowiedzi na zapytanie zwracają całe dokumenty, w których znajdują się słowa kluczowe podane
+            przez użytkownika. Jest to do zaakceptowania, gdy poszukuje on ogólnych informacji na dany temat, jednak
+            gdy interesuje go konkretna informacja, zmuszanie użytkownika do czytania długiego tekstu nie jest najlepszym
+            pomysłem. Systemy odpowiadające na pytania posiadają mechanizmy wyodrębniania odpowiedzi z tekstu dokumentów,
+            dzięki czemu, jako wynik prezentują użytkownikowi jedynie krótkie fragmenty, w których, według systemu,
+            najprawdopodobniej znajduje się odpowiedź na jego pytanie.
+
+            Najprostszym rodzajem pytań na które odpowiadają
+            systemy i jednocześnie najszerzej zbadaną dziedziną są \emph{pytania o fakty}. Są to pytania o proste fakty,
+            dla których odpowiedź może zostać bezpośrednio wydobyta z tekstów źródłowych. Przykładem tego typu pytań są
+            pytania zadawane w teleturniejach typu ,,Jeden z dziesięciu'', ,,Milionerzy'', ,,Jeopardy!'' i tym podobne,
+            w których odpowiedzią na pytanie jest byt nazwany, na przykład miejsce, osoba, organizacja i tak dalej.
+            Odpowiadanie na pytania o fakty, jest w dużej mierze oparte o techniki ekstrakcji informacji, które opisane
+            zostały wcześniej.
+            Innym przykładem typu pytań są \emph{pytania o definicje}, w których użytkownik przedstawia systemowi pewne
+            pojęcie i prosi o znalezienie jego definicji, na przykład ,,Co to jest Yerba Mate?''. W przeciwieństwie do
+            pytań o fakty, odpowiedź na pytanie o definicje jest najczęściej potencjalnie długim tekstem przytaczającym
+            najważniejsze fakty związane z obiektem zainteresowania użytkownika. Wśród innych typów
+            pytań wyróżniamy pytania ,,Jak?'', ,,Czy?'', pytania hipotetyczne, pytania o porównanie dwóch obiektów oraz
+            inne, które nie otrzymują tak dużo uwagi, jak pytania o fakty i definicje.
+
+            Pierwsze z systemów odpowiadających na pytania, były ograniczone do odpowiadania na pytania pochodzące z
+            określonej dziedziny, były to tak zwane \emph{Closed-domain question answering systems}. Przeciwieństwem
+            tego typu systemów, są systemy ogólnego przeznaczenia, które są w stanie odpowiedzieć na pytania z dowolnej
+            dziedziny, systemy te nazywane są \emph{Open-domain question answering systems}. Odpowiadanie
+            na pytania z pewnej ograniczonej dziedziny jest łatwiejsze, ponieważ możliwe jest wykorzystanie specyficznej
+            wiedzy dziedzinowej. Co więcej liczba różnych rodzajów pytań z jakimi musi mierzyć się system odpowiadający
+            jest najczęściej znacznie mniejsza, gdy pytania dotyczą tylko jednej dziedziny. Niniejsza praca skupia się
+            na systemie odpowiadającym na pytania o fakty niezależnie od dziedziny.
+
+        \subsection{Historia}
+            Początek badań związanych z odpowiadaniem na pytania datowany jest na rok 1959. Jedną z pierwszych prac
+            naukowych na w tej dziedzinie, była praca z 1965 roku\cite{FIRSTWORKQA}, w której opisane zostało piętnaście
+            istniejących w tamtym okresie systemów związanych z odpowiadaniem na pytania. Mimo zastosowania różnorodnych
+            podejść do problemu, autor zastrzega, że żaden z tych systemów nie mógłby zostać zastosowany w praktyce,
+            jednak napawają one nadzieją na powstanie takiego systemu w przyszłości.
+
+            Cechą wspólną pierwszych systemów tego typu było wykorzystanie wiedzy zapisanej w postaci ustrukturyzowanych
+            baz danych jako źródło odpowiedzi. Oznaczało to, że mogły one odpowiedzieć jedynie na pytania z określonej
+            dziedziny, z której informacje zostały wcześniej zapisane w bazie danych. Jednymi z najbardziej systemów
+            w tym czasie były \emph{system LUNAR}\cite{LUNAR}, który odpowiadał na pytania na temat danych geologicznych
+            zebranych na Księżycu oraz \emph{system BASEBALL}\cite{BASEBALL}, który posiadał informacje na temat meczy rozegranych w
+            amerykańskiej lidze baseballu (MLA) w czasie jednego sezonu. Oba te systemy analizowały pytanie wprowadzone
+            przez użytkownika, a następnie na jego podstawie budowały zapytanie do ustrukturyzowanej bazy danych. Można
+            powiedzieć, że systemy te były po prostu interfejsem pozwalającym na dostęp do bazy danych za pomocą języka
+            naturalnego ludziom bez wiedzy z dziedziny baz danych. Oprócz wymienionych systemów, powstało jeszcze wiele
+            innych, każdy dostosowany do bazy danych zawierającej informacje z innej dziedziny. Ograniczenie do jednej
+            dziedziny było największą wadą tych systemów, jednak miały one duży udział w rozwój syntaktycznej i
+            semantycznej analizy pytań użytkownika\cite{QASURVEY}.
+
+            Znaczny rozwój systemów odpowiadających na pytania niezależne od dziedziny na podstawie dużych kolekcji
+            tekstów rozpoczął się wraz z pojawieniem się tej dziedziny na konferencji \emph{TREC (Text REtrieval Conference)}
+            w 1999 roku.
+            Wzrosło wtedy zainteresowanie systemami, które mogłyby zostać praktycznie wykorzystane na dużą skalę. Dzięki
+            dodaniu QA do konferencji TREC, opracowane zostały metody oraz kryteria ewaluacji systemów odpowiadających
+            na pytania. Na konferencji testowano różne metody i implementacje odpowiadania na pytania w ujednolicony i
+            ustandaryzowany sposób. Umożliwiło to porównywanie systemów między sobą w jednoznaczny sposób oraz pozwoliło na ocenę
+            czy rozwój tych systemów poprawia uzyskiwane przez nie wyniki. Dzięki konferencji badacze prowadzący badania
+            w dziedzinie QA mogli swobodnie prezentować wyniki swoich badań, wymieniać między sobą pomysły oraz pracować
+            nad kolejnymi, udoskonalonymi, systemami.
+
+            Obecnie najnowocześniejsze systemy odpowiadające na pytania są w stanie osiągnąć bardzo dobre wyniki jeśli
+            chodzi o precyzję i dokładność odpowiedzi na pytania użytkowników. Jest to możliwe dzięki jednoczesnemu zastosowaniu
+            wielu różnych metod analizy pytań użytkownika oraz ekstrakcji odpowiedzi, a następnie przeprowadzenie efektywnego
+            rankingu odpowiedzi w celu wybrania tej najlepszej.
+
+            Jednym z szerzej znanych nowoczesnych systemów QA jest Watson stworzony przez naukowców z firm IBM.
+            Został on specjalnie zaprojektowany, działa zarówno na dedykowanym sprzęcie jak i oprogramowaniu stworzonym
+            przez ekspertów z IBM i jest zoptymalizowany pod względem przetwarzania równoległego.
+            Według twórców Watson wykorzystuje ponad 100 technik analizowania języka naturalnego, identyfikowania źródeł,
+            generowania hipotez, znajdowania i oceniania dowodów dla hipotez oraz ich łączenia\cite{WATSON}.
+            Pokazem możliwości Watsona był jego udział w amerykańskim teleturnieju ,,Jeopardy!''. W programie tym
+            trzech uczestników rywalizuje ze sobą poprzez odpowiadania na pytania zadawane w języku naturalnym dotyczące
+            szerokiej gamy tematów, włączając w to historię, wydarzenia aktualne, naukę, sztukę oraz kulturę masową.
+            Pytania te często są skomplikowane językowo, zawierają niejednoznaczne określenia, związki frazeologiczne,
+            żartobliwą grę słów oraz różnego rodzaju nawiązania.
+            Co więcej za każdą błędną odpowiedź uczestnik otrzymuje karę punktową, a poszczególne pytania są różnie
+            punktowane. Ocenia się, że aby móc konkurować z najlepszymi zawodnikami, trzeba odpowiedzieć przynajmniej
+            70\% pytań z trzema sekundami na odpowiedź na każde z nich. Watson rozegrał wiele gier w ,,Jeopardy'' przeciwko
+            najlepszy graczom, a w lutym 2011 roku najlepsi gracze w historii: Ken Jennings i Brad Rutter zostali przez
+            niego pokonani. Obecnie system Watson rozwijany jest w stronę systemu ekspertowego i wykorzystywany jest na
+            przykład w medycynie. W przeciwieństwie do tradycyjnych systemów ekspertowych działających na podstawie
+            reguł IF-THEN, Watson na podstawie dużej ilości danych w języku naturalnym, takich jak  dokumentacja medyczna
+            buduje hipotezy dotyczące potencjalnej diagnozy, a następnie przy pomocy algorytmów rankingu ocenia te
+            hipotezy\cite{WATSONMEDICINE}.
+
+            Dziedzina odpowiadania na pytania nieustannie się rozwija. Aktualnie badania koncentrują się głównie na:
+            \begin{itemize}
+                \item prowadzeniu interaktywnego dialogu z użytkownikiem w celu doprecyzowania pytań bądź odpowiwdzi,
+                \item wykorzystaniu zasobów lingwistycznych takich jak WordNet i Słowosieć,
+                \item respektowanie ograniczeń narzuconych przez pytanie (np. ograniczenia czasowe: Kto był prezydentem
+                    Polski w 2013 roku?)
+                \item odpowiadanie na pytania z referencjami (np. Ile wynosi bezrobocie wśród kobiet w krajach \emph{europejskich})
+            \end{itemize}
+
         \subsection{Zastosowanie}
+            Systemy odpowiadające na pytania pojawiają się wokół nas. Wydaje się, że w przyszłości systemy tego typu będą
+            podstawowym sposobem na wyszukiwanie potrzebnych informacji przez użytkowników.
+
+            Jako łatwiejsze w wykorzystaniu i dostarczające bardziej precyzyjnej informacji, systemy QA zastępują tradycyjne
+            wyszukiwarki internetowe. Jednym z najstarszych ogólnodostępnych systemów odpowiadających na pytania jest
+            system Start stworzony przez grupę InfoLab z MIT. System ten potrafi odpowiedzieć na pytania z dowolnej
+            dziedziny, dostarczając konkretną odpowiedź zamiast całego dokumentu, który ją zawiera.
+            Aby przeciwdziałać temu trendowi  większość wyszukiwarek internetowych takich jak Google, Bing czy Yahoo
+            potrafi wykryć, że wpisane przez użytkownika to nie słowa kluczowe, a pytanie w języku naturalnym.
+            W przypadku wykrycia pytania, przeglądarki implementują podejście analogiczne do systemów QA, starając się
+            wydobyć odpowiedź na podstawie wcześniej przygotowanej bazy faktów (np. KnowledgeGraph w przypadku Google).
+
+            Odpowiadanie na pytania często zazębia się z chatbotami. W tej formie znajduje zastosowanie w dziedzinie
+            aplikacji służących jako inteligentny
+            osobisty asystent. Oprogramowanie tego typu stało się popularne i obecnie znajduje się w każdym nowoczesnym
+            telefonie komórkowym. Potrafi ono wykonywać dla użytkownika zadania na podstawie poleceń wydawanych w języku
+            naturalnym, poprzez rozmowę, podobnie jak w przypadku ludzkiego asystenta. Techniki QA są tutaj głównie
+            wykorzystywane do odpowiadania na pytania zadawane przez użytkownika w celu uzyskania konkretnej informacji.
+            Tradycyjnie aplikacje tego typu występowały w postaci aplikacji mobilnych, na przykład Siri (iPhone) lub
+            Google Now (Android). Niedawno powstały urządzenia typu ,,inteligentny głośnik'' (ang. smart speaker) takie
+            jak Amazon Echo oraz Google Home. Po ustawieniu w domu i uruchomieniu, urządzenie oczekuje na polecenia
+            zadawane w języku naturalnym.
+
+            Wśród innych zastosowań systemów odpowiadających na pytania można wymienić: wspomaganie wspólnego
+            uczenia\cite{COLLABORATIVELEARNING}. Dzięki zastosowaniu QA, nie jest wymagane oczekiwanie na obecność nauczyciela
+            w celu odpowiedzi na pytania uczniów. Wymienić też można przytoczone przy omawianiu Watsona budowanie systemów
+            pozwalających na wyszukiwanie informacji w nieustrukturyzowanych danych takich jak dokumentacja medyczna,
+            sprawozdania finansowe i inne.
 \chapter{Systemy odpowiadające na pytania}
     \section{Budowa i działanie}
     \section{System ,,Borsuk''}
