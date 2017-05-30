@@ -120,228 +120,239 @@
         % Ambigoity - słów, części mowy, wyrażanie jednej myśli na wiele sposbów
         % Implicit information, informacje zapisane nie wprost, zaimki, podmioty domyślne itp.
         \subsection {Zastosowanie}
-            Przetwarzanie języka naturalnego nie jest nową dziedziną informatyki. Pierwsze prace nad tą technologią
-            rozpoczęły się we wczesnych latach 50. XX wieku. Podobnie jak w przypadku innych dziedzin informatyki,
-            największym zainteresowanym rozwojem przetwarzania języka naturalnego i sponsorem badań był Deparatament
-            Obrony Stanów Zjednoczonych. Głównym celem nad którym skupiały się badania było automatyczne
-            \emph{tłumaczenie tekstów} z jednego języka na drugi, w szczególności z rosyjskiego na
-            angielski\cite{NLPHISTORY}. Od tego czasu w dziedzinie maszynowego tłumaczenia został poczyniony
-            ogromny postęp. Początkowo systemy te wykorzystywały proste podstawienia zamieniające słowa z jednego
-            języka na słowa z drugiego. Dodatkowo były one wzbogacane o reguły semantyczne określające w jaki
-            sposób przetłumaczyć określone fragmenty tekstu.  Obecnie w automatycznym tłumaczeniu wykorzystywane
-            są elementy uczenia maszynowego z użyciem opisanych wcześniej korpusów językowych oraz sieci neuronowe.
-            Oprogramowanie zbudowane w ten sposób nie jest w stanie co prawda przetłumaczyć dzieł Szekspira,
-            zachowując ich artystyczną i estetyczną wartość. Znakomicie radzi sobie jednak, jak na razie jeszcze
-            pod kontrolą człowieka, z tłumaczeniem standardowych tekstów tworzonych przez ludzi na przykład
-            sprawozdań biznesowych\cite{INTROTOMACHINETRANSLATION}. Wykorzystanie tego typu systemów pozwala skrócić i
-            ułatwić pracę tłumacza, co w konsekwencji przyczynia się do zmniejszenia kosztów tłumaczeń.
+            \subsubsection{Maszynowe tłumaczenie tekstów}
+                Przetwarzanie języka naturalnego nie jest nową dziedziną informatyki. Pierwsze prace nad tą technologią
+                rozpoczęły się we wczesnych latach 50. XX wieku. Podobnie jak w przypadku innych dziedzin informatyki,
+                największym zainteresowanym rozwojem przetwarzania języka naturalnego i sponsorem badań był Deparatament
+                Obrony Stanów Zjednoczonych. Głównym celem nad którym skupiały się badania było automatyczne
+                \emph{tłumaczenie tekstów} z jednego języka na drugi, w szczególności z rosyjskiego na
+                angielski\cite{NLPHISTORY}. Od tego czasu w dziedzinie maszynowego tłumaczenia został poczyniony
+                ogromny postęp. Początkowo systemy te wykorzystywały proste podstawienia zamieniające słowa z jednego
+                języka na słowa z drugiego. Dodatkowo były one wzbogacane o reguły semantyczne określające w jaki
+                sposób przetłumaczyć określone fragmenty tekstu.  Obecnie w automatycznym tłumaczeniu wykorzystywane
+                są elementy uczenia maszynowego z użyciem opisanych wcześniej korpusów językowych oraz sieci neuronowe.
+                Oprogramowanie zbudowane w ten sposób nie jest w stanie co prawda przetłumaczyć dzieł Szekspira,
+                zachowując ich artystyczną i estetyczną wartość. Znakomicie radzi sobie jednak, jak na razie jeszcze
+                pod kontrolą człowieka, z tłumaczeniem standardowych tekstów tworzonych przez ludzi na przykład
+                sprawozdań biznesowych\cite{INTROTOMACHINETRANSLATION}. Wykorzystanie tego typu systemów pozwala skrócić i
+                ułatwić pracę tłumacza, co w konsekwencji przyczynia się do zmniejszenia kosztów tłumaczeń.
 
-            Innym przykładem zastosowania przetwarzania języka naturalnego jest \emph{automatyczne streszczenie tekstów}.
-            Jest to proces skracania zazwyczaj długiego tekstu w języku naturalnym do formy krótkiego streszczenia,
-            zawierającego jedynie najważniejsze informacje w nim zawarte. Tego typu streszczenia pozwalają
-            użytkownikowi szybko ocenić, czy dany dokument ma dla niego znaczenie, bez konieczności czytania go całego.
-            Jest to szczególnie istotne na przykład w przypadku dokumentów zwracanych przez wyszukiwarki internetowe.
-            System tworzące streszczenia najczęściej oprócz samego tekstu otrzymują także parametr
-            mówiący o maksymalnej ilość słów w streszczeniu. Istnieją dwa podejścia do problemu generowania streszczeń.
-            Pierwsze z nich polega na wybraniu najważniejszych zdań, bądź fragmentów z oryginalnego tekstu. Wybierane
-            są zdania, zawierające słowa często występujące w dokumencie, ponieważ takie słowa mogą mieć duże znaczenie
-            w kontekście tematu dokumentu i w związku z tym warto umieścić zdania je zawierające w podsumowaniu. Miejsce,
-            w którym znajduje się zdanie również może wpłynąć na to, czy zdanie znajdzie się w streszczeniu. Szczególne
-            znaczenie mają tutaj zdania zawarte w tytule dokumentu oraz podtytułach poszczególnych akapitów. Należy
-            także zwrócić uwagę na zdania zawierające typowe zwroty używane do podsumowania bądź wprowadzenia do tematu,
-            takie jak między innymi: ,,Podsumowując...'', ,,Artykuł zawiera'' i wiele innych.
+            \subsubsection{Automatyczne streszczanie tekstów}
+                Innym przykładem zastosowania przetwarzania języka naturalnego jest \emph{automatyczne streszczenie tekstów}.
+                Jest to proces skracania zazwyczaj długiego tekstu w języku naturalnym do formy krótkiego streszczenia,
+                zawierającego jedynie najważniejsze informacje w nim zawarte. Tego typu streszczenia pozwalają
+                użytkownikowi szybko ocenić, czy dany dokument ma dla niego znaczenie, bez konieczności czytania go całego.
+                Jest to szczególnie istotne na przykład w przypadku dokumentów zwracanych przez wyszukiwarki internetowe.
+                System tworzące streszczenia najczęściej oprócz samego tekstu otrzymują także parametr
+                mówiący o maksymalnej ilość słów w streszczeniu. Istnieją dwa podejścia do problemu generowania streszczeń.
+                Pierwsze z nich polega na wybraniu najważniejszych zdań, bądź fragmentów z oryginalnego tekstu. Wybierane
+                są zdania, zawierające słowa często występujące w dokumencie, ponieważ takie słowa mogą mieć duże znaczenie
+                w kontekście tematu dokumentu i w związku z tym warto umieścić zdania je zawierające w podsumowaniu. Miejsce,
+                w którym znajduje się zdanie również może wpłynąć na to, czy zdanie znajdzie się w streszczeniu. Szczególne
+                znaczenie mają tutaj zdania zawarte w tytule dokumentu oraz podtytułach poszczególnych akapitów. Należy
+                także zwrócić uwagę na zdania zawierające typowe zwroty używane do podsumowania bądź wprowadzenia do tematu,
+                takie jak między innymi: ,,Podsumowując...'', ,,Artykuł zawiera'' i wiele innych.
 
-            Alternatywnym podejściem do tworzenia streszczeń dokumentów jest zbudowanie wewnętrznej reprezentacji
-            dokumentu, znalezienie najistotniejszych informacji w nim zawartych, a następnie wykorzystanie metod
-            generowania języka naturalnego do stworzenia skrótu. Tego typu podejście najczęściej wykorzystywane jest
-            do tworzenia bardzo krótkich streszczeń, na przykład nagłówków składających się jedynie z jednego zdania.
-            Stosowane są tutaj różnorakie wzorce, które wypełniane są informacjami uzyskanymi z dokumentu. Do zbudowania
-            reprezentacji dokumentu najczęściej wykorzystywane są metody głębokiej analizy języka naturalnego,
-            wykorzystujące między innymi reprezentację semantyczną. W porównaniu z ekstrakcją zdań z dokumentu, generowanie
-            streszczeń jest techniką o wiele rzadziej wykorzystywaną i słabiej zbadaną\cite{SUMMARIZATIONOVERVIEW}.
+                Alternatywnym podejściem do tworzenia streszczeń dokumentów jest zbudowanie wewnętrznej reprezentacji
+                dokumentu, znalezienie najistotniejszych informacji w nim zawartych, a następnie wykorzystanie metod
+                generowania języka naturalnego do stworzenia skrótu. Tego typu podejście najczęściej wykorzystywane jest
+                do tworzenia bardzo krótkich streszczeń, na przykład nagłówków składających się jedynie z jednego zdania.
+                Stosowane są tutaj różnorakie wzorce, które wypełniane są informacjami uzyskanymi z dokumentu. Do zbudowania
+                reprezentacji dokumentu najczęściej wykorzystywane są metody głębokiej analizy języka naturalnego,
+                wykorzystujące między innymi reprezentację semantyczną. W porównaniu z ekstrakcją zdań z dokumentu, generowanie
+                streszczeń jest techniką o wiele rzadziej wykorzystywaną i słabiej zbadaną\cite{SUMMARIZATIONOVERVIEW}.
 
-            Obecnie większość edytorów tekstowych, programów pocztowych, czy też przeglądarek internetowych zawiera
-            funkcję automatycznego poprawiania błędów ortograficznych
-            oraz tak zwanych "literówek". Funkcja ta jest implementowana przy pomocy \emph{korektora pisowni}. Jego
-            zadaniem jest wskazywanie fragmentów tekstu, w których znajdują się błędy pisowni. Tego typu oprogramowanie
-            najczęściej oparte jest o wcześniej przygotowane słowniki poprawnie wprowadzonych słów. Następnie każde
-            słowo tekstu jest wyszukiwane w słowniku i w przypadku jego braku, sygnalizowany jest błąd pisowni. Oprócz
-            samej listy słów, w słowniku mogą znajdować się dodatkowe informacje takie jak na przykład punkty podziału
-            słów (przydatne przy automatycznym formatowaniu tekstu i przenoszenia słów do nowej linii). Ponadto korektor
-            pisowni może zawierać algorytmy, dedykowane dla danego języka, radzące sobie z odmianą słów w różnych
-            kontekstach (poprawność fleksyjna). Do wskazania sugestii dotyczących autokorekty wykorzystywana jest miara
-            odległości edycyjnej bądź odległości Hamminga. Odmiennym podejściem do problemu poprawiania pisowni jest zastosowanie
-            metod statystycznych. Do rozpoznania błędów najczęściej wykorzystywane są \emph{n-gramy}, ich wykorzystanie
-            wymaga jednak przygotowanie dużej ilości danych uczących, takich jak omawiany wcześniej korpus językowy
-            \cite{SPELLCHECKING}.
+            \subsubsection{Korekta pisowni}
+                Obecnie większość edytorów tekstowych, programów pocztowych, czy też przeglądarek internetowych zawiera
+                funkcję automatycznego poprawiania błędów ortograficznych
+                oraz tak zwanych "literówek". Funkcja ta jest implementowana przy pomocy \emph{korektora pisowni}. Jego
+                zadaniem jest wskazywanie fragmentów tekstu, w których znajdują się błędy pisowni. Tego typu oprogramowanie
+                najczęściej oparte jest o wcześniej przygotowane słowniki poprawnie wprowadzonych słów. Następnie każde
+                słowo tekstu jest wyszukiwane w słowniku i w przypadku jego braku, sygnalizowany jest błąd pisowni. Oprócz
+                samej listy słów, w słowniku mogą znajdować się dodatkowe informacje takie jak na przykład punkty podziału
+                słów (przydatne przy automatycznym formatowaniu tekstu i przenoszenia słów do nowej linii). Ponadto korektor
+                pisowni może zawierać algorytmy, dedykowane dla danego języka, radzące sobie z odmianą słów w różnych
+                kontekstach (poprawność fleksyjna). Do wskazania sugestii dotyczących autokorekty wykorzystywana jest miara
+                odległości edycyjnej bądź odległości Hamminga. Odmiennym podejściem do problemu poprawiania pisowni jest zastosowanie
+                metod statystycznych. Do rozpoznania błędów najczęściej wykorzystywane są \emph{n-gramy}, ich wykorzystanie
+                wymaga jednak przygotowanie dużej ilości danych uczących, takich jak omawiany wcześniej korpus językowy
+                \cite{SPELLCHECKING}.
 
-            Kolejnym przykładem zastosowania przetwarzania języka naturalnego jest \emph{ekstrakcja informacji}. Zadanie
-            to polega na wydobyciu informacji z nieustrukturyzowanego tekstu w języku naturalnym i zapisania ich w
-            formacie o określonej strukturze,w celu dalszego
-            przetwarzania. Polegać to może na przykład na tworzeniu rekordów medycznych w bazie danych na podstawie
-            dokumentacji medycznej wypełnionej przez lekarza w języku polskim. Ekstrakcja informacji jest zadaniem
-            trudnym, dlatego oprogramowanie tego typu najczęściej jest opracowywane pod kątem konkretnej dziedziny i
-            dostosowywane do niej. Jak zostało wcześniej wspomniane, większość zasobów informacji zapisana jest w
-            formie nieustrukturyzowanego tekstu w języku naturalnym, w związku z czym ich wyszukiwanie nie jest łatwe.
-            Wraz ze wzrastającą ilością tych informacji, rośnie znaczenie problemu ich ekstrakcji. Dzięki
-            przekształceniu tych informacji do postaci rekordów w bazie danych wyszukiwanie staje się o wiele prostsze.
-            Zazwyczaj z tekstu wydobywane są byty nazwane, relacje między nimi oraz wydarzenia, w których te byty
-            biorą udział, na przykład: ,,W marcu zeszłego roku pacjent Jan Nowak był operowany w szpitalu w Leśnej
-            Górze''. Obecnie dynamicznie rozwija się dziedzina ekstrakcji informacji z wielu źródeł w przeciwieństwie
-            do jednego dokumentu. W przeszłości wydobywanie informacji odbywało się w oparciu o ręcznie tworzone
-            reguły i wzorce lingwistyczne. Obecnie wzorce i reguły są najczęściej wyuczane w sposób automatyczny,
-            a same wzorce stały się bardziej rozmyte dzięki zastosowaniu \emph{ukrytych modeli Markova (HMM)} oraz
-            \emph{warunkowych pól losowych (CRF)}\cite{INFORMATIONEXTRACTION}.
+            \subsubsection{Ekstrakcja informacji}
+                Kolejnym przykładem zastosowania przetwarzania języka naturalnego jest \emph{ekstrakcja informacji}. Zadanie
+                to polega na wydobyciu informacji z nieustrukturyzowanego tekstu w języku naturalnym i zapisania ich w
+                formacie o określonej strukturze,w celu dalszego
+                przetwarzania. Polegać to może na przykład na tworzeniu rekordów medycznych w bazie danych na podstawie
+                dokumentacji medycznej wypełnionej przez lekarza w języku polskim. Ekstrakcja informacji jest zadaniem
+                trudnym, dlatego oprogramowanie tego typu najczęściej jest opracowywane pod kątem konkretnej dziedziny i
+                dostosowywane do niej. Jak zostało wcześniej wspomniane, większość zasobów informacji zapisana jest w
+                formie nieustrukturyzowanego tekstu w języku naturalnym, w związku z czym ich wyszukiwanie nie jest łatwe.
+                Wraz ze wzrastającą ilością tych informacji, rośnie znaczenie problemu ich ekstrakcji. Dzięki
+                przekształceniu tych informacji do postaci rekordów w bazie danych wyszukiwanie staje się o wiele prostsze.
+                Zazwyczaj z tekstu wydobywane są byty nazwane, relacje między nimi oraz wydarzenia, w których te byty
+                biorą udział, na przykład: ,,W marcu zeszłego roku pacjent Jan Nowak był operowany w szpitalu w Leśnej
+                Górze''. Obecnie dynamicznie rozwija się dziedzina ekstrakcji informacji z wielu źródeł w przeciwieństwie
+                do jednego dokumentu. W przeszłości wydobywanie informacji odbywało się w oparciu o ręcznie tworzone
+                reguły i wzorce lingwistyczne. Obecnie wzorce i reguły są najczęściej wyuczane w sposób automatyczny,
+                a same wzorce stały się bardziej rozmyte dzięki zastosowaniu \emph{ukrytych modeli Markova (HMM)} oraz
+                \emph{warunkowych pól losowych (CRF)}\cite{INFORMATIONEXTRACTION}.
 
-            Jednym z najbardziej znanych zastosowań przetwarzania języka naturalnego jest tworzenie programów
-            prowadzących z użytkownikiem dialog w języku naturalnym, tak zwanych \emph{programów konwersujących}.
-            Ten dział inżynierii języka naturalnego rozgłos uzyskał dzięki testowi zaproponowanemu przez Alana Turinga,
-            który miał udowodnić posiadanie przez maszynę inteligencji podobnej do ludzkiej. W podobny sposób człowiek
-            określa inteligencję innych ludzi, również na podstawie tego, co i jak mówią. Test ten polega na swobodnej
-            rozmowie ,,sędziego'' z pozostałymi uczestnikami testu, wśród których znajduje się maszyna. Jeśli sędzia
-            nie jest w stanie określić, który z uczestników jest maszyną, zakłada się, że przeszła ona test.
-            Programy konwersujące są nie tylko ważnym punktem zainteresowań badań nad sztuczną inteligencją, wiele z
-            nich powstaje w celu czysto rozrywkowym. Oprócz tego, wiele firm wykorzystuje tego typu aplikacje,
-            jako wirtualnych asystentów na swoich stronach internetowych. Mogą oni na przykład przyjąć zamówienie od
-            klienta, opowiedzieć o funkcjonowaniu i działalności firmy, oraz odpowiedzieć na wiele pytań użytkownika.
-            Obecnie bardzo popularne stają się aplikacje typu ,,osobisty asystent'', w których moduł konwersujący jest
-            kluczowym elementem. Aplikacje te dostępne są w praktycznie każdym smartphonie. Ze względu na wysoki
-            poziom skomplikowania tej dziedziny przetwarzania języka, wykorzystuje ona praktycznie wszystkie z
-            przedstawionych wcześniej technik, od powierzchownej i głębokiej analizy tekstu, poprzez wzorce i reguły
-            lingwistyczne, kończąc na sieciach neuronowych i maszynowym uczeniu
+            \subsubsection{Programy konwersujące}
+                Jednym z najbardziej znanych zastosowań przetwarzania języka naturalnego jest tworzenie programów
+                prowadzących z użytkownikiem dialog w języku naturalnym, tak zwanych \emph{programów konwersujących}.
+                Ten dział inżynierii języka naturalnego rozgłos uzyskał dzięki testowi zaproponowanemu przez Alana Turinga,
+                który miał udowodnić posiadanie przez maszynę inteligencji podobnej do ludzkiej. W podobny sposób człowiek
+                określa inteligencję innych ludzi, również na podstawie tego, co i jak mówią. Test ten polega na swobodnej
+                rozmowie ,,sędziego'' z pozostałymi uczestnikami testu, wśród których znajduje się maszyna. Jeśli sędzia
+                nie jest w stanie określić, który z uczestników jest maszyną, zakłada się, że przeszła ona test.
+                Programy konwersujące są nie tylko ważnym punktem zainteresowań badań nad sztuczną inteligencją, wiele z
+                nich powstaje w celu czysto rozrywkowym. Oprócz tego, wiele firm wykorzystuje tego typu aplikacje,
+                jako wirtualnych asystentów na swoich stronach internetowych. Mogą oni na przykład przyjąć zamówienie od
+                klienta, opowiedzieć o funkcjonowaniu i działalności firmy, oraz odpowiedzieć na wiele pytań użytkownika.
+                Obecnie bardzo popularne stają się aplikacje typu ,,osobisty asystent'', w których moduł konwersujący jest
+                kluczowym elementem. Aplikacje te dostępne są w praktycznie każdym smartphonie. Ze względu na wysoki
+                poziom skomplikowania tej dziedziny przetwarzania języka, wykorzystuje ona praktycznie wszystkie z
+                przedstawionych wcześniej technik, od powierzchownej i głębokiej analizy tekstu, poprzez wzorce i reguły
+                lingwistyczne, kończąc na sieciach neuronowych i maszynowym uczeniu
 
-            Zdolność zrozumienia emocji odczuwanych przez drugą osobę pozwala ma skuteczniejszą komunikację oraz
-            umożliwia łatwiejsze rozpoznanie oczekiwań i potrzeb innych ludzi. Firmy są w stanie zainwestować duże
-            pieniądze w badanie rynku, aby rozpoznać nastawienie oraz opinie ludzi na temat ich produktów. Dzięki
-            tej wiedzy mogą oni je udoskonalać, w taki sposób aby lepiej zaspokajały zapotrzebowanie klientów.
-            Liczba opinii na temat produktów znajdujących się w Internecie jest ogromna i nie możliwa do
-            przestudiowania przez człowieka. W związku z tym pojawia się zapotrzebowanie na oprogramowanie pozwalające
-            zautomatyzować proces \emph{analizy wydźwięku} w tekście pisanym. Tradycyjnie oprogramowanie
-            przeprowadzające ten proces opierało się na wyszukiwaniu słów pozwalających jednoznacznie określić
-            nastawienie autora, na przykład ,,wesoły'', ,,smutny'', ,,dobre'', ,,złe'' i tym podobne. W dzisiejszych
-            czasach wykorzystywane są różnego rodzaju metody statystyczne oraz uczenie maszynowe, a zwłaszcza rozmaite
-            klasyfikatory\cite{SENTIMENTANALYSIS}.
+            \subsubsection{Analiza wydźwięku (sentymentu)}
+                Zdolność zrozumienia emocji odczuwanych przez drugą osobę pozwala ma skuteczniejszą komunikację oraz
+                umożliwia łatwiejsze rozpoznanie oczekiwań i potrzeb innych ludzi. Firmy są w stanie zainwestować duże
+                pieniądze w badanie rynku, aby rozpoznać nastawienie oraz opinie ludzi na temat ich produktów. Dzięki
+                tej wiedzy mogą oni je udoskonalać, w taki sposób aby lepiej zaspokajały zapotrzebowanie klientów.
+                Liczba opinii na temat produktów znajdujących się w Internecie jest ogromna i nie możliwa do
+                przestudiowania przez człowieka. W związku z tym pojawia się zapotrzebowanie na oprogramowanie pozwalające
+                zautomatyzować proces \emph{analizy wydźwięku} w tekście pisanym. Tradycyjnie oprogramowanie
+                przeprowadzające ten proces opierało się na wyszukiwaniu słów pozwalających jednoznacznie określić
+                nastawienie autora, na przykład ,,wesoły'', ,,smutny'', ,,dobre'', ,,złe'' i tym podobne. W dzisiejszych
+                czasach wykorzystywane są różnego rodzaju metody statystyczne oraz uczenie maszynowe, a zwłaszcza rozmaite
+                klasyfikatory\cite{SENTIMENTANALYSIS}.
 
         \subsection{Wykorzystywane narzędzia}
             Przetwarzanie języka naturalnego składa się zazwyczaj z następujących po sobie etapów, połączonych w łańcuch,
             gdzie wyjście jednego z etapów jest wejściem poprzedniego. Poszczególne etapy zostały opisane poniżej.
 
-            Tekst, który należy przedstawić może występować w postaci dokumentów o różnych długościach, poczynając od
-            krótkich wiadomości tekstowych, kończąc na wielotomowych powieściach. Pierwszym etapem przetwarzania języka
-            naturalnego jest podział tekstu na mniejsze fragmenty, czyli tak zwana \emph{segmentacja}. Segmentacja jest
-            kluczową częścią każdego systemu przetwarzającego język naturalny, ponieważ poprawnie wyodrębnione części
-            dokumentu są podstawowymi jednostkami wykorzystywanymi na dalszych etapach przetwarzania języka.
-            Do przeprowadzenia segmentacji wykorzystywane są narzędzia zwane
-            \emph{tokenizerami}.% sprawdzic polska nazwe, mozna zasugerowac sie MACCA
-            W zależności od zastosowania możliwy jest podział na różne jednostki, między innymi wyrazy, zdania, czy też akapity.
-            Może się wydawać, że jest to łatwe zadanie, jednak pojawiają się problemy z na przykład: wyrazami składającymi
-            się z kilku części (np. Bielsko Biała), partykułą ,,się'' (czy ,,bawić się'' potraktować jako jedno słowo, czy dwa?)
-            czy też z wyrażeniami wielowyrazowymi, na przykład nazwami własnymi, które często składają się z kilku wyrazów.
-            Przy podziale tekstu na zdania należy zauważyć, że nie każda kropka występująca w tekście kończy zdanie, oprócz
-            tego kropkę stawia się na końcu niektórych skrótów, mogą być też wykorzystywane na przykład do zapisu daty.
-            Opracowanie poprawnych tokenizerów jest bardzo ważne, ponieważ wszystkie błędy popełnione w czasie segmentacji,
-            propagują się do następnych etapów przetwarzania języka. W procesie segmentacji najczęściej wykorzystuje się
-            zasady zapisane w postaci gramatyki regularnej automatu skończonego, bądź transduktora. Tokenizery przygotowane
-            w ten sposób są w stanie osiągnąć dużą dokładność, jednak są one najczęściej dostosowane do specyficznego języka
-            naturalnego. Wykorzystanie ich do innego języka jest bardzo trudne i najczęściej wymaga stworzenia nowego
-            zestawu reguł. Obecnie coraz częściej stosowane są metody, które można trenować, wykorzystujące uczenie maszynowe,
-            drzewa decyzyjne, bądź też metody statystyczne oparte na modelowaniu maksimum entropii\cite{HANDBOOKNLP}.
+            \subsubsection{Tokenizery}
+                Tekst, który należy przedstawić może występować w postaci dokumentów o różnych długościach, poczynając od
+                krótkich wiadomości tekstowych, kończąc na wielotomowych powieściach. Pierwszym etapem przetwarzania języka
+                naturalnego jest podział tekstu na mniejsze fragmenty, czyli tak zwana \emph{segmentacja}. Segmentacja jest
+                kluczową częścią każdego systemu przetwarzającego język naturalny, ponieważ poprawnie wyodrębnione części
+                dokumentu są podstawowymi jednostkami wykorzystywanymi na dalszych etapach przetwarzania języka.
+                Do przeprowadzenia segmentacji wykorzystywane są narzędzia zwane
+                \emph{tokenizerami}.% sprawdzic polska nazwe, mozna zasugerowac sie MACCA
+                W zależności od zastosowania możliwy jest podział na różne jednostki, między innymi wyrazy, zdania, czy też akapity.
+                Może się wydawać, że jest to łatwe zadanie, jednak pojawiają się problemy z na przykład: wyrazami składającymi
+                się z kilku części (np. Bielsko Biała), partykułą ,,się'' (czy ,,bawić się'' potraktować jako jedno słowo, czy dwa?)
+                czy też z wyrażeniami wielowyrazowymi, na przykład nazwami własnymi, które często składają się z kilku wyrazów.
+                Przy podziale tekstu na zdania należy zauważyć, że nie każda kropka występująca w tekście kończy zdanie, oprócz
+                tego kropkę stawia się na końcu niektórych skrótów, mogą być też wykorzystywane na przykład do zapisu daty.
+                Opracowanie poprawnych tokenizerów jest bardzo ważne, ponieważ wszystkie błędy popełnione w czasie segmentacji,
+                propagują się do następnych etapów przetwarzania języka. W procesie segmentacji najczęściej wykorzystuje się
+                zasady zapisane w postaci gramatyki regularnej automatu skończonego, bądź transduktora. Tokenizery przygotowane
+                w ten sposób są w stanie osiągnąć dużą dokładność, jednak są one najczęściej dostosowane do specyficznego języka
+                naturalnego. Wykorzystanie ich do innego języka jest bardzo trudne i najczęściej wymaga stworzenia nowego
+                zestawu reguł. Obecnie coraz częściej stosowane są metody, które można trenować, wykorzystujące uczenie maszynowe,
+                drzewa decyzyjne, bądź też metody statystyczne oparte na modelowaniu maksimum entropii\cite{HANDBOOKNLP}.
 
-            Kolejnym etapem przetwarzania języka naturalnego jest \emph{analiza fleksyjna}. Na tym etapie odbywają się dwa
-            ważne procesy: \emph{steminga} i \emph{analiza morfologiczna}. Steming polega na sprowadzeniu różnych form fleksyjnych wyrazu do jednej
-            reprezentacyjnej postaci. Lematyzacja jest odmianą stemingu polegająca na sprowadzeniu form wyrazowych do lematu.
-            Lemat jest to forma wyrazu pod jaką szukalibyśmy go w na przykład w słowniku, najczęściej najprostsza
-            (na przykład dla czasowników: bezokolicznik). Steming jest najczęściej przeprowadzany w oparciu o wcześniej
-            przygotowane słowniki bądź reguły.
+            \subsubsection{Analizator fleksyjny}
+                Kolejnym etapem przetwarzania języka naturalnego jest \emph{analiza fleksyjna}. Na tym etapie odbywają się dwa
+                ważne procesy: \emph{stemming} i \emph{analiza morfologiczna}. Stemming polega na sprowadzeniu różnych form fleksyjnych wyrazu do jednej
+                reprezentacyjnej postaci. Lematyzacja jest odmianą stemingu polegająca na sprowadzeniu form wyrazowych do lematu.
+                Lemat jest to forma wyrazu pod jaką szukalibyśmy go w na przykład w słowniku, najczęściej najprostsza
+                (na przykład dla czasowników: bezokolicznik). Steming jest najczęściej przeprowadzany w oparciu o wcześniej
+                przygotowane słowniki bądź reguły.
 
-            Alternatywą dla stemingu jest \emph{analiza morfologiczna}, która stara się otagować każdy wyraz poprzez odgadnięcie
-            jego części mowy oraz formy fleksyjnej. Każdy wyraz zostaje przypisany do jednej z wcześniej określonych
-            przez lingwistów kategorii gramatycznych pochodzących z tak zwanych \emph{tagsetów}. Aplikacje zajmujące
-            się przypisywaniem tagów do wyrazów nazywamy \emph{taggerami części mowy (part-of-speech tagger, POS}. Dzięki przypisaniu
-            wyrazom kategorii gramatycznych, można uzyskać wiele informacji na temat tych wyrazów jak i ich sąsiedztwa,
-            co jest bardzo ważne na dalszych etapach przetwarzania. Częstym problemem jest wieloznaczność wyrazów, na przykład
-            wyraz ,,mam'' może oznaczać, że ja coś posiadam, bądź też może być biernikiem liczby mnogiej wyrazu ,,mama''.
-            Taggery można pogrupować w dwie kategorie: taggery oparte o zbiór zasad oraz taggery stochastyczne. Zasady
-            dla taggerów mogą być definiowane ręcznie, bądź nauczone maszynowo. Dodatkowo dodawane są reguły dla wyrazów
-            niejednoznacznych. Taggery stochastyczne używają wcześniej przygotowanego i oznaczonego korpusu do zbudowania
-            modelu probabilistycznego, na przykład Ukrytego Modelu Markova, który określa prawdopodobieństwo, że dany
-            wyraz będzie miał dany tag w określonym kontekście\cite{SPEECHANDLANGUAGEPROCESSING}.
+                Alternatywą dla stemingu jest \emph{analiza morfologiczna}, która stara się otagować każdy wyraz poprzez odgadnięcie
+                jego części mowy oraz formy fleksyjnej. Każdy wyraz zostaje przypisany do jednej z wcześniej określonych
+                przez lingwistów kategorii gramatycznych pochodzących z tak zwanych \emph{tagsetów}. Aplikacje zajmujące
+                się przypisywaniem tagów do wyrazów nazywamy \emph{taggerami części mowy (part-of-speech tagger, POS}. Dzięki przypisaniu
+                wyrazom kategorii gramatycznych, można uzyskać wiele informacji na temat tych wyrazów jak i ich sąsiedztwa,
+                co jest bardzo ważne na dalszych etapach przetwarzania. Częstym problemem jest wieloznaczność wyrazów, na przykład
+                wyraz ,,mam'' może oznaczać, że ja coś posiadam, bądź też może być biernikiem liczby mnogiej wyrazu ,,mama''.
+                Taggery można pogrupować w dwie kategorie: taggery oparte o zbiór zasad oraz taggery stochastyczne. Zasady
+                dla taggerów mogą być definiowane ręcznie, bądź nauczone maszynowo. Dodatkowo dodawane są reguły dla wyrazów
+                niejednoznacznych. Taggery stochastyczne używają wcześniej przygotowanego i oznaczonego korpusu do zbudowania
+                modelu probabilistycznego, na przykład Ukrytego Modelu Markova, który określa prawdopodobieństwo, że dany
+                wyraz będzie miał dany tag w określonym kontekście\cite{SPEECHANDLANGUAGEPROCESSING}.
 
-            Po analizie fleksyjnej następuje \emph{parsowanie syntaktyczne}. Jego celem jest przeanalizowanie ciągu wyrazów
-            (zazwyczaj zdania) w celu zidentyfikowania jego struktury w oparciu o gramatykę formalną. Dzięki temu procesowi
-            w następnych etapach przetwarzania możliwe jest przypisanie znaczenia do całego zdania. W tym celu na podstawie
-            gramatyki tworzona jest hierarchiczna, syntaktyczna struktura, która nadaje się do semantycznej interpretacji.
-            Dzięki parsowaniu syntaktycznym możliwe jest wykrycie, że grupa słów może być frazą, na przykład frazą
-            rzeczownikową: ,,piękna dziewczyna''.
-            Gramatyka formalna składa się ze zbioru reguł, tak zwanych produkcji, z których każda mówi w jaki sposób symbole występujące
-            w języku mogą być grupowane razem, oraz ze zbioru symboli terminalnych, które mówią o symbolach występujących
-            w języku.
-            Gramatyki formalne z powodzeniem wykorzystywane są do parsowania języków sztucznych (języki programowania),
-            jednak różnią się one w stosunku do gramatyk wykorzystywanych do parsowania języka naturalnego. Jak zostało
-            wcześniej wspomniane, język naturalny charakteryzuje się niejednoznacznością, również na poziomie syntaktycznym.
-            % TODO: wymyslic to zdanie
-            Przykładowo zdanie ,,'' może zostać zinterpretowane na dwa sposoby.
-            Gramatyki obsługujące języki sztuczne są zazwyczaj kompletne, a ponadto zakładają, że przekazany tekst
-            (najczęściej kod programu) będzie poprawny, jeśli tak nie jest, użytkownikowi zgłaszany jest błąd i zmuszony
-            jest on do poprawy kodu. W przypadku języka naturalnego, gramatyka ze względu na bogactwo językowe i ciągły
-            rozwój języka, nigdy nie jest kompletna. Ponadto w tekstach dokumentów często zdarzają się błędy językowe,
-            które oprogramowanie powinno być w stanie obsłużyć. Podczas przetwarzania języka naturalnego ciężko jest odróżnić,
-            czy błąd parsowania nastąpił na skutek nieprawidłowych danych, czy też ze względu na niekompletność gramatyki.
+            \subsubsection{Parser syntaktyczny}
+                Po analizie fleksyjnej następuje \emph{parsowanie syntaktyczne}. Jego celem jest przeanalizowanie ciągu wyrazów
+                (zazwyczaj zdania) w celu zidentyfikowania jego struktury w oparciu o gramatykę formalną. Dzięki temu procesowi
+                w następnych etapach przetwarzania możliwe jest przypisanie znaczenia do całego zdania. W tym celu na podstawie
+                gramatyki tworzona jest hierarchiczna, syntaktyczna struktura, która nadaje się do semantycznej interpretacji.
+                Dzięki parsowaniu syntaktycznym możliwe jest wykrycie, że grupa słów może być frazą, na przykład frazą
+                rzeczownikową: ,,piękna dziewczyna''.
+                Gramatyka formalna składa się ze zbioru reguł, tak zwanych produkcji, z których każda mówi w jaki sposób symbole występujące
+                w języku mogą być grupowane razem, oraz ze zbioru symboli terminalnych, które mówią o symbolach występujących
+                w języku.
+                Gramatyki formalne z powodzeniem wykorzystywane są do parsowania języków sztucznych (języki programowania),
+                jednak różnią się one w stosunku do gramatyk wykorzystywanych do parsowania języka naturalnego. Jak zostało
+                wcześniej wspomniane, język naturalny charakteryzuje się niejednoznacznością, również na poziomie syntaktycznym.
+                % TODO: wymyslic to zdanie
+                Przykładowo zdanie ,,'' może zostać zinterpretowane na dwa sposoby.
+                Gramatyki obsługujące języki sztuczne są zazwyczaj kompletne, a ponadto zakładają, że przekazany tekst
+                (najczęściej kod programu) będzie poprawny, jeśli tak nie jest, użytkownikowi zgłaszany jest błąd i zmuszony
+                jest on do poprawy kodu. W przypadku języka naturalnego, gramatyka ze względu na bogactwo językowe i ciągły
+                rozwój języka, nigdy nie jest kompletna. Ponadto w tekstach dokumentów często zdarzają się błędy językowe,
+                które oprogramowanie powinno być w stanie obsłużyć. Podczas przetwarzania języka naturalnego ciężko jest odróżnić,
+                czy błąd parsowania nastąpił na skutek nieprawidłowych danych, czy też ze względu na niekompletność gramatyki.
 
-            Po parsowaniu syntaktycznym w razie potrzeby może zostać przeprowadzone \emph{rozpoznawanie nazw własnych}. Proces
-            ten polega na znalezieniu i oznaczeniu w tekście bytów nazwanych oraz przypisaniu ich do jednej z wcześniej
-            zdefiniowanych kategorii. Oprogramowanie tego typu nazywane jest z angielskiego \emph{named entity recognizer (NER)}.
-            Wśród najczęściej wykorzystywanych kategorii bytów nazwanych wyróżniamy kategorie
-            takie jak: osoba, organizacja, miejsce, wyrażenie czasowe czy też wyrażenia liczbowe (na przykład kwoty, procenty).
-            Podobnie jak w czasie analizy morfologicznej, tak i tutaj wyrazowi, bądź grupie wyrazów zostaje przypisany
-            tag, mówiący o tym do jakiej kategorii on należy. Rozpoznawanie oparte jest o reguły rozpoznające i klasyfikujące
-            aktywowane przez cechy specyficzne dla pozytywnych i negatywnych przykładów nazw własnych. Wiele wczesnych
-            taggerów wykorzystywało najczęściej ręcznie przygotowane heurystyczne reguły. Nowoczesne systemy skupiają się
-            raczej na wykorzystaniu algorytmów uczenia maszynowego do stworzenia reguł na podstawie wcześniej przygotowanych
-            danych uczących pochodzących z oznaczonych korpusów. W przypadku braku danych treningowych, ręcznie przygotowane
-            reguły są jedną dostępną metodą. Wśród wykorzystywanych do rozpoznawania nazw własnych metod uczenia maszynowego
-            wyróżniamy: ukryte modele Markova (HMM), drzewa decyzjne, modele maksymalnej entropii (ME), maszyny wektorów nośnych (SVM)
-            oraz warunkowe pola losowe (CRF). Wszystkie te metody są metodami uczenia nadzorowanego\cite{NERSURVEY}.
+            \subsubsection{Tagger nazw własnych}
+                Po parsowaniu syntaktycznym w razie potrzeby może zostać przeprowadzone \emph{rozpoznawanie nazw własnych}. Proces
+                ten polega na znalezieniu i oznaczeniu w tekście bytów nazwanych oraz przypisaniu ich do jednej z wcześniej
+                zdefiniowanych kategorii. Oprogramowanie tego typu nazywane jest z angielskiego \emph{named entity recognizer (NER)}.
+                Wśród najczęściej wykorzystywanych kategorii bytów nazwanych wyróżniamy kategorie
+                takie jak: osoba, organizacja, miejsce, wyrażenie czasowe czy też wyrażenia liczbowe (na przykład kwoty, procenty).
+                Podobnie jak w czasie analizy morfologicznej, tak i tutaj wyrazowi, bądź grupie wyrazów zostaje przypisany
+                tag, mówiący o tym do jakiej kategorii on należy. Rozpoznawanie oparte jest o reguły rozpoznające i klasyfikujące
+                aktywowane przez cechy specyficzne dla pozytywnych i negatywnych przykładów nazw własnych. Wiele wczesnych
+                taggerów wykorzystywało najczęściej ręcznie przygotowane heurystyczne reguły. Nowoczesne systemy skupiają się
+                raczej na wykorzystaniu algorytmów uczenia maszynowego do stworzenia reguł na podstawie wcześniej przygotowanych
+                danych uczących pochodzących z oznaczonych korpusów. W przypadku braku danych treningowych, ręcznie przygotowane
+                reguły są jedną dostępną metodą. Wśród wykorzystywanych do rozpoznawania nazw własnych metod uczenia maszynowego
+                wyróżniamy: ukryte modele Markova (HMM), drzewa decyzjne, modele maksymalnej entropii (ME), maszyny wektorów nośnych (SVM)
+                oraz warunkowe pola losowe (CRF). Wszystkie te metody są metodami uczenia nadzorowanego\cite{NERSURVEY}.
 
-            Ostatnim narzędziem ogólnego przeznaczenia wykorzystywanym w przetwarzaniu języka naturalnego jest
-            \emph{parser semantyczny}. Pozwala on zrealizować ostateczny cel przetwarzania języka naturalnego, którym
-            jest jest zrozumienie wypowiedzi. Zrozumienie wypowiedzi może polegać na przyswojeniu nowej wiedzy w niej
-            zawartej, bądź też na wykonaniu jakiejś akcji w odpowiedzi na wypowiedź. Generalnie analiza semantyczna
-            polega na analizie znaczeń słów, wyrażeń, zdań i wypowiedzi biorąc pod uwagę kontekst w jakim występują.
-            W praktyce wiąże się to z przetłumaczeniem oryginalnego tekstu w języku naturalnym do pewnego metajęzyka
-            lub specjalnie zaprojektowanej semantycznej reprezentacji wiedzy. W stosunku do reprezentacji znaczenia
-            wypowiedzi stawiane jest kilka wymagań. Po pierwsze reprezentacja musi umożliwiać porównanie znaczenia wypowiedzi
-            z bazą wiedzy o świecie. Innymi słowy mówiąc, powinno być możliwe zweryfikowanie, czy dana wypowiedź jest
-            prawdziwa czy fałszywa, w oparciu o posiadaną przez system wiedzę. Kolejnym problemem jest bogactwo języków
-            naturalnych. Weźmy pod uwagę następujące zdania:
-            \begin{enumerate}
-                \item Czy biblioteka jest otwarta w sobotę?
-                \item Czy można skorzystać z biblioteki w sobotę?
-                \item Da się wypożyczyć książkę z biblioteki w sobotę?
-            \end{enumerate}
-            Ze względu na to, że wszystkie te zdania zbudowane są z różnych wyrazów, o różnych formach gramatycznych oraz
-            interpretacji syntaktycznej, można by się spodziewać, że otrzymają one różne reprezentacje semantyczne. Znacznie
-            utrudniłoby to proces weryfikacji prawdziwości tych wypowiedzi. W przypadku, gdy w bazie wiedzy systemu istniałby
-            jedynie jedna reprezentacja faktu otwarcia biblioteki w sobobty, system zwerfyikowałby tylko jedno z tych zdań
-            jako prawdziwe, to które pasuje do sposobu reprezentacji faktu w bazie wiedzy. Porządanym rozwiązaniem tego
-            problemu jest przypisanie wszystkim tym zdaniom takiej samej reprezentacji semantycznej, ze względu na to, że
-            odpowiedź na wszystkie te pytania jest taka sama. Reprezentacja semantyczna powinna pozwolić na wyrażenie
-            znaczenie jak największej ilości wypowiedzi, w idealnym przypadku pojedynczy system reprezentacji pozwoliłby
-            na na przedstawienie każdej wypowiedzi. Jak dotąd jednak taka reprezentacja nie została znaleziona, dlatego
-            w zależności od zastosowania stosowane są różne systemy reprezentacji znaczenia. Każda z reprezentacji
-            pozwala na przedstawienie obiektów, właściwości tych obiektów oraz zależności pomiędzy różnymi obiektami.
-            Jedną z przykładowych reprezentacji jest logika pierwszego rzędu. Jest to elastyczna reprezentacja semantyczna,
-            która może być w łatwy sposób przetwarzana przez systemy komputerowe. Stałe występujące występujące w języku
-            logiki pozwalają na specyfikowanie obiektów z relanego świata, dzięki funkcjom możemy opisywać właściwości
-            obiektów, oraz relacje pomiędzy obiektami, natomiast zmienne pozwalają na odnoszenie się do obiektów bez wskazywania
-            konkretnego z nich. Pozwala to na tworzenie twierdzeń na temat konkretnego nieznanego obiektu, bądź na temat
-            wszystkich obiektów z określonej dziedziny. Przykładowe wyrażenie w logice pierwszego rzędu zostały przedstawione
-            poniżej:
-            \begin{itemize}
-                \item Biblioteka Główna jest otwarta w sobotę: $ Otwarta(BibliotekaGlowna, Sobota) $
-                \item Która biblioteka jest otwarta w sobotę?: $ \exists b \in Biblioteki: Otwarta(b, Sobota) $
-                \item Która biblioteka we Wrocławiu posiada książki na temat NLP?: \\ $ \exists b \in Biblioteki: Lokalizacja(b) = Wroclaw \land Posiada(b, KsiazkiNLP) $
-            \end {itemize}
+            \subsubsection{Parser semantyczny}
+                Ostatnim narzędziem ogólnego przeznaczenia wykorzystywanym w przetwarzaniu języka naturalnego jest
+                \emph{parser semantyczny}. Pozwala on zrealizować ostateczny cel przetwarzania języka naturalnego, którym
+                jest jest zrozumienie wypowiedzi. Zrozumienie wypowiedzi może polegać na przyswojeniu nowej wiedzy w niej
+                zawartej, bądź też na wykonaniu jakiejś akcji w odpowiedzi na wypowiedź. Generalnie analiza semantyczna
+                polega na analizie znaczeń słów, wyrażeń, zdań i wypowiedzi biorąc pod uwagę kontekst w jakim występują.
+                W praktyce wiąże się to z przetłumaczeniem oryginalnego tekstu w języku naturalnym do pewnego metajęzyka
+                lub specjalnie zaprojektowanej semantycznej reprezentacji wiedzy. W stosunku do reprezentacji znaczenia
+                wypowiedzi stawiane jest kilka wymagań. Po pierwsze reprezentacja musi umożliwiać porównanie znaczenia wypowiedzi
+                z bazą wiedzy o świecie. Innymi słowy mówiąc, powinno być możliwe zweryfikowanie, czy dana wypowiedź jest
+                prawdziwa czy fałszywa, w oparciu o posiadaną przez system wiedzę. Kolejnym problemem jest bogactwo języków
+                naturalnych. Weźmy pod uwagę następujące zdania:
+                \begin{enumerate}
+                    \item Czy biblioteka jest otwarta w sobotę?
+                    \item Czy można skorzystać z biblioteki w sobotę?
+                    \item Da się wypożyczyć książkę z biblioteki w sobotę?
+                \end{enumerate}
+                Ze względu na to, że wszystkie te zdania zbudowane są z różnych wyrazów, o różnych formach gramatycznych oraz
+                interpretacji syntaktycznej, można by się spodziewać, że otrzymają one różne reprezentacje semantyczne. Znacznie
+                utrudniłoby to proces weryfikacji prawdziwości tych wypowiedzi. W przypadku, gdy w bazie wiedzy systemu istniałby
+                jedynie jedna reprezentacja faktu otwarcia biblioteki w sobobty, system zwerfyikowałby tylko jedno z tych zdań
+                jako prawdziwe, to które pasuje do sposobu reprezentacji faktu w bazie wiedzy. Porządanym rozwiązaniem tego
+                problemu jest przypisanie wszystkim tym zdaniom takiej samej reprezentacji semantycznej, ze względu na to, że
+                odpowiedź na wszystkie te pytania jest taka sama. Reprezentacja semantyczna powinna pozwolić na wyrażenie
+                znaczenie jak największej ilości wypowiedzi, w idealnym przypadku pojedynczy system reprezentacji pozwoliłby
+                na na przedstawienie każdej wypowiedzi. Jak dotąd jednak taka reprezentacja nie została znaleziona, dlatego
+                w zależności od zastosowania stosowane są różne systemy reprezentacji znaczenia. Każda z reprezentacji
+                pozwala na przedstawienie obiektów, właściwości tych obiektów oraz zależności pomiędzy różnymi obiektami.
+                Jedną z przykładowych reprezentacji jest logika pierwszego rzędu. Jest to elastyczna reprezentacja semantyczna,
+                która może być w łatwy sposób przetwarzana przez systemy komputerowe. Stałe występujące występujące w języku
+                logiki pozwalają na specyfikowanie obiektów z relanego świata, dzięki funkcjom możemy opisywać właściwości
+                obiektów, oraz relacje pomiędzy obiektami, natomiast zmienne pozwalają na odnoszenie się do obiektów bez wskazywania
+                konkretnego z nich. Pozwala to na tworzenie twierdzeń na temat konkretnego nieznanego obiektu, bądź na temat
+                wszystkich obiektów z określonej dziedziny. Przykładowe wyrażenie w logice pierwszego rzędu zostały przedstawione
+                poniżej:
+                \begin{itemize}
+                    \item Biblioteka Główna jest otwarta w sobotę: $ Otwarta(BibliotekaGlowna, Sobota) $
+                    \item Która biblioteka jest otwarta w sobotę?: $ \exists b \in Biblioteki: Otwarta(b, Sobota) $
+                    \item Która biblioteka we Wrocławiu posiada książki na temat NLP?: \\ $ \exists b \in Biblioteki: Lokalizacja(b) = Wroclaw \land Posiada(b, KsiazkiNLP) $
+                \end {itemize}
 
 
     \section{Odpowiadanie na pytania (Question Answering)}
