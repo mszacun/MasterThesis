@@ -1,0 +1,75 @@
+This is BibTeX, Version 0.99d (TeX Live 2016/Arch Linux)
+Capacity: max_strings=35307, hash_size=35307, hash_prime=30011
+The top-level auxiliary file: praca.aux
+The style file: plain.bst
+Database file #1: bibliografia.bib
+Warning--entry type for "SOLR" isn't style-file defined
+--line 302 of file bibliografia.bib
+I was expecting a `,' or a `}'---line 312 of file bibliografia.bib
+ :   
+ :   title = {{WCCL}: A Morpho-syntactic Feature Toolkit},
+(Error may have been on previous line)
+I'm skipping whatever remains of this entry
+Warning--empty booktitle in SEMANTICPARSING
+Warning--can't use both volume and number fields in SEMANTICPARSING
+Warning--empty journal in SOFTPATTERNMATCHING
+Warning--empty journal in QUESTIONFOCUS
+Warning--empty journal in BASEBALL
+Warning--empty journal in INFERENCE
+Warning--empty journal in WEBVERIFICATION
+Warning--empty journal in CZYWIESZKI
+Warning--empty journal in BORSUK
+Warning--empty publisher in LINER2
+Warning--empty journal in SEMANTICVERIFICATION
+Warning--empty journal in INFORMATIONEXTRACTION
+Warning--empty journal in MLQUESTIONFOCUS
+Warning--empty title in WCCL
+Warning--empty booktitle in WCCL
+Warning--empty year in WCCL
+Warning--empty journal in PASSAGERETRIVAL
+Warning--empty journal in PERCEPTRONRANKING
+Warning--empty journal in QATESTCOLLECTION
+Warning--empty journal in COLLABORATIVELEARNING
+Warning--empty journal in LUNAR
+You've used 37 entries,
+            2118 wiz_defined-function locations,
+            722 strings with 9978 characters,
+and the built_in function-call counts, 11637 in all, are:
+= -- 1098
+> -- 572
+< -- 9
++ -- 231
+- -- 188
+* -- 749
+:= -- 1952
+add.period$ -- 110
+call.type$ -- 37
+change.case$ -- 197
+chr.to.int$ -- 0
+cite$ -- 58
+duplicate$ -- 478
+empty$ -- 897
+format.name$ -- 188
+if$ -- 2427
+int.to.chr$ -- 0
+int.to.str$ -- 37
+missing$ -- 43
+newline$ -- 185
+num.names$ -- 74
+pop$ -- 270
+preamble$ -- 1
+purify$ -- 167
+quote$ -- 0
+skip$ -- 342
+stack$ -- 0
+substring$ -- 561
+swap$ -- 87
+text.length$ -- 9
+text.prefix$ -- 0
+top$ -- 0
+type$ -- 134
+warning$ -- 21
+while$ -- 106
+width$ -- 39
+write$ -- 370
+(There was 1 error message)

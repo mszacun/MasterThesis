@@ -4,6 +4,8 @@
 \usepackage{polski}
 \usepackage[english, polish]{babel}
 \usepackage{graphicx}
+\usepackage{amsmath}
+\usepackage{enumitem}
 \usepackage[hidelinks]{hyperref}
 \usepackage{pdfpages}
 \graphicspath{ {./images/} }
@@ -15,7 +17,6 @@
 \titleformat*{\subsection}{\fontsize{13pt}{2}\bfseries}
 \titleformat*{\subsubsection}{\fontsize{13pt}{2}\bfseries}
 \usepackage[T1]{fontenc}
-% \usepackage{tgtermes}
 
 \newenvironment{abstractpage}
   {\vspace*{\fill}\thispagestyle{empty}}
@@ -27,25 +28,25 @@
 
 \begin{document}
 
-% \includepdf{stronatytulowa.pdf}
+\includepdf{stronatytulowa.pdf}
 
 
 \begin{abstractpage}
 \begin{abstract}{polish}
     W dzisiejszych czasach Internet pełen jest informacji na praktycznie dowolny temat. Wraz ze wzrastającą ilością
     dostępnych informacji, niezmiernie ważne staje się opracowanie mechanizmów pozwalających znaleźć informacje
-    interesujące użytkownika. Nie jest to proste, ze względu na to, że informacje te zapisane są najczęściej w formie
-    nieustrukturyzowanego tesktu. Tradycyjnie w tym celu wykorzystywane były wyszukiwarki internetowe. Niestety
+    interesujące użytkownika. Nie jest to proste, ze względu na to, że informacje te zapisane są najczęściej w~formie
+    nieustrukturyzowanego tekstu. Tradycyjnie w~tym celu wykorzystywane były wyszukiwarki internetowe. Niestety
     języki zapytań używane przez wyszukiwarki internetowe powodują, że wyrażenie precyzyjnej potrzeby informacyjnej
-    przez użytkownika jest trudne, a niekiedy niemożliwe. Jednym z proponowanych rozwiązań tego problemu są systemy
-    odpowiadające na pytania, w których zapytania formułowane są w formie pytań w języku naturalnym. Niniejsza
+    przez użytkownika jest trudne, a niekiedy niemożliwe. Jednym z~proponowanych rozwiązań tego problemu są systemy
+    odpowiadające na pytania, w~których zapytania formułowane są w~formie pytań w~języku naturalnym. Niniejsza
     praca zawiera krótkie przedstawienie dziedziny Question Answering, zajmującej się tworzeniem tego typu systemów,
-    wraz z opisem systemu ,,Borsuk'' stworzonego na Politechnice Wrocławskiej.
-    W głównej części pracy opisana została propozycja nowego mechanizmu ekstrakcji odpowiedzi z fragmentów dokumentów,
+    wraz z~opisem systemu ,,Borsuk'' stworzonego na Politechnice Wrocławskiej.
+    W głównej części pracy opisana została propozycja nowego mechanizmu ekstrakcji odpowiedzi z~fragmentów dokumentów,
     opartego na zmodyfikowanej odległości edycyjnej jako miary podobieństwa między pytaniem a zdaniami mogącymi zawierać
-    odpowiedź. Modyfikacja polega na dynamicznym przypisywaniu kosztu operacjom edycji w zależność od słowa. Przeprowadzone
-    zostały badania pozwalające optymalnie dobrać wartości tych kosztów. Po zaimplementowaniu tego mechanizmu w systemie "Borsuk",
-    wykonane zostały też badania mające na celu porównanie precyzji i dokładności odpowiadania na pytania przed i po
+    odpowiedź. Modyfikacja polega na dynamicznym przypisywaniu kosztu operacjom edycji w~zależność od słowa. Przeprowadzone
+    zostały badania pozwalające optymalnie dobrać wartości tych kosztów. Po zaimplementowaniu tego mechanizmu w~systemie "Borsuk",
+    wykonane zostały też badania mające na celu porównanie precyzji i~dokładności odpowiadania na pytania przed i~po
     zastosowaniu opisywanego mechanizmu.
 \end{abstract}
 
@@ -73,105 +74,103 @@
     pod względem dokładności udzielanych odpowiedzi. Zastosowany mechanizm wykorzystuje odległość edycyjną jako miarę
     podobieństwa między pytaniem a zdaniami zawierającymi odpowiedzi. W~ramach tego celu zostaną wykonane:
     \begin{itemize}
-        \item prezentacja i ogólna charakterystyka dziedziny Question Answering wraz z przedstawieniem podstawowych
+        \item prezentacja i~ogólna charakterystyka dziedziny Question Answering wraz z~przedstawieniem podstawowych
             pojęć,
-        \item opis działania systemów odpowiadających na pytania, wraz z wyróżnieniem poszczególnych faz przetwarznia
-            pytania i znajdowania odpowiedzi,
+        \item opis działania systemów odpowiadających na pytania, wraz z~wyróżnieniem poszczególnych faz przetwarzania
+            pytania i~znajdowania odpowiedzi,
         \item przedstawienie przykładowych, innych niż zaproponowany w~pracy,
-            sposobów ekstrakcji odpowiedzi na pytania z fragmentów dokumentów,
-        \item zaprezentowanie mechanizmu ekstrakcji odpowiedzi z wykorzystaniem odległości edycyjnej między grafami
+            sposobów ekstrakcji odpowiedzi na pytania z~fragmentów dokumentów,
+        \item zaprezentowanie mechanizmu ekstrakcji odpowiedzi z~wykorzystaniem odległości edycyjnej między grafami
             reprezentującymi pytanie oraz zdania kandydujące na odpowiedzi,
         \item przeprowadzenie badań pozwalających na dobranie optymalnych parametrów działania opisywanego
-            mechanizmu ekstrakcji odpowiedzi wraz z analizą wniosków z nich płynących,
-       \item zaprezentowanie sprawozdania z przebiegu oraz wyników badań porównujących precyzję i dokładność
-           odpowiadania na pytania przez system "Borsuk" przed i po implementacji opisanego mechanizmu ekstrakcji
-           odpowiedzi.
-       \item przeanalizowanie możliwych sposobów kontynuacji prac nad udoskonaleniem przedstawionego mechanizmu
+            mechanizmu ekstrakcji odpowiedzi wraz z~analizą wniosków z~nich płynących,
+       \item zaprezentowanie sprawozdania z~przebiegu oraz wyników badań porównujących precyzję i~dokładność
+           odpowiadania na pytania przez system ,,Borsuk'' przed i~po implementacji opisanego mechanizmu ekstrakcji
+           odpowiedzi,
+       \item przeanalizowanie możliwych sposobów kontynuacji prac nad udoskonaleniem przedstawionego mechanizmu.
 
     \end{itemize}
 
 \chapter{Wstęp}
     \section{Przetwarzanie języka naturalnego}
         \subsection{Podstawowe pojęcia}
-            \emph{Przetwarzanie języka naturalnego} jest to dziedzina informatyki korzystającą z osiągnięć
+            \emph{Przetwarzanie języka naturalnego} jest to dziedzina informatyki korzystającą z~osiągnięć
             między innymi: sztucznej inteligencji, uczenia maszynowego, nauk kognitywnych
             (zajmujących się obserwacją i~analizą działania ludzkich zmysłów), lingwistyki komputerowej oraz
             wielu innych. Głównym obszarem zainteresowań tej dziedziny jest budowa systemów oraz narzędzi
-            umożliwiających wykonywanie użytecznych zadań wiążących się z wykorzystaniem języka naturalnego.
+            umożliwiających wykonywanie użytecznych zadań wiążących się z~wykorzystaniem języka naturalnego.
             Obejmuje to zadania takie jak: komunikacja człowiek-komputer, wspomaganie komunikacji międzyludzkiej,
-            czy też przetwarzanie tekstu w języku naturalnym bądź mowy\cite{SPEECHANDLANGUAGEPROCESSING}.
+            czy też przetwarzanie tekstu w~języku naturalnym bądź mowy\cite{SPEECHANDLANGUAGEPROCESSING}.
 
             \emph{Język naturalny} jest to język,
-            którym posługują się ludzie w codziennej komunikacji między sobą, w sposób naturalny (na przykład
+            którym posługują się ludzie w~codziennej komunikacji między sobą, w~sposób naturalny (na przykład
             język polski). Jest to cecha odróżniająca języki naturalne od \emph{języków sztucznych} stworzonych
-            do specyficznych zastosowań (na przykład język matematyczny), w tym do komunikacji z komputerem
+            do specyficznych zastosowań (na przykład język matematyczny), w~tym do komunikacji z~komputerem
             (na przykład języki programowania: Assembler, C++, Python).
 
             Aby umożliwić tworzenie nowych technik
-            przetwarzania języka naturalnego oraz ich testowanie niezbędny jest reprezentatywny i zbalansowany
-            zbiór tekstów w danym języku. Powinien on zawierać teksty na tyle zróżnicowane, aby pokazać zmienność
-            i różne zastosowania języka naturalnego. Przygotowanie takiego zbioru nie wystarczy jednak, aby
+            przetwarzania języka naturalnego oraz ich testowanie niezbędny jest reprezentatywny i~zbalansowany
+            zbiór tekstów w~danym języku. Powinien on zawierać teksty na tyle zróżnicowane, aby pokazać zmienność
+            i~różne zastosowania języka naturalnego. Przygotowanie takiego zbioru nie wystarczy jednak, aby
             komputer zaczął rozumieć język naturalny. Do tekstów należy dodać metadane, które pozwolą komputerowi
-            łatwiej znaleźć wzorce i zależność występujące w danym języku. Jako przykład takich metadanych można
-            wymienić: oznaczenie części mowy oraz ich form gramatycznych czy też oznaczenie bytów nazwanych.
-            Zbiór danych przygotowany w ten sposób nazywane jest \emph{korpusem}\cite{NATURALLANGUGEANNOTATION}
-            i może zostać wykorzystany w różnego rodzaju algorytmach uczenia maszynowego.
-        % \subsection {Główne problemy}
-        % Ambigoity - słów, części mowy, wyrażanie jednej myśli na wiele sposbów
-        % Implicit information, informacje zapisane nie wprost, zaimki, podmioty domyślne itp.
+            łatwiej znaleźć wzorce i~zależności występujące w~danym języku. Jako przykład takich metadanych można
+            wymienić: oznaczenie części mowy oraz ich form gramatycznych. Oznaczane są również byty nazwane, czyli
+            obiekty posiadające nazwy własne, na przykład nazwy geograficzne, osób, organizacji, i~tym podobne.
+            Zbiór danych przygotowany w~ten sposób nazywane jest \emph{korpusem}\cite{NATURALLANGUGEANNOTATION}
+            i~może zostać wykorzystany w~różnego rodzaju algorytmach uczenia maszynowego.
         \subsection {Zastosowanie}
             \subsubsection{Maszynowe tłumaczenie tekstów}
                 Przetwarzanie języka naturalnego nie jest nową dziedziną informatyki. Pierwsze prace nad tą technologią
-                rozpoczęły się we wczesnych latach 50. XX wieku. Podobnie jak w przypadku innych dziedzin informatyki,
-                największym zainteresowanym rozwojem przetwarzania języka naturalnego i sponsorem badań był Deparatament
+                rozpoczęły się we wczesnych latach 50. XX wieku. Podobnie jak w~przypadku innych dziedzin informatyki,
+                największym zainteresowanym rozwojem przetwarzania języka naturalnego i~sponsorem badań był Departament
                 Obrony Stanów Zjednoczonych. Głównym celem nad którym skupiały się badania było automatyczne
-                \emph{tłumaczenie tekstów} z jednego języka na drugi, w szczególności z rosyjskiego na
-                angielski\cite{NLPHISTORY}. Od tego czasu w dziedzinie maszynowego tłumaczenia został poczyniony
-                ogromny postęp. Początkowo systemy te wykorzystywały proste podstawienia zamieniające słowa z jednego
-                języka na słowa z drugiego. Dodatkowo były one wzbogacane o reguły semantyczne określające w jaki
-                sposób przetłumaczyć określone fragmenty tekstu.  Obecnie w automatycznym tłumaczeniu wykorzystywane
-                są elementy uczenia maszynowego z użyciem opisanych wcześniej korpusów językowych oraz sieci neuronowe.
-                Oprogramowanie zbudowane w ten sposób nie jest w stanie co prawda przetłumaczyć dzieł Szekspira,
-                zachowując ich artystyczną i estetyczną wartość. Znakomicie radzi sobie jednak, jak na razie jeszcze
-                pod kontrolą człowieka, z tłumaczeniem standardowych tekstów tworzonych przez ludzi na przykład
+                \emph{tłumaczenie tekstów} z~jednego języka na drugi, w~szczególności z~rosyjskiego na
+                angielski\cite{NLPHISTORY}. Od tego czasu w~dziedzinie maszynowego tłumaczenia został poczyniony
+                ogromny postęp. Początkowo systemy te wykorzystywały proste podstawienia zamieniające słowa z~jednego
+                języka na słowa z~drugiego. Dodatkowo były one wzbogacane o reguły semantyczne określające w~jaki
+                sposób przetłumaczyć określone fragmenty tekstu.  Obecnie w~automatycznym tłumaczeniu wykorzystywane
+                są elementy uczenia maszynowego z~użyciem opisanych wcześniej korpusów językowych oraz sieci neuronowe.
+                Oprogramowanie zbudowane w~ten sposób nie jest w~stanie co prawda przetłumaczyć dzieł Szekspira,
+                zachowując ich artystyczną i~estetyczną wartość. Znakomicie radzi sobie jednak, jak na razie jeszcze
+                pod kontrolą człowieka, z~tłumaczeniem standardowych tekstów tworzonych przez ludzi na przykład
                 sprawozdań biznesowych\cite{INTROTOMACHINETRANSLATION}. Wykorzystanie tego typu systemów pozwala skrócić i
-                ułatwić pracę tłumacza, co w konsekwencji przyczynia się do zmniejszenia kosztów tłumaczeń.
+                ułatwić pracę tłumacza, co w~konsekwencji przyczynia się do zmniejszenia kosztów tłumaczeń.
 
             \subsubsection{Automatyczne streszczanie tekstów}
                 Innym przykładem zastosowania przetwarzania języka naturalnego jest \emph{automatyczne streszczenie tekstów}.
-                Jest to proces skracania zazwyczaj długiego tekstu w języku naturalnym do formy krótkiego streszczenia,
-                zawierającego jedynie najważniejsze informacje w nim zawarte. Tego typu streszczenia pozwalają
+                Jest to proces skracania zazwyczaj długiego tekstu w~języku naturalnym do formy krótkiego streszczenia,
+                zawierającego jedynie najważniejsze informacje w~nim zawarte. Tego typu streszczenia pozwalają
                 użytkownikowi szybko ocenić, czy dany dokument ma dla niego znaczenie, bez konieczności czytania go całego.
-                Jest to szczególnie istotne na przykład w przypadku dokumentów zwracanych przez wyszukiwarki internetowe.
-                System tworzące streszczenia najczęściej oprócz samego tekstu otrzymują także parametr
-                mówiący o maksymalnej ilość słów w streszczeniu. Istnieją dwa podejścia do problemu generowania streszczeń.
-                Pierwsze z nich polega na wybraniu najważniejszych zdań, bądź fragmentów z oryginalnego tekstu. Wybierane
-                są zdania, zawierające słowa często występujące w dokumencie, ponieważ takie słowa mogą mieć duże znaczenie
-                w kontekście tematu dokumentu i w związku z tym warto umieścić zdania je zawierające w podsumowaniu. Miejsce,
-                w którym znajduje się zdanie również może wpłynąć na to, czy zdanie znajdzie się w streszczeniu. Szczególne
-                znaczenie mają tutaj zdania zawarte w tytule dokumentu oraz podtytułach poszczególnych akapitów. Należy
+                Jest to szczególnie istotne na przykład w~przypadku dokumentów zwracanych przez wyszukiwarki internetowe.
+                Systemy tworzące streszczenia najczęściej oprócz samego tekstu otrzymują także parametr
+                mówiący o maksymalnej liczbie słów w~streszczeniu. Istnieją dwa podejścia do problemu generowania streszczeń.
+                Pierwsze z~nich polega na wybraniu najważniejszych zdań, bądź fragmentów z~oryginalnego tekstu. Wybierane
+                są zdania, zawierające słowa często występujące w~dokumencie, ponieważ takie słowa mogą mieć duże znaczenie
+                w~kontekście tematu dokumentu i~w~związku z~tym warto umieścić zdania je zawierające w~podsumowaniu. Miejsce,
+                w~którym znajduje się zdanie również może wpłynąć na to, czy zdanie znajdzie się w~streszczeniu. Szczególne
+                znaczenie mają tutaj zdania zawarte w~tytule dokumentu oraz podtytułach poszczególnych akapitów. Należy
                 także zwrócić uwagę na zdania zawierające typowe zwroty używane do podsumowania bądź wprowadzenia do tematu,
-                takie jak między innymi: ,,Podsumowując...'', ,,Artykuł zawiera'' i wiele innych.
+                takie jak między innymi: ,,Podsumowując...'', ,,Artykuł zawiera...'' i~wiele innych.
 
                 Alternatywnym podejściem do tworzenia streszczeń dokumentów jest zbudowanie wewnętrznej reprezentacji
-                dokumentu, znalezienie najistotniejszych informacji w nim zawartych, a następnie wykorzystanie metod
+                dokumentu, znalezienie najistotniejszych informacji w~nim zawartych, a następnie wykorzystanie metod
                 generowania języka naturalnego do stworzenia skrótu. Tego typu podejście najczęściej wykorzystywane jest
-                do tworzenia bardzo krótkich streszczeń, na przykład nagłówków składających się jedynie z jednego zdania.
-                Stosowane są tutaj różnorakie wzorce, które wypełniane są informacjami uzyskanymi z dokumentu. Do zbudowania
+                do tworzenia bardzo krótkich streszczeń, na przykład nagłówków składających się jedynie z~jednego zdania.
+                Stosowane są tutaj różnorakie wzorce, które wypełniane są informacjami uzyskanymi z~dokumentu. Do zbudowania
                 reprezentacji dokumentu najczęściej wykorzystywane są metody głębokiej analizy języka naturalnego,
-                wykorzystujące między innymi reprezentację semantyczną. W porównaniu z ekstrakcją zdań z dokumentu, generowanie
-                streszczeń jest techniką o wiele rzadziej wykorzystywaną i słabiej zbadaną\cite{SUMMARIZATIONOVERVIEW}.
+                wykorzystujące między innymi reprezentację semantyczną. W porównaniu z~ekstrakcją zdań z~dokumentu, generowanie
+                streszczeń jest techniką o wiele rzadziej wykorzystywaną i~słabiej zbadaną\cite{SUMMARIZATIONOVERVIEW}.
 
             \subsubsection{Korekta pisowni}
                 Obecnie większość edytorów tekstowych, programów pocztowych, czy też przeglądarek internetowych zawiera
                 funkcję automatycznego poprawiania błędów ortograficznych
-                oraz tak zwanych "literówek". Funkcja ta jest implementowana przy pomocy \emph{korektora pisowni}. Jego
-                zadaniem jest wskazywanie fragmentów tekstu, w których znajdują się błędy pisowni. Tego typu oprogramowanie
+                oraz tak zwanych ,,literówek''. Funkcja ta jest implementowana przy pomocy \emph{korektora pisowni}. Jego
+                zadaniem jest wskazywanie fragmentów tekstu, w~których znajdują się błędy pisowni. Tego typu oprogramowanie
                 najczęściej oparte jest o wcześniej przygotowane słowniki poprawnie wprowadzonych słów. Następnie każde
-                słowo tekstu jest wyszukiwane w słowniku i w przypadku jego braku, sygnalizowany jest błąd pisowni. Oprócz
-                samej listy słów, w słowniku mogą znajdować się dodatkowe informacje takie jak na przykład punkty podziału
-                słów (przydatne przy automatycznym formatowaniu tekstu i przenoszenia słów do nowej linii). Ponadto korektor
-                pisowni może zawierać algorytmy, dedykowane dla danego języka, radzące sobie z odmianą słów w różnych
+                słowo tekstu jest wyszukiwane w~słowniku i~w~przypadku jego braku, sygnalizowany jest błąd pisowni. Oprócz
+                samej listy słów, w~słowniku mogą znajdować się dodatkowe informacje takie jak na przykład punkty podziału
+                słów (przydatne przy automatycznym formatowaniu tekstu i~przenoszenia słów do nowej linii). Ponadto korektor
+                pisowni może zawierać algorytmy, dedykowane dla danego języka, radzące sobie z~odmianą słów w~różnych
                 kontekstach (poprawność fleksyjna). Do wskazania sugestii dotyczących autokorekty wykorzystywana jest miara
                 odległości edycyjnej bądź odległości Hamminga. Odmiennym podejściem do problemu poprawiania pisowni jest zastosowanie
                 metod statystycznych. Do rozpoznania błędów najczęściej wykorzystywane są \emph{n-gramy}, ich wykorzystanie
@@ -180,327 +179,1292 @@
 
             \subsubsection{Ekstrakcja informacji}
                 Kolejnym przykładem zastosowania przetwarzania języka naturalnego jest \emph{ekstrakcja informacji}. Zadanie
-                to polega na wydobyciu informacji z nieustrukturyzowanego tekstu w języku naturalnym i zapisania ich w
-                formacie o określonej strukturze,w celu dalszego
-                przetwarzania. Polegać to może na przykład na tworzeniu rekordów medycznych w bazie danych na podstawie
-                dokumentacji medycznej wypełnionej przez lekarza w języku polskim. Ekstrakcja informacji jest zadaniem
+                to polega na wydobyciu informacji z~nieustrukturyzowanego tekstu w~języku naturalnym i~zapisania ich w
+                formacie o określonej strukturze, w~celu dalszego
+                przetwarzania. Polegać to może na przykład na tworzeniu rekordów medycznych w~bazie danych na podstawie
+                dokumentacji medycznej wypełnionej przez lekarza w~języku polskim. Ekstrakcja informacji jest zadaniem
                 trudnym, dlatego oprogramowanie tego typu najczęściej jest opracowywane pod kątem konkretnej dziedziny i
                 dostosowywane do niej. Jak zostało wcześniej wspomniane, większość zasobów informacji zapisana jest w
-                formie nieustrukturyzowanego tekstu w języku naturalnym, w związku z czym ich wyszukiwanie nie jest łatwe.
+                formie nieustrukturyzowanego tekstu w~języku naturalnym, w~związku z~czym ich wyszukiwanie nie jest łatwe.
                 Wraz ze wzrastającą ilością tych informacji, rośnie znaczenie problemu ich ekstrakcji. Dzięki
-                przekształceniu tych informacji do postaci rekordów w bazie danych wyszukiwanie staje się o wiele prostsze.
-                Zazwyczaj z tekstu wydobywane są byty nazwane, relacje między nimi oraz wydarzenia, w których te byty
-                biorą udział, na przykład: ,,W marcu zeszłego roku pacjent Jan Nowak był operowany w szpitalu w Leśnej
-                Górze''. Obecnie dynamicznie rozwija się dziedzina ekstrakcji informacji z wielu źródeł w przeciwieństwie
-                do jednego dokumentu. W przeszłości wydobywanie informacji odbywało się w oparciu o ręcznie tworzone
-                reguły i wzorce lingwistyczne. Obecnie wzorce i reguły są najczęściej wyuczane w sposób automatyczny,
+                przekształceniu tych informacji do postaci rekordów w~bazie danych wyszukiwanie staje się o wiele prostsze.
+                Zazwyczaj z~tekstu wydobywane są byty nazwane, relacje między nimi oraz wydarzenia, w~których te byty
+                biorą udział, na przykład: ,,W marcu zeszłego roku pacjent Jan Nowak był operowany w~szpitalu w~Leśnej
+                Górze''. Obecnie dynamicznie rozwija się dziedzina ekstrakcji informacji z~wielu źródeł w~przeciwieństwie
+                do jednego dokumentu. W przeszłości wydobywanie informacji odbywało się w~oparciu o ręcznie tworzone
+                reguły i~wzorce lingwistyczne. Obecnie wzorce i~reguły są najczęściej wyuczane w~sposób automatyczny,
                 a same wzorce stały się bardziej rozmyte dzięki zastosowaniu \emph{ukrytych modeli Markova (HMM)} oraz
                 \emph{warunkowych pól losowych (CRF)}\cite{INFORMATIONEXTRACTION}.
 
             \subsubsection{Programy konwersujące}
-                Jednym z najbardziej znanych zastosowań przetwarzania języka naturalnego jest tworzenie programów
-                prowadzących z użytkownikiem dialog w języku naturalnym, tak zwanych \emph{programów konwersujących}.
+                Jednym z~najbardziej znanych zastosowań przetwarzania języka naturalnego jest tworzenie programów
+                prowadzących z~użytkownikiem dialog w~języku naturalnym, tak zwanych \emph{programów konwersujących}.
                 Ten dział inżynierii języka naturalnego rozgłos uzyskał dzięki testowi zaproponowanemu przez Alana Turinga,
                 który miał udowodnić posiadanie przez maszynę inteligencji podobnej do ludzkiej. W podobny sposób człowiek
-                określa inteligencję innych ludzi, również na podstawie tego, co i jak mówią. Test ten polega na swobodnej
-                rozmowie ,,sędziego'' z pozostałymi uczestnikami testu, wśród których znajduje się maszyna. Jeśli sędzia
-                nie jest w stanie określić, który z uczestników jest maszyną, zakłada się, że przeszła ona test.
+                określa inteligencję innych ludzi, również na podstawie tego, co i~jak mówią. Test ten polega na swobodnej
+                rozmowie ,,sędziego'' z~pozostałymi uczestnikami testu, wśród których znajduje się maszyna. Jeśli sędzia
+                nie jest w~stanie określić, który z~uczestników jest maszyną, zakłada się, że przeszła ona test.
                 Programy konwersujące są nie tylko ważnym punktem zainteresowań badań nad sztuczną inteligencją, wiele z
-                nich powstaje w celu czysto rozrywkowym. Oprócz tego, wiele firm wykorzystuje tego typu aplikacje,
+                nich powstaje w~celu czysto rozrywkowym. Oprócz tego, wiele firm wykorzystuje tego typu aplikacje,
                 jako wirtualnych asystentów na swoich stronach internetowych. Mogą oni na przykład przyjąć zamówienie od
-                klienta, opowiedzieć o funkcjonowaniu i działalności firmy, oraz odpowiedzieć na wiele pytań użytkownika.
-                Obecnie bardzo popularne stają się aplikacje typu ,,osobisty asystent'', w których moduł konwersujący jest
-                kluczowym elementem. Aplikacje te dostępne są w praktycznie każdym smartphonie. Ze względu na wysoki
+                klienta, opowiedzieć o funkcjonowaniu i~działalności firmy, oraz odpowiedzieć na wiele pytań użytkownika.
+                Obecnie bardzo popularne stają się aplikacje typu ,,osobisty asystent'', w~których moduł konwersujący jest
+                kluczowym elementem. Aplikacje te dostępne są w~praktycznie każdym smartphonie. Ze względu na wysoki
                 poziom skomplikowania tej dziedziny przetwarzania języka, wykorzystuje ona praktycznie wszystkie z
-                przedstawionych wcześniej technik, od powierzchownej i głębokiej analizy tekstu, poprzez wzorce i reguły
-                lingwistyczne, kończąc na sieciach neuronowych i maszynowym uczeniu
+                przedstawionych poniżej technik, od powierzchownej i~głębokiej analizy tekstu, poprzez wzorce i~reguły
+                lingwistyczne, kończąc na sieciach neuronowych i~maszynowym uczeniu
 
             \subsubsection{Analiza wydźwięku (sentymentu)}
                 Zdolność zrozumienia emocji odczuwanych przez drugą osobę pozwala ma skuteczniejszą komunikację oraz
-                umożliwia łatwiejsze rozpoznanie oczekiwań i potrzeb innych ludzi. Firmy są w stanie zainwestować duże
-                pieniądze w badanie rynku, aby rozpoznać nastawienie oraz opinie ludzi na temat ich produktów. Dzięki
-                tej wiedzy mogą oni je udoskonalać, w taki sposób aby lepiej zaspokajały zapotrzebowanie klientów.
-                Liczba opinii na temat produktów znajdujących się w Internecie jest ogromna i nie możliwa do
-                przestudiowania przez człowieka. W związku z tym pojawia się zapotrzebowanie na oprogramowanie pozwalające
-                zautomatyzować proces \emph{analizy wydźwięku} w tekście pisanym. Tradycyjnie oprogramowanie
+                umożliwia łatwiejsze rozpoznanie oczekiwań i~potrzeb innych ludzi. Firmy są w~stanie zainwestować duże
+                pieniądze w~badanie rynku, aby rozpoznać nastawienie oraz opinie ludzi na temat ich produktów. Dzięki
+                tej wiedzy mogą oni je udoskonalać, w~taki sposób aby lepiej zaspokajały zapotrzebowanie klientów.
+                Liczba opinii na temat produktów znajdujących się w Internecie jest ogromna i~nie możliwa do
+                przestudiowania przez człowieka. W związku z~tym pojawia się zapotrzebowanie na oprogramowanie pozwalające
+                zautomatyzować proces \emph{analizy wydźwięku} w~tekście pisanym. Tradycyjnie oprogramowanie
                 przeprowadzające ten proces opierało się na wyszukiwaniu słów pozwalających jednoznacznie określić
-                nastawienie autora, na przykład ,,wesoły'', ,,smutny'', ,,dobre'', ,,złe'' i tym podobne. W dzisiejszych
+                nastawienie autora, na przykład ,,wesoły'', ,,smutny'', ,,dobre'', ,,złe'' i~tym podobne. W dzisiejszych
                 czasach wykorzystywane są różnego rodzaju metody statystyczne oraz uczenie maszynowe, a zwłaszcza rozmaite
                 klasyfikatory\cite{SENTIMENTANALYSIS}.
 
         \subsection{Wykorzystywane narzędzia}
-            Przetwarzanie języka naturalnego składa się zazwyczaj z następujących po sobie etapów, połączonych w łańcuch,
-            gdzie wyjście jednego z etapów jest wejściem poprzedniego. Poszczególne etapy zostały opisane poniżej.
+            Przetwarzanie języka naturalnego składa się zazwyczaj z~następujących po sobie etapów, połączonych w~łańcuch,
+            gdzie wyjście jednego z~etapów jest wejściem poprzedniego. Poszczególne etapy zostały opisane poniżej.
 
             \subsubsection{Tokenizery}
-                Tekst, który należy przedstawić może występować w postaci dokumentów o różnych długościach, poczynając od
+                Tekst, który należy przedstawić może występować w~postaci dokumentów o różnych długościach, poczynając od
                 krótkich wiadomości tekstowych, kończąc na wielotomowych powieściach. Pierwszym etapem przetwarzania języka
                 naturalnego jest podział tekstu na mniejsze fragmenty, czyli tak zwana \emph{segmentacja}. Segmentacja jest
                 kluczową częścią każdego systemu przetwarzającego język naturalny, ponieważ poprawnie wyodrębnione części
                 dokumentu są podstawowymi jednostkami wykorzystywanymi na dalszych etapach przetwarzania języka.
                 Do przeprowadzenia segmentacji wykorzystywane są narzędzia zwane
-                \emph{tokenizerami}.% sprawdzic polska nazwe, mozna zasugerowac sie MACCA
+                \emph{tokenizerami}.
                 W zależności od zastosowania możliwy jest podział na różne jednostki, między innymi wyrazy, zdania, czy też akapity.
-                Może się wydawać, że jest to łatwe zadanie, jednak pojawiają się problemy z na przykład: wyrazami składającymi
-                się z kilku części (np. Bielsko Biała), partykułą ,,się'' (czy ,,bawić się'' potraktować jako jedno słowo, czy dwa?)
-                czy też z wyrażeniami wielowyrazowymi, na przykład nazwami własnymi, które często składają się z kilku wyrazów.
-                Przy podziale tekstu na zdania należy zauważyć, że nie każda kropka występująca w tekście kończy zdanie, oprócz
+                Może się wydawać, że jest to łatwe zadanie, jednak pojawiają się problemy z~na przykład: wyrazami składającymi
+                się z~kilku części (np. Bielsko Biała), partykułą ,,się'' (czy ,,bawić się'' potraktować jako jedno słowo, czy dwa?)
+                czy też z~wyrażeniami wielowyrazowymi, na przykład nazwami własnymi, które często składają się z~kilku wyrazów.
+                Przy podziale tekstu na zdania należy zauważyć, że nie każda kropka występująca w~tekście kończy zdanie, oprócz
                 tego kropkę stawia się na końcu niektórych skrótów, mogą być też wykorzystywane na przykład do zapisu daty.
-                Opracowanie poprawnych tokenizerów jest bardzo ważne, ponieważ wszystkie błędy popełnione w czasie segmentacji,
+                Opracowanie poprawnych tokenizerów jest bardzo ważne, ponieważ wszystkie błędy popełnione w~czasie segmentacji,
                 propagują się do następnych etapów przetwarzania języka. W procesie segmentacji najczęściej wykorzystuje się
-                zasady zapisane w postaci gramatyki regularnej automatu skończonego, bądź transduktora. Tokenizery przygotowane
-                w ten sposób są w stanie osiągnąć dużą dokładność, jednak są one najczęściej dostosowane do specyficznego języka
-                naturalnego. Wykorzystanie ich do innego języka jest bardzo trudne i najczęściej wymaga stworzenia nowego
+                zasady zapisane w~postaci gramatyki regularnej, automatu skończonego, bądź transduktora. Tokenizery przygotowane
+                w~ten sposób są w~stanie osiągnąć dużą dokładność, jednak są one najczęściej dostosowane do specyficznego języka
+                naturalnego. Wykorzystanie ich do innego języka jest bardzo trudne i~najczęściej wymaga stworzenia nowego
                 zestawu reguł. Obecnie coraz częściej stosowane są metody, które można trenować, wykorzystujące uczenie maszynowe,
                 drzewa decyzyjne, bądź też metody statystyczne oparte na modelowaniu maksimum entropii\cite{HANDBOOKNLP}.
 
             \subsubsection{Analizator fleksyjny}
                 Kolejnym etapem przetwarzania języka naturalnego jest \emph{analiza fleksyjna}. Na tym etapie odbywają się dwa
-                ważne procesy: \emph{stemming} i \emph{analiza morfologiczna}. Stemming polega na sprowadzeniu różnych form fleksyjnych wyrazu do jednej
-                reprezentacyjnej postaci. Lematyzacja jest odmianą stemingu polegająca na sprowadzeniu form wyrazowych do lematu.
-                Lemat jest to forma wyrazu pod jaką szukalibyśmy go w na przykład w słowniku, najczęściej najprostsza
-                (na przykład dla czasowników: bezokolicznik). Steming jest najczęściej przeprowadzany w oparciu o wcześniej
+                ważne procesy: \emph{stemming} i~\emph{analiza morfologiczna}. Stemming polega na sprowadzeniu różnych form fleksyjnych wyrazu do jednej
+                reprezentacyjnej postaci. Lematyzacja jest odmianą stemmingu polegającą na sprowadzeniu form wyrazowych do
+                formy słownikowej.
+                Forma słownikowa jest to forma wyrazu pod jaką szukalibyśmy go w~na przykład w~słowniku, najczęściej najprostsza
+                (na przykład dla czasowników: bezokolicznik). Stemming jest najczęściej przeprowadzany w~oparciu o wcześniej
                 przygotowane słowniki bądź reguły.
 
-                Alternatywą dla stemingu jest \emph{analiza morfologiczna}, która stara się otagować każdy wyraz poprzez odgadnięcie
-                jego części mowy oraz formy fleksyjnej. Każdy wyraz zostaje przypisany do jednej z wcześniej określonych
-                przez lingwistów kategorii gramatycznych pochodzących z tak zwanych \emph{tagsetów}. Aplikacje zajmujące
-                się przypisywaniem tagów do wyrazów nazywamy \emph{taggerami części mowy (part-of-speech tagger, POS}. Dzięki przypisaniu
-                wyrazom kategorii gramatycznych, można uzyskać wiele informacji na temat tych wyrazów jak i ich sąsiedztwa,
+                Alternatywą dla stemmingu jest \emph{analiza morfologiczna}, która stara się otagować każdy wyraz poprzez odgadnięcie
+                jego części mowy oraz formy fleksyjnej. Każdy wyraz zostaje przypisany do jednej z~wcześniej określonych
+                przez lingwistów kategorii gramatycznych pochodzących z~tak zwanych \emph{tagsetów}. Aplikacje zajmujące
+                się przypisywaniem tagów do wyrazów nazywamy \emph{taggerami części mowy (part-of-speech tagger, POS)}. Dzięki przypisaniu
+                wyrazom kategorii gramatycznych, można uzyskać wiele informacji na temat tych wyrazów jak i~ich sąsiedztwa,
                 co jest bardzo ważne na dalszych etapach przetwarzania. Częstym problemem jest wieloznaczność wyrazów, na przykład
                 wyraz ,,mam'' może oznaczać, że ja coś posiadam, bądź też może być biernikiem liczby mnogiej wyrazu ,,mama''.
-                Taggery można pogrupować w dwie kategorie: taggery oparte o zbiór zasad oraz taggery stochastyczne. Zasady
+                Taggery można pogrupować w~dwie kategorie: taggery oparte o zbiór zasad oraz taggery stochastyczne. Zasady
                 dla taggerów mogą być definiowane ręcznie, bądź nauczone maszynowo. Dodatkowo dodawane są reguły dla wyrazów
-                niejednoznacznych. Taggery stochastyczne używają wcześniej przygotowanego i oznaczonego korpusu do zbudowania
+                niejednoznacznych. Taggery stochastyczne używają wcześniej przygotowanego i~oznaczonego korpusu do zbudowania
                 modelu probabilistycznego, na przykład Ukrytego Modelu Markova, który określa prawdopodobieństwo, że dany
-                wyraz będzie miał dany tag w określonym kontekście\cite{SPEECHANDLANGUAGEPROCESSING}.
+                wyraz będzie miał dany tag w~określonym kontekście\cite{SPEECHANDLANGUAGEPROCESSING}.
 
             \subsubsection{Parser syntaktyczny}
                 Po analizie fleksyjnej następuje \emph{parsowanie syntaktyczne}. Jego celem jest przeanalizowanie ciągu wyrazów
-                (zazwyczaj zdania) w celu zidentyfikowania jego struktury w oparciu o gramatykę formalną. Dzięki temu procesowi
-                w następnych etapach przetwarzania możliwe jest przypisanie znaczenia do całego zdania. W tym celu na podstawie
+                (zazwyczaj zdania) w~celu zidentyfikowania jego struktury w~oparciu o gramatykę formalną. Dzięki temu procesowi
+                w~następnych etapach przetwarzania możliwe jest przypisanie znaczenia do całego zdania. W tym celu na podstawie
                 gramatyki tworzona jest hierarchiczna, syntaktyczna struktura, która nadaje się do semantycznej interpretacji.
                 Dzięki parsowaniu syntaktycznym możliwe jest wykrycie, że grupa słów może być frazą, na przykład frazą
                 rzeczownikową: ,,piękna dziewczyna''.
-                Gramatyka formalna składa się ze zbioru reguł, tak zwanych produkcji, z których każda mówi w jaki sposób symbole występujące
-                w języku mogą być grupowane razem, oraz ze zbioru symboli terminalnych, które mówią o symbolach występujących
-                w języku.
-                Gramatyki formalne z powodzeniem wykorzystywane są do parsowania języków sztucznych (języki programowania),
-                jednak różnią się one w stosunku do gramatyk wykorzystywanych do parsowania języka naturalnego. Jak zostało
+
+                Gramatyka formalna składa się ze zbioru reguł, tak zwanych produkcji, z~których każda mówi w~jaki sposób symbole występujące
+                w~języku mogą być łączone w~konstrukcje językowe, oraz ze zbioru symboli terminalnych, które mówią o symbolach występujących
+                w~języku.
+                Gramatyki formalne z~powodzeniem wykorzystywane są do parsowania języków sztucznych (języki programowania),
+                jednak różnią się one w~stosunku do gramatyk wykorzystywanych do parsowania języka naturalnego. Jak zostało
                 wcześniej wspomniane, język naturalny charakteryzuje się niejednoznacznością, również na poziomie syntaktycznym.
-                % TODO: wymyslic to zdanie
-                Przykładowo zdanie ,,'' może zostać zinterpretowane na dwa sposoby.
                 Gramatyki obsługujące języki sztuczne są zazwyczaj kompletne, a ponadto zakładają, że przekazany tekst
-                (najczęściej kod programu) będzie poprawny, jeśli tak nie jest, użytkownikowi zgłaszany jest błąd i zmuszony
-                jest on do poprawy kodu. W przypadku języka naturalnego, gramatyka ze względu na bogactwo językowe i ciągły
-                rozwój języka, nigdy nie jest kompletna. Ponadto w tekstach dokumentów często zdarzają się błędy językowe,
-                które oprogramowanie powinno być w stanie obsłużyć. Podczas przetwarzania języka naturalnego ciężko jest odróżnić,
+                (najczęściej kod programu) będzie poprawny, jeśli tak nie jest, użytkownikowi zgłaszany jest błąd i~zmuszony
+                jest on do poprawy kodu. W przypadku języka naturalnego, gramatyka ze względu na bogactwo językowe i~ciągły
+                rozwój języka, nigdy nie jest kompletna. Ponadto w~tekstach dokumentów często zdarzają się błędy językowe,
+                które oprogramowanie powinno być w~stanie obsłużyć. Podczas przetwarzania języka naturalnego ciężko jest odróżnić,
                 czy błąd parsowania nastąpił na skutek nieprawidłowych danych, czy też ze względu na niekompletność gramatyki.
 
             \subsubsection{Tagger nazw własnych}
-                Po parsowaniu syntaktycznym w razie potrzeby może zostać przeprowadzone \emph{rozpoznawanie nazw własnych}. Proces
-                ten polega na znalezieniu i oznaczeniu w tekście bytów nazwanych oraz przypisaniu ich do jednej z wcześniej
-                zdefiniowanych kategorii. Oprogramowanie tego typu nazywane jest z angielskiego \emph{named entity recognizer (NER)}.
+                Po parsowaniu syntaktycznym w~razie potrzeby może zostać przeprowadzone \emph{rozpoznawanie nazw własnych}. Proces
+                ten polega na znalezieniu i~oznaczeniu w~tekście bytów nazwanych oraz przypisaniu ich do jednej z~wcześniej
+                zdefiniowanych kategorii. Oprogramowanie tego typu nazywane jest z~angielskiego
+                \emph{named entity recognizer (NER)}. Przykładem oprogramowania tego typu jest Liner2\cite{LINER2}.
+
                 Wśród najczęściej wykorzystywanych kategorii bytów nazwanych wyróżniamy kategorie
                 takie jak: osoba, organizacja, miejsce, wyrażenie czasowe czy też wyrażenia liczbowe (na przykład kwoty, procenty).
-                Podobnie jak w czasie analizy morfologicznej, tak i tutaj wyrazowi, bądź grupie wyrazów zostaje przypisany
-                tag, mówiący o tym do jakiej kategorii on należy. Rozpoznawanie oparte jest o reguły rozpoznające i klasyfikujące
-                aktywowane przez cechy specyficzne dla pozytywnych i negatywnych przykładów nazw własnych. Wiele wczesnych
+                Podobnie jak w~czasie analizy morfologicznej, tak i~tutaj wyrazowi, bądź grupie wyrazów zostaje przypisany
+                tag, mówiący o tym do jakiej kategorii on należy. Rozpoznawanie oparte jest o reguły rozpoznające i~klasyfikujące
+                aktywowane przez cechy specyficzne dla pozytywnych i~negatywnych przykładów nazw własnych. Wiele wczesnych
                 taggerów wykorzystywało najczęściej ręcznie przygotowane heurystyczne reguły. Nowoczesne systemy skupiają się
                 raczej na wykorzystaniu algorytmów uczenia maszynowego do stworzenia reguł na podstawie wcześniej przygotowanych
-                danych uczących pochodzących z oznaczonych korpusów. W przypadku braku danych treningowych, ręcznie przygotowane
+                danych uczących pochodzących z~oznaczonych korpusów. W przypadku braku danych treningowych, ręcznie przygotowane
                 reguły są jedną dostępną metodą. Wśród wykorzystywanych do rozpoznawania nazw własnych metod uczenia maszynowego
-                wyróżniamy: ukryte modele Markova (HMM), drzewa decyzjne, modele maksymalnej entropii (ME), maszyny wektorów nośnych (SVM)
+                wyróżniamy: ukryte modele Markova (HMM), drzewa decyzyjne, modele maksymalnej entropii (ME), maszyny wektorów nośnych (SVM)
                 oraz warunkowe pola losowe (CRF). Wszystkie te metody są metodami uczenia nadzorowanego\cite{NERSURVEY}.
 
             \subsubsection{Parser semantyczny}
-                Ostatnim narzędziem ogólnego przeznaczenia wykorzystywanym w przetwarzaniu języka naturalnego jest
+                Ostatnim narzędziem ogólnego przeznaczenia wykorzystywanym w~przetwarzaniu języka naturalnego jest
                 \emph{parser semantyczny}. Pozwala on zrealizować ostateczny cel przetwarzania języka naturalnego, którym
-                jest jest zrozumienie wypowiedzi. Zrozumienie wypowiedzi może polegać na przyswojeniu nowej wiedzy w niej
-                zawartej, bądź też na wykonaniu jakiejś akcji w odpowiedzi na wypowiedź. Generalnie analiza semantyczna
-                polega na analizie znaczeń słów, wyrażeń, zdań i wypowiedzi biorąc pod uwagę kontekst w jakim występują.
-                W praktyce wiąże się to z przetłumaczeniem oryginalnego tekstu w języku naturalnym do pewnego metajęzyka
+                jest jest zrozumienie wypowiedzi. Zrozumienie wypowiedzi może polegać na przyswojeniu nowej wiedzy w~niej
+                zawartej, bądź też na wykonaniu jakiejś akcji w~odpowiedzi na wypowiedź. Generalnie analiza semantyczna
+                polega na analizie znaczeń słów, wyrażeń, zdań i~wypowiedzi biorąc pod uwagę kontekst w~jakim występują.
+                W praktyce wiąże się to z~przetłumaczeniem oryginalnego tekstu w~języku naturalnym do pewnego metajęzyka
                 lub specjalnie zaprojektowanej semantycznej reprezentacji wiedzy. W stosunku do reprezentacji znaczenia
                 wypowiedzi stawiane jest kilka wymagań. Po pierwsze reprezentacja musi umożliwiać porównanie znaczenia wypowiedzi
-                z bazą wiedzy o świecie. Innymi słowy mówiąc, powinno być możliwe zweryfikowanie, czy dana wypowiedź jest
-                prawdziwa czy fałszywa, w oparciu o posiadaną przez system wiedzę. Kolejnym problemem jest bogactwo języków
+                z~bazą wiedzy o świecie. Innymi słowy mówiąc, powinno być możliwe zweryfikowanie, czy dana wypowiedź jest
+                prawdziwa czy fałszywa, w~oparciu o posiadaną przez system wiedzę. Kolejnym problemem jest bogactwo języków
                 naturalnych. Weźmy pod uwagę następujące zdania:
                 \begin{enumerate}
-                    \item Czy biblioteka jest otwarta w sobotę?
-                    \item Czy można skorzystać z biblioteki w sobotę?
-                    \item Da się wypożyczyć książkę z biblioteki w sobotę?
+                    \item Czy biblioteka jest otwarta w~sobotę?
+                    \item Czy można skorzystać z~biblioteki w~sobotę?
+                    \item Da się wypożyczyć książkę z~biblioteki w~sobotę?
                 \end{enumerate}
-                Ze względu na to, że wszystkie te zdania zbudowane są z różnych wyrazów, o różnych formach gramatycznych oraz
+                Ze względu na to, że wszystkie te zdania zbudowane są z~różnych wyrazów, o różnych formach gramatycznych oraz
                 interpretacji syntaktycznej, można by się spodziewać, że otrzymają one różne reprezentacje semantyczne. Znacznie
-                utrudniłoby to proces weryfikacji prawdziwości tych wypowiedzi. W przypadku, gdy w bazie wiedzy systemu istniałby
-                jedynie jedna reprezentacja faktu otwarcia biblioteki w sobobty, system zwerfyikowałby tylko jedno z tych zdań
-                jako prawdziwe, to które pasuje do sposobu reprezentacji faktu w bazie wiedzy. Porządanym rozwiązaniem tego
+                utrudniłoby to proces weryfikacji prawdziwości tych wypowiedzi. W przypadku, gdy w~bazie wiedzy systemu istniałby
+                jedynie jedna reprezentacja faktu otwarcia biblioteki w~soboty, system zweryfikowałby tylko jedno z~tych zdań
+                jako prawdziwe, to które pasuje do sposobu reprezentacji faktu w~bazie wiedzy. Pożądanym rozwiązaniem tego
                 problemu jest przypisanie wszystkim tym zdaniom takiej samej reprezentacji semantycznej, ze względu na to, że
                 odpowiedź na wszystkie te pytania jest taka sama. Reprezentacja semantyczna powinna pozwolić na wyrażenie
-                znaczenie jak największej ilości wypowiedzi, w idealnym przypadku pojedynczy system reprezentacji pozwoliłby
+                znaczenia jak największej liczby wypowiedzi, w~idealnym przypadku pojedynczy system reprezentacji pozwoliłby
                 na na przedstawienie każdej wypowiedzi. Jak dotąd jednak taka reprezentacja nie została znaleziona, dlatego
-                w zależności od zastosowania stosowane są różne systemy reprezentacji znaczenia. Każda z reprezentacji
+                w~zależności od zastosowania stosowane są różne systemy reprezentacji znaczenia. Każda z~reprezentacji
                 pozwala na przedstawienie obiektów, właściwości tych obiektów oraz zależności pomiędzy różnymi obiektami.
-                Jedną z przykładowych reprezentacji jest logika pierwszego rzędu. Jest to elastyczna reprezentacja semantyczna,
-                która może być w łatwy sposób przetwarzana przez systemy komputerowe. Stałe występujące występujące w języku
-                logiki pozwalają na specyfikowanie obiektów z relanego świata, dzięki funkcjom możemy opisywać właściwości
+                Jedną z~przykładowych reprezentacji jest logika pierwszego rzędu\cite{SEMANTICPARSING}. Jest to elastyczna reprezentacja semantyczna,
+                która może być w~łatwy sposób przetwarzana przez systemy komputerowe. Stałe występujące występujące w~języku
+                logiki pozwalają na specyfikowanie obiektów z~realnego świata, dzięki funkcjom możemy opisywać właściwości
                 obiektów, oraz relacje pomiędzy obiektami, natomiast zmienne pozwalają na odnoszenie się do obiektów bez wskazywania
-                konkretnego z nich. Pozwala to na tworzenie twierdzeń na temat konkretnego nieznanego obiektu, bądź na temat
-                wszystkich obiektów z określonej dziedziny. Przykładowe wyrażenie w logice pierwszego rzędu zostały przedstawione
+                konkretnego z~nich. Pozwala to na tworzenie twierdzeń na temat konkretnego nieznanego obiektu, bądź na temat
+                wszystkich obiektów z~określonej dziedziny. Przykładowe wyrażenie w~logice pierwszego rzędu zostały przedstawione
                 poniżej:
                 \begin{itemize}
-                    \item Biblioteka Główna jest otwarta w sobotę: $ Otwarta(BibliotekaGlowna, Sobota) $
-                    \item Która biblioteka jest otwarta w sobotę?: $ \exists b \in Biblioteki: Otwarta(b, Sobota) $
+                    \item Biblioteka Główna jest otwarta w~sobotę: $ Otwarta(BibliotekaGlowna, Sobota) $
+                    \item Która biblioteka jest otwarta w~sobotę?: $ \exists b \in Biblioteki: Otwarta(b, Sobota) $
                     \item Która biblioteka we Wrocławiu posiada książki na temat NLP?: \\ $ \exists b \in Biblioteki: Lokalizacja(b) = Wroclaw \land Posiada(b, KsiazkiNLP) $
                 \end {itemize}
 
 
     \section{Odpowiadanie na pytania (Question Answering)}
         \subsection{Podstawowe pojęcia}
-            \emph{System odpowiadający na pytania} można zdefiniować jako system, który jest w stanie automatycznie
-            zrozumieć treść pytania zadanego w języku naturalnym, oraz w odpowiedzi dostarczyć żądane informacje\cite{HANDBOOKNLP}.
+            \emph{System odpowiadający na pytania} można zdefiniować jako system, który jest w~stanie automatycznie
+            zrozumieć treść pytania zadanego w~języku naturalnym, oraz w~odpowiedzi dostarczyć żądane informacje\cite{HANDBOOKNLP}.
 
-            Dziedzina przetwarzania języka naturalnego zajmująca się odpowiadaniem na pytania zrodziła się z dwóch powodów.
-            Po pierwsze standardowe języki w których formułuje się zapytania do wyszukiwarek internetowych nie zawsze
-            pozwalają na wyrażenie \emph{potrzeby informacyjnej} użytkownika w prosty i przyjazny sposób. Dotyczy to
+            Dziedzina przetwarzania języka naturalnego zajmująca się odpowiadaniem na pytania zrodziła się z~dwóch powodów.
+            Po pierwsze standardowe języki w~których formułuje się zapytania do wyszukiwarek internetowych nie zawsze
+            pozwalają na wyrażenie \emph{potrzeby informacyjnej}użytkownika w~prosty i~przyjazny sposób\cite{SEARCHENGINES}. Dotyczy to
             przede wszystkim przypadków gdy użytkownik potrzebuje bardzo szczegółowych informacji na przykład:
-            ,,Jak nazywa się żeński odpowiednik El Nino, który powoduje obniżenie temperatury i bardzo suchą pogodę?''.
+            ,,Jak nazywa się żeński odpowiednik El Nino, który powoduje obniżenie temperatury i~bardzo suchą pogodę?''.
             Systemy odpowiadające na pytania potrafią wychwycić potrzebę informacyjną użytkownika użytkownika zawartą w
-            pytaniu i wyręczają go w formułowaniu zapytań do wyszukiwarki. Może on
-            wprowadzić swoje zapytanie w dokładnie taki sam sposób jakby pytał on drugiego człowieka.
+            pytaniu i~wyręczają go w~formułowaniu zapytań do wyszukiwarki. Może on
+            wprowadzić swoje zapytanie w~dokładnie taki sam sposób jakby pytał on drugiego człowieka.
 
-            Drugi powód również związany jest z poszukiwaniem szczegółowych informacji przez użytkownika. Tradycyjne
-            wyszukiwarki w odpowiedzi na zapytanie zwracają całe dokumenty, w których znajdują się słowa kluczowe podane
+            Drugi powód również związany jest z~poszukiwaniem szczegółowych informacji przez użytkownika. Tradycyjne
+            wyszukiwarki w~odpowiedzi na zapytanie zwracają całe dokumenty, w~których znajdują się słowa kluczowe podane
             przez użytkownika. Jest to do zaakceptowania, gdy poszukuje on ogólnych informacji na dany temat, jednak
             gdy interesuje go konkretna informacja, zmuszanie użytkownika do czytania długiego tekstu nie jest najlepszym
-            pomysłem. Systemy odpowiadające na pytania posiadają mechanizmy wyodrębniania odpowiedzi z tekstu dokumentów,
-            dzięki czemu, jako wynik prezentują użytkownikowi jedynie krótkie fragmenty, w których, według systemu,
+            pomysłem. Systemy odpowiadające na pytania posiadają mechanizmy wyodrębniania odpowiedzi z~tekstu dokumentów,
+            dzięki czemu, jako wynik prezentują użytkownikowi jedynie krótkie fragmenty, w~których, według systemu,
             najprawdopodobniej znajduje się odpowiedź na jego pytanie.
 
             Najprostszym rodzajem pytań na które odpowiadają
-            systemy i jednocześnie najszerzej zbadaną dziedziną są \emph{pytania o fakty}. Są to pytania o proste fakty,
-            dla których odpowiedź może zostać bezpośrednio wydobyta z tekstów źródłowych. Przykładem tego typu pytań są
-            pytania zadawane w teleturniejach typu ,,Jeden z dziesięciu'', ,,Milionerzy'', ,,Jeopardy!'' i tym podobne,
-            w których odpowiedzią na pytanie jest byt nazwany, na przykład miejsce, osoba, organizacja i tak dalej.
-            Odpowiadanie na pytania o fakty, jest w dużej mierze oparte o techniki ekstrakcji informacji, które opisane
+            systemy i~jednocześnie najszerzej zbadaną dziedziną są \emph{pytania o fakty}. Są to pytania o proste fakty,
+            dla których odpowiedź może zostać bezpośrednio wydobyta z~tekstów źródłowych. Przykładem tego typu pytań są
+            pytania zadawane w~teleturniejach typu ,,Jeden z~dziesięciu'', ,,Milionerzy'', ,,Jeopardy!'' i~tym podobne,
+            w~których odpowiedzią na pytanie jest byt nazwany, na przykład miejsce, osoba, organizacja i~tak dalej.
+            Odpowiadanie na pytania o fakty, jest w~dużej mierze oparte o techniki ekstrakcji informacji, które opisane
             zostały wcześniej.
-            Innym przykładem typu pytań są \emph{pytania o definicje}, w których użytkownik przedstawia systemowi pewne
-            pojęcie i prosi o znalezienie jego definicji, na przykład ,,Co to jest Yerba Mate?''. W przeciwieństwie do
+            Innym przykładem typu pytań są \emph{pytania o definicje}, w~których użytkownik przedstawia systemowi pewne
+            pojęcie i~prosi o znalezienie jego definicji, na przykład ,,Co to jest Yerba Mate?''. W przeciwieństwie do
             pytań o fakty, odpowiedź na pytanie o definicje jest najczęściej potencjalnie długim tekstem przytaczającym
-            najważniejsze fakty związane z obiektem zainteresowania użytkownika. Wśród innych typów
+            najważniejsze fakty związane z~obiektem zainteresowania użytkownika. Wśród innych typów
             pytań wyróżniamy pytania ,,Jak?'', ,,Czy?'', pytania hipotetyczne, pytania o porównanie dwóch obiektów oraz
-            inne, które nie otrzymują tak dużo uwagi, jak pytania o fakty i definicje.
+            inne, które nie otrzymują tak dużo uwagi, jak pytania o fakty i~definicje.
 
-            Pierwsze z systemów odpowiadających na pytania, były ograniczone do odpowiadania na pytania pochodzące z
+            Pierwsze z~systemów odpowiadających na pytania, były ograniczone do odpowiadania na pytania pochodzące z
             określonej dziedziny, były to tak zwane \emph{Closed-domain question answering systems}. Przeciwieństwem
-            tego typu systemów, są systemy ogólnego przeznaczenia, które są w stanie odpowiedzieć na pytania z dowolnej
+            tego typu systemów, są systemy ogólnego przeznaczenia, które są w~stanie odpowiedzieć na pytania z~dowolnej
             dziedziny, systemy te nazywane są \emph{Open-domain question answering systems}. Odpowiadanie
-            na pytania z pewnej ograniczonej dziedziny jest łatwiejsze, ponieważ możliwe jest wykorzystanie specyficznej
-            wiedzy dziedzinowej. Co więcej liczba różnych rodzajów pytań z jakimi musi mierzyć się system odpowiadający
+            na pytania z~pewnej ograniczonej dziedziny jest łatwiejsze, ponieważ możliwe jest wykorzystanie specyficznej
+            wiedzy dziedzinowej. Co więcej liczba różnych rodzajów pytań z~jakimi musi mierzyć się system odpowiadający
             jest najczęściej znacznie mniejsza, gdy pytania dotyczą tylko jednej dziedziny. Niniejsza praca skupia się
             na systemie odpowiadającym na pytania o fakty niezależnie od dziedziny.
 
         \subsection{Historia}
-            Początek badań związanych z odpowiadaniem na pytania datowany jest na rok 1959. Jedną z pierwszych prac
-            naukowych na w tej dziedzinie, była praca z 1965 roku\cite{FIRSTWORKQA}, w której opisane zostało piętnaście
-            istniejących w tamtym okresie systemów związanych z odpowiadaniem na pytania. Mimo zastosowania różnorodnych
-            podejść do problemu, autor zastrzega, że żaden z tych systemów nie mógłby zostać zastosowany w praktyce,
-            jednak napawają one nadzieją na powstanie takiego systemu w przyszłości.
+            Początek badań związanych z~odpowiadaniem na pytania datowany jest na rok 1959. Jedną z~pierwszych prac
+            naukowych na w~tej dziedzinie, była praca z~1965 roku\cite{FIRSTWORKQA}, w~której opisane zostało piętnaście
+            istniejących w~tamtym okresie systemów związanych z~odpowiadaniem na pytania. Mimo zastosowania różnorodnych
+            podejść do problemu, autor zastrzega, że żaden z~tych systemów nie mógłby zostać zastosowany w~praktyce,
+            jednak napawają one nadzieją na powstanie takiego systemu w~przyszłości.
 
-            Cechą wspólną pierwszych systemów tego typu było wykorzystanie wiedzy zapisanej w postaci ustrukturyzowanych
-            baz danych jako źródło odpowiedzi. Oznaczało to, że mogły one odpowiedzieć jedynie na pytania z określonej
-            dziedziny, z której informacje zostały wcześniej zapisane w bazie danych. Jednymi z najbardziej systemów
-            w tym czasie były \emph{system LUNAR}\cite{LUNAR}, który odpowiadał na pytania na temat danych geologicznych
+            Cechą wspólną pierwszych systemów tego typu było wykorzystanie wiedzy zapisanej w~postaci ustrukturyzowanych
+            baz danych jako źródło odpowiedzi. Oznaczało to, że mogły one odpowiedzieć jedynie na pytania z~określonej
+            dziedziny, z~której informacje zostały wcześniej zapisane w~bazie danych. Jednymi z~najbardziej systemów
+            w~tym czasie były \emph{system LUNAR}\cite{LUNAR}, który odpowiadał na pytania na temat danych geologicznych
             zebranych na Księżycu oraz \emph{system BASEBALL}\cite{BASEBALL}, który posiadał informacje na temat meczy rozegranych w
-            amerykańskiej lidze baseballu (MLA) w czasie jednego sezonu. Oba te systemy analizowały pytanie wprowadzone
+            amerykańskiej lidze baseballu (MLA) w~czasie jednego sezonu. Oba te systemy analizowały pytanie wprowadzone
             przez użytkownika, a następnie na jego podstawie budowały zapytanie do ustrukturyzowanej bazy danych. Można
             powiedzieć, że systemy te były po prostu interfejsem pozwalającym na dostęp do bazy danych za pomocą języka
-            naturalnego ludziom bez wiedzy z dziedziny baz danych. Oprócz wymienionych systemów, powstało jeszcze wiele
-            innych, każdy dostosowany do bazy danych zawierającej informacje z innej dziedziny. Ograniczenie do jednej
-            dziedziny było największą wadą tych systemów, jednak miały one duży udział w rozwój syntaktycznej i
+            naturalnego ludziom bez wiedzy z~dziedziny baz danych. Oprócz wymienionych systemów, powstało jeszcze wiele
+            innych, każdy dostosowany do bazy danych zawierającej informacje z~innej dziedziny. Ograniczenie do jednej
+            dziedziny było największą wadą tych systemów, jednak miały one duży udział w~rozwój syntaktycznej i
             semantycznej analizy pytań użytkownika\cite{QASURVEY}.
 
             Znaczny rozwój systemów odpowiadających na pytania niezależne od dziedziny na podstawie dużych kolekcji
-            tekstów rozpoczął się wraz z pojawieniem się tej dziedziny na konferencji \emph{TREC (Text REtrieval Conference)}
-            w 1999 roku.
+            tekstów rozpoczął się wraz z~pojawieniem się tej dziedziny na konferencji \emph{TREC (Text REtrieval Conference)}
+            w~1999 roku.
             Wzrosło wtedy zainteresowanie systemami, które mogłyby zostać praktycznie wykorzystane na dużą skalę. Dzięki
             dodaniu QA do konferencji TREC, opracowane zostały metody oraz kryteria ewaluacji systemów odpowiadających
-            na pytania. Na konferencji testowano różne metody i implementacje odpowiadania na pytania w ujednolicony i
-            ustandaryzowany sposób. Umożliwiło to porównywanie systemów między sobą w jednoznaczny sposób oraz pozwoliło na ocenę
+            na pytania. Na konferencji testowano różne metody i~implementacje odpowiadania na pytania w~ujednolicony i
+            ustandaryzowany sposób. Umożliwiło to porównywanie systemów między sobą w~jednoznaczny sposób oraz pozwoliło na ocenę
             czy rozwój tych systemów poprawia uzyskiwane przez nie wyniki. Dzięki konferencji badacze prowadzący badania
-            w dziedzinie QA mogli swobodnie prezentować wyniki swoich badań, wymieniać między sobą pomysły oraz pracować
+            w~dziedzinie QA mogli swobodnie prezentować wyniki swoich badań, wymieniać między sobą pomysły oraz pracować
             nad kolejnymi, udoskonalonymi, systemami.
 
-            Obecnie najnowocześniejsze systemy odpowiadające na pytania są w stanie osiągnąć bardzo dobre wyniki jeśli
-            chodzi o precyzję i dokładność odpowiedzi na pytania użytkowników. Jest to możliwe dzięki jednoczesnemu zastosowaniu
+            Obecnie najnowocześniejsze systemy odpowiadające na pytania są w~stanie osiągnąć bardzo dobre wyniki jeśli
+            chodzi o precyzję i~dokładność odpowiedzi na pytania użytkowników. Jest to możliwe dzięki jednoczesnemu zastosowaniu
             wielu różnych metod analizy pytań użytkownika oraz ekstrakcji odpowiedzi, a następnie przeprowadzenie efektywnego
-            rankingu odpowiedzi w celu wybrania tej najlepszej.
+            rankingu odpowiedzi w~celu wybrania tej najlepszej.
 
-            Jednym z szerzej znanych nowoczesnych systemów QA jest Watson stworzony przez naukowców z firm IBM.
-            Został on specjalnie zaprojektowany, działa zarówno na dedykowanym sprzęcie jak i oprogramowaniu stworzonym
-            przez ekspertów z IBM i jest zoptymalizowany pod względem przetwarzania równoległego.
-            Według twórców Watson wykorzystuje ponad 100 technik analizowania języka naturalnego, identyfikowania źródeł,
-            generowania hipotez, znajdowania i oceniania dowodów dla hipotez oraz ich łączenia\cite{WATSON}.
-            Pokazem możliwości Watsona był jego udział w amerykańskim teleturnieju ,,Jeopardy!''. W programie tym
-            trzech uczestników rywalizuje ze sobą poprzez odpowiadania na pytania zadawane w języku naturalnym dotyczące
-            szerokiej gamy tematów, włączając w to historię, wydarzenia aktualne, naukę, sztukę oraz kulturę masową.
+            Jednym z~szerzej znanych nowoczesnych systemów QA jest Watson stworzony przez naukowców z~firm IBM.
+            Został on specjalnie zaprojektowany, działa zarówno na dedykowanym sprzęcie jak i~oprogramowaniu stworzonym
+            przez ekspertów z~IBM i~jest zoptymalizowany pod względem przetwarzania równoległego.
+            Pokazem możliwości Watsona był jego udział w~amerykańskim teleturnieju ,,Jeopardy!''. W programie tym
+            trzech uczestników rywalizuje ze sobą poprzez odpowiadania na pytania zadawane w~języku naturalnym dotyczące
+            szerokiej gamy tematów, włączając w~to historię, wydarzenia aktualne, naukę, sztukę oraz kulturę masową.
             Pytania te często są skomplikowane językowo, zawierają niejednoznaczne określenia, związki frazeologiczne,
             żartobliwą grę słów oraz różnego rodzaju nawiązania.
             Co więcej za każdą błędną odpowiedź uczestnik otrzymuje karę punktową, a poszczególne pytania są różnie
-            punktowane. Ocenia się, że aby móc konkurować z najlepszymi zawodnikami, trzeba odpowiedzieć przynajmniej
-            70\% pytań z trzema sekundami na odpowiedź na każde z nich. Watson rozegrał wiele gier w ,,Jeopardy'' przeciwko
-            najlepszy graczom, a w lutym 2011 roku najlepsi gracze w historii: Ken Jennings i Brad Rutter zostali przez
-            niego pokonani. Obecnie system Watson rozwijany jest w stronę systemu ekspertowego i wykorzystywany jest na
-            przykład w medycynie. W przeciwieństwie do tradycyjnych systemów ekspertowych działających na podstawie
-            reguł IF-THEN, Watson na podstawie dużej ilości danych w języku naturalnym, takich jak  dokumentacja medyczna
+            punktowane. Ocenia się, że aby móc konkurować z~najlepszymi zawodnikami, trzeba odpowiedzieć przynajmniej
+            70\% pytań z~trzema sekundami na odpowiedź na każde z~nich. Watson rozegrał wiele gier w~,,Jeopardy'' przeciwko
+            najlepszy graczom, a w~lutym 2011 roku najlepsi gracze w~historii: Ken Jennings i~Brad Rutter zostali przez
+            niego pokonani. Obecnie system Watson rozwijany jest w~stronę systemu ekspertowego i~wykorzystywany jest na
+            przykład w~medycynie. W przeciwieństwie do tradycyjnych systemów ekspertowych działających na podstawie
+            reguł IF-THEN, Watson na podstawie dużej ilości danych w~języku naturalnym, takich jak  dokumentacja medyczna
             buduje hipotezy dotyczące potencjalnej diagnozy, a następnie przy pomocy algorytmów rankingu ocenia te
             hipotezy\cite{WATSONMEDICINE}.
 
             Dziedzina odpowiadania na pytania nieustannie się rozwija. Aktualnie badania koncentrują się głównie na:
             \begin{itemize}
-                \item prowadzeniu interaktywnego dialogu z użytkownikiem w celu doprecyzowania pytań bądź odpowiwdzi,
-                \item wykorzystaniu zasobów lingwistycznych takich jak WordNet i Słowosieć,
+                \item prowadzeniu interaktywnego dialogu z~użytkownikiem w~celu doprecyzowania pytań bądź odpowiedzi,
+                \item wykorzystaniu zasobów lingwistycznych takich jak WordNet i~Słowosieć,
                 \item respektowanie ograniczeń narzuconych przez pytanie (np. ograniczenia czasowe: Kto był prezydentem
-                    Polski w 2013 roku?)
-                \item odpowiadanie na pytania z referencjami (np. Ile wynosi bezrobocie wśród kobiet w krajach \emph{europejskich})
+                    Polski w~2013 roku?),
+                \item odpowiadanie na pytania z~referencjami (np. Ile wynosi bezrobocie wśród kobiet w~krajach \emph{europejskich}).
             \end{itemize}
-            Poważnym problemem w dziedzinie odpowiadania na pytania jest zależność stosowanych metod od konkretnego języka
+            Poważnym problemem w~dziedzinie odpowiadania na pytania jest zależność stosowanych metod od konkretnego języka
             naturalnego. Najwięcej prac naukowych dotyczy najpopularniejszego języka, czyli angielskiego. Niestety
-            często proponowane metody są dla niego specyficzne i nie istnieje prosty sposób dostosowania ich do innych
-            języków. Aktualnie trwają badania nad bardziej ogólnymi algorytmami wykorzystywanymi w systemach QA.
+            często proponowane metody są dla niego specyficzne i~nie istnieje prosty sposób dostosowania ich do innych
+            języków. Aktualnie trwają badania nad bardziej ogólnymi algorytmami wykorzystywanymi w~systemach QA.
 
         \subsection{Zastosowanie}
-            Systemy odpowiadające na pytania pojawiają się wokół nas. Wydaje się, że w przyszłości systemy tego typu będą
+            Systemy odpowiadające na pytania pojawiają się wokół nas. Wydaje się, że w~przyszłości systemy tego typu będą
             podstawowym sposobem na wyszukiwanie potrzebnych informacji przez użytkowników.
 
-            Jako łatwiejsze w wykorzystaniu i dostarczające bardziej precyzyjnej informacji, systemy QA zastępują tradycyjne
-            wyszukiwarki internetowe. Jednym z najstarszych ogólnodostępnych systemów odpowiadających na pytania jest
-            system Start stworzony przez grupę InfoLab z MIT. System ten potrafi odpowiedzieć na pytania z dowolnej
+            Jako łatwiejsze w~wykorzystaniu i~dostarczające bardziej precyzyjnej informacji, systemy QA zastępują tradycyjne
+            wyszukiwarki internetowe. Jednym z~najstarszych ogólnodostępnych systemów odpowiadających na pytania jest
+            system Start stworzony przez grupę InfoLab z~MIT. System ten potrafi odpowiedzieć na pytania z~dowolnej
             dziedziny, dostarczając konkretną odpowiedź zamiast całego dokumentu, który ją zawiera.
             Aby przeciwdziałać temu trendowi  większość wyszukiwarek internetowych takich jak Google, Bing czy Yahoo
-            potrafi wykryć, że wpisane przez użytkownika to nie słowa kluczowe, a pytanie w języku naturalnym.
+            potrafi wykryć, że wpisane przez użytkownika to nie słowa kluczowe, a pytanie w~języku naturalnym.
             W przypadku wykrycia pytania, przeglądarki implementują podejście analogiczne do systemów QA, starając się
-            wydobyć odpowiedź na podstawie wcześniej przygotowanej bazy faktów (np. KnowledgeGraph w przypadku Google).
+            wydobyć odpowiedź na podstawie wcześniej przygotowanej bazy faktów (np. KnowledgeGraph w~przypadku Google).
 
-            Odpowiadanie na pytania często zazębia się z chatbotami. W tej formie znajduje zastosowanie w dziedzinie
+            Odpowiadanie na pytania często zazębia się z~chatbotami. W tej formie znajduje zastosowanie w~dziedzinie
             aplikacji służących jako inteligentny
-            osobisty asystent. Oprogramowanie tego typu stało się popularne i obecnie znajduje się w każdym nowoczesnym
-            telefonie komórkowym. Potrafi ono wykonywać dla użytkownika zadania na podstawie poleceń wydawanych w języku
-            naturalnym, poprzez rozmowę, podobnie jak w przypadku ludzkiego asystenta. Techniki QA są tutaj głównie
-            wykorzystywane do odpowiadania na pytania zadawane przez użytkownika w celu uzyskania konkretnej informacji.
-            Tradycyjnie aplikacje tego typu występowały w postaci aplikacji mobilnych, na przykład Siri (iPhone) lub
-            Google Now (Android). Niedawno powstały urządzenia typu ,,inteligentny głośnik'' (ang. smart speaker) takie
-            jak Amazon Echo oraz Google Home. Po ustawieniu w domu i uruchomieniu, urządzenie oczekuje na polecenia
-            zadawane w języku naturalnym.
+            osobisty asystent. Oprogramowanie tego typu stało się popularne i~obecnie znajduje się w~każdym nowoczesnym
+            telefonie komórkowym. Potrafi ono wykonywać dla użytkownika zadania na podstawie poleceń wydawanych w~języku
+            naturalnym, poprzez rozmowę, podobnie jak w~przypadku ludzkiego asystenta. Techniki QA są tutaj głównie
+            wykorzystywane do odpowiadania na pytania zadawane przez użytkownika w~celu uzyskania konkretnej informacji.
+            Tradycyjnie aplikacje tego typu występowały w~postaci aplikacji mobilnych, na przykład Siri (iPhone) lub
+            Google Now (Android).
 
             Wśród innych zastosowań systemów odpowiadających na pytania można wymienić: wspomaganie wspólnego
             uczenia\cite{COLLABORATIVELEARNING}. Dzięki zastosowaniu QA, nie jest wymagane oczekiwanie na obecność nauczyciela
-            w celu odpowiedzi na pytania uczniów. Wymienić też można przytoczone przy omawianiu Watsona budowanie systemów
-            pozwalających na wyszukiwanie informacji w nieustrukturyzowanych danych takich jak dokumentacja medyczna,
-            sprawozdania finansowe i inne.
+            w~celu odpowiedzi na pytania uczniów. Wymienić też można przytoczone przy omawianiu Watsona budowanie systemów
+            pozwalających na wyszukiwanie informacji w~nieustrukturyzowanych danych takich jak dokumentacja medyczna,
+            sprawozdania finansowe i~inne.
+
 \chapter{Systemy odpowiadające na pytania}
-    \section{Budowa i działanie}
-    \section{System ,,Borsuk''}
+    \section{Budowa i~działanie}
+        Uogólniona budowa systemów odpowiadających na pytania została przedstawiona na schemacie poniżej (Rys. \ref{QASCHEME})\cite{PASZKA}.
+        \begin{figure}[h]
+                \centering
+                \includegraphics[scale=0.6, angle=90]{qa}
+                \caption{Ogólny schemat budowy systemów odpowiadających na pytania}
+                \label{QASCHEME}
+        \end{figure}
+        Systemy odpowiadające na pytania czerpią sporo pomysłów, w~tym koncepcje budowy, z~dziedziny wyszukiwania informacji.
+        Są one jednak bardziej skomplikowane, ze względu na ograniczenia nałożone na wejście tych systemów (pytanie w
+        języku naturalnym) jak i~na wyjście (konkretne fragmenty dokumentów zamiast całej ich zawartości). Z uwagi
+        na tą złożoność proces odpowiadania często jest dzielony na potok częściowo niezależnych od siebie zadań.
+        W niniejszym rozdziale opisane zostały poszczególne etapy przetwarzania pytania wprowadzonego przez użytkownika
+        w~celu znalezienia i~dostarczenia odpowiedzi na nie.
+
+        \subsection{Przetwarzanie pytania}
+            Pierwszy etap odpowiadania na pytania obejmuje przetworzenie pytania z~postaci zdania, bądź wypowiedzi w
+            języku naturalnym do postaci łatwiejszej w~przetwarzaniu na dalszych etapach. Na tym etapie wykorzystywane
+            są wcześniej wspomniane narzędzia, na przykład tagger części mowy, czy też tagger nazw własnych. Pozwala
+            to zbudować semantyczną reprezentację pytania dopasowaną do potrzeb procesu odpowiadania na pytania.
+
+            Przykładowa
+            reprezentacja zaproponowana w~\cite{PASZKA}
+            nazwana \emph{zależnościową reprezentacją pytania (question dependecy representation)} składa się z~kilku
+            warstw. Pierwsza z~tych warstw, zawiera informacje na temat poszczególnych słów: oryginalną formę w~jakiej
+            słowo wystąpiło w~zdaniu, część mowy oraz formę gramatyczną wyrazu, pozycję na której wyraz wystąpił w~pytaniu
+            oraz formę podstawową wyrazu, czyli leksem. Ponadto dla każdego wyrazu określane jest, czy dany wyraz wnosi
+            wartość informacyjną do pytania, czy nie ma żadnego znaczenia własnego. Za wyrazy wnoszące wartość informacyjną
+            uznawane są: rzeczowniki, czasowniki, przymiotniki i~przysłówki. Przyimki (w, przy, na itd.),
+            partykuły (niech, tylko, się, itd.), czasowniki modalne (musieć, móc, chcieć, itd.), zaimki (on, ona, ja, itd.)
+            są uznawana za słowa nie mające własnego znaczenia.
+
+            Druga warstwa reprezentacji przechowuje informacje o relacjach i~zależnościach występujących pomiędzy
+            słowami w~pytaniu. Na tym etapie pytanie często zamieniane jest na postać grafu, w~którym krawędzie reprezentują
+            relacje pomiędzy słowami. Każda z~tych relacji jest anonimową zależnością pomiędzy dwoma słowami pochodzącymi
+            z~pytania. Przykładową zależnością może być relacja rzeczownika z~opisującym go przymiotnikiem np. najstarszy
+            i~budynek w~pytaniu ,,Jaki jest najstarszy budynek w~Polsce?''. Niekiedy pomimo tego, że zdanie zawiera
+            sporo wyrazów znajdujących się w~pytaniu, jest ono niepoprawne, na przykład dla przytoczonego pytania
+            zdanie ,,Budynek z~najstarszymi drzwiami w~Polsce to sanktuarium św. Wojciecha'' nie jest poprawną odpowiedzią.
+            Wykrycie zależności pomiędzy wyrazami w~zdaniu pozwala odróżnić to zdanie od poprawnej odpowiedzi ,,Rotunda
+            p.w. św. Mikołaja w~Cieszynie to najstarszy budynek w~Polsce''.
+
+            Wyrazami, które odróżniają pytania od zdań oznajmujących, zawierających na nie odpowiedzi są tak zwane zaimki
+            pytające (np. kto, który, jaki, gdzie, itd.). Na podstawie analizy zaimków pytających występujących w~pytaniu
+            można uzyskać wiele informacji na temat oczekiwanej odpowiedzi. Informacje te zapisane są w~trzeciej warstwie
+            reprezentacji. Zaimki pytające pozwalają pogrupować pytania w~kategorie a ponadto narzucają ograniczenia
+            na zbiór potencjalnych odpowiedzi. Na podstawie słowa ,,kto'' można stwierdzić, że odpowiedzią na pytanie
+            ,,Kto odkrył Amerykę?'' będzie nazwa osoby. Należy jednak zauważyć, że powraca tutaj problem niejednoznaczności
+            języka naturalnego. Zaimek pytający ,,kto'' może również służyć do zadania pytania ,,Kto produkuje MacBooki?'',
+            na które odpowiedzią jest nazwa firmy. Jest to podstawowy powód, dla którego ustalenie oczekiwanego typu
+            odpowiedzi zostało wyodrębnione jako odrębny etap przetwarzania pytania i~nie może być wykonane jedynie w
+            oparciu o zaimki pytające.
+
+            Ostatnia, czwarta warstwa reprezentacji przechowuje informacje na temat ograniczeń semantycznych narzuconych
+            na potencjalną odpowiedź przez pytanie. Przytoczony wcześniej typ odpowiedzi jest jednym z~takich ograniczeń.
+            Pytania o fakty często nakładają na odpowiedzi inne restrykcje. Na przykład w~pytaniu ,,Kto był prezydentem
+            Polski w~2003 roku?'' znajdują się dwa ograniczenia. Po pierwsze pytanie dotyczy kraju jakim jest Polska,
+            w~związku z~czym odpowiedź musi nawiązywać do właśnie tego kraju, a nie innego. Po drugi użytkownika
+            interesuje prezydent, który był u władzy dokładnie w~2003 roku. Odpowiedzi mówiące o prezydentach będących
+            u władzy w~innych latach powinny zostać odrzucone przez system. Dzięki wykryciu tego typu ograniczeń
+            możliwe jest filtrowanie i~ocenianie odpowiedzi na etapie ich rankingu. Odpowiedzi spełniające ograniczenia
+            semantyczne powinny być promowane w~górę rankingu, natomiast te, które ich nie spełniają, powinny zostać
+            odrzucone.
+
+        \subsection{Ustalenie oczekiwanego typu odpowiedzi}
+            Skuteczna ekstrakcja odpowiedzi na pytanie z~nieustrukturyzowanego tekstu wymaga wykrycia jaki jest typ
+            oczekiwanej odpowiedzi dla danego pytania pochodzącego od użytkownika. Dzięki znajomości typu odpowiedzi
+            możliwe jest między innymi: lepsze określenie które dokumenty mogą zawierać odpowiedź na pytanie,
+            dostosowanie metody ekstrakcji odpowiedzi do konkretnego jej typu, odrzucenie wyodrębnionych odpowiedzi
+            o nieprawidłowym typie oraz przesunięcie odpowiedzi o prawidłowym typie wyżej w~rankingu. Ustalenie typu
+            odpowiedzi jest więc kluczowym etapem odpowiadania na pytania, każdy błąd najprawdopodobniej spowoduje,
+            że system udzieli złej odpowiedzi.
+
+            Dla niektórych pytań typ odpowiedzi jest jawnie wyrażony w~jego treści, na przykład ,,Jakiego koloru są
+            niezapominajki?'', pytanie jasno stanowi, że odpowiedzią na nie jest nazwa koloru. W większości pytań
+            typ odpowiedzi nie jest podany bezpośrednio w~pytaniu. W takiej sytuacji jego ustalenie jest zadaniem
+            skomplikowanym, w~którym pod uwagę bierze się zaimek pytający występujący w~pytaniu. Sam zaimek nie dostarcza
+            informacji wystarczających do dokładnego ustalenia typu odpowiedzi. W związku z~tym, konieczne jest ustalenie
+            \emph{tematu (ang. focus)} pytania. Temat pytania jest to ,,wyraz, bądź ciąg wyrazów, które definiują pytanie
+            i~ujednoznaczniają je, wskazując dokładnie jaka informacja jest poszukiwana przez dane pytanie''\cite{QUESTIONFOCUS}.
+            Dla przykładu, tematem w~pytaniu ,,Kto był pierwszym królem Polski?'' jest wyraz ,,król''. Pomimo że,
+            jak zostało wcześniej powiedziane, zaimek pytający ,,kto'' nie wskazuje jednoznacznie na typ odpowiedzi,
+            temat pytania ,,król'' pozwala ustalić, że odpowiedzią na to pytanie będzie nazwa osoby.  Najprostsze metody
+            ustalania tematu pytania opierają się na obserwacji, że temat pytania jest najczęściej rzeczownikiem bądź
+            czasownikiem.
+
+            Po ustaleniu tematu pytania następuje ustalenie typu oczekiwanej odpowiedzi. Jednym z~proponowanych
+            rozwiązań jest wykorzystanie hierarchii kategorii zbudowanej na podstawie sieci semantycznej takiej jak
+            WordNet bądź Słowosieć\cite{PASZKA}. W hierarchii tej słowa o ogólnym znaczeniu są przypisane do typów
+            odpowiedzi obsługiwanych przez system. Dzięki relacjom hiperonimii i~hiponimii które łączą wyrazy w~Słowosieci
+            możliwe jest znalezienie ogólnego znaczenia dla ustalonego wcześniej tematu pytania. Na przykład jednym z
+            hiperonimów słowa ,,król'' jest ,,osoba''. W hierarchii kategorii przygotowanej wcześniej słowo osoba przypisane
+            jest do typu odpowiedzi \emph{PEOPLE}, co pozwala ustalić przewidywany typ odpowiedzi dla pytania
+            ,,Kto był pierwszym królem Polski?''. W ten sposób przeglądając kolejne coraz wyższe hiperonimy tematu
+            pytania można określić typ odpowiedzi dla dowolnego pytania o fakt.
+
+            Innym, prostszym sposobem ustalenia przewidywanego typu odpowiedzi jest wykorzystanie różnego rodzaju reguł
+            lingwistycznych. Reguły te przypisują spełniającym je pytaniom kategorie oczekiwanej odpowiedzi. Są one zapisane
+            zazwyczaj w~formie wyrażeń regularnych, mogą także wykorzystywać dodatkowe informacje semantyczne zawarte
+            w~reprezentacji pytania, takie jak na przykład informacje o części mowy i~formie gramatycznej danego wyrazu.
+            Reguły lingwistyczne mogą być przygotowane ręcznie przez człowieka, jednak wymaga to dużej ilości pracy a
+            zbiór reguł otrzymany w~ten sposób ciężko jest rozszerzyć.
+
+            Zadanie ustalenie przewidywanego typu odpowiedzi dla danego pytania może być rozpatrywane jago zadanie
+            klasyfikacji pytania do określonej kategorii. Umożliwia to wykorzystania jednej z~metod maszynowego uczenia,
+            klasyfikatorów. Do klasyfikacji pytań wykorzystywane są: naiwny klasyfikator bayesowski, maszyny wektorów
+            nośnych (SVM), oraz metoda maksymalizacji entropii. W przypadku wykorzystania hierarchicznych kategorii,
+            dodatkowo wykorzystane mogą zostać \emph{Single Path Hierarchical Classifier (SPH)}, \emph{Multi-path
+            Hierarchical Classifier} lub \emph{Refined Hierarchical Classifier}\cite{MLQUESTIONFOCUS}. W takim przypadku
+            zazwyczaj wykorzystywane są dwa klasyfikatory, pierwszy z~nich przypisuje pytanie do ogólnej kategorii np.
+            \emph{miejsce}, podczas gdy drugi przypisuje pytanie do kategorii szczegółowej np. \emph{kraj} lub \emph{miasto}.
+            Klasyfikatory
+            są uczone na podstawie wcześniej oznaczonego korpusu z~przykładowymi pytaniami. Bardzo ważne przy wykorzystaniu
+            metod maszynowego uczenia jest dobranie odpowiednich cech, na podstawie których będzie dokonywana klasyfikacja.
+            Wśród często wybieranych cech można wymienić\cite{HANDBOOKNLP}:
+            \begin{itemize}
+                \item wyrazy występujące w~pytaniu,
+                \item tagi przypisane przez analizator fleksyjny (części mowy),
+                \item nazwy własne oznaczone w~pytaniu,
+                \item n-gram (ciągi kolejnych \emph{n} wyrazów,
+                \item inne informacje semantyczne.
+            \end{itemize}
+
+        \subsection{Wyszukiwanie dokumentów źródłowych} \label{QUERYGENERATION}
+            Odpowiedzi na pytania użytkownika wydobywane są z~nieustrukturyzowanego tekstu dokumentów źródłowych. Aby
+            znaleźć dokumenty źródłowe, w~których może znajdować się odpowiedź, wykorzystuje się specjalny moduł
+            wyszukujący. Moduł ten indeksuje wszystkie dokumenty w~kolekcji dokumentów źródłowych, a następnie pozwala
+            na ich wyszukiwanie za pomocą zapytania składającego się ze słów kluczowych, które powinny znajdować się
+            w~wyszukanych dokumentach. Zastosowanie takiego mechanizmu wyboru dokumentów źródłowych pozwala na
+            przyspieszenie procesu odpowiadania na pytania\cite{PASSAGERETRIVAL}. Systemy odpowiadające na pytania z~dowolnej dziedziny muszą
+            posiadać ogromną kolekcję dokumentów w~których wyszukiwane są odpowiedzi. Do wszystkich dokumentów w~kolekcji
+            aplikowane są jedynie proste techniki wykorzystywane przy wyszukiwaniu informacji (na przykład binarne
+            określenie czy słowo kluczowe występuje w~dokumencie, czy nie), natomiast skomplikowane metody przetwarzania
+            języka naturalnego (oznaczanie morfologiczne, oznaczanie nazw własnych i~tym podobne) wykorzystywane są jedynie
+            do analizy wstępnie wyselekcjonowanych dokumentów. Idąc dalej, w~niektórych systemach moduł wyszukujący nie
+            zwraca pełnych treści dokumentów, a jedynie te akapity lub fragmenty, w~których znajdują się słowa kluczowe
+            z~zapytania.
+
+            Moduł wyszukujący opiera się na wyszukiwaniu dokumentów za pomocą słów kluczowych, podczas gdy wejściem
+            dla systemu QA jest pytanie zapisane w~języku naturalnym. Konieczne jest więc sformułowanie zapytania
+            do wyszukiwarki, poprzez wybór odpowiednich słów kluczowych na podstawie pytania. Bardzo ważne na tym
+            etapie są informacje semantyczne uzyskane podczas analizy pytania.
+
+            Słowa występujące w~pytaniu są oceniane i~szeregowane pod kątem przydatności w~zapytaniu do wyszukiwarki.
+            Wspomniane wcześniej słowa nie posiadające znaczenia własnego są najmniej przydatne, ponieważ praktycznie
+            każdy dokument w~języku naturalnym zawiera je w~dużych ilościach. Odrzucane są także słowa pytające. Temat
+            pytania ustalony na wcześniejszym etapie świetnie nadaje się do umieszczenia w~zapytaniu. Dzięki zawarciu
+            w~zapytaniu nazw własnych pochodzących z~pytania można zawęzić liczbę wyszukanych dokumentów, które potencjalnie
+            mogą zawierać odpowiedź. Ważne są słowa wyrażające ograniczenia semantyczne, czyli na przykład frazy
+            rzeczownikowe będące połączeniem rzeczownika z~określającym go przymiotnikiem. Jest to szczególnie istotne,
+            gdy przymiotnik występuje w~stopniu najwyższym, na przykład ,,najwyższy budynek''. Wśród innych heurystyk
+            oceniania przydatności słów w~kontekście wyszukiwania dokumentów wymienionych w~\cite{PASZKA} można
+            przytoczyć wysoką przydatność słów w~cudzysłowie. Wykorzystanie rzeczowników pochodzących z~pytania generalnie
+            pozwala na osiągnięcie mniejszej liczby wyszukanych dokumentów w~porównaniu z~wykorzystaniem czasowników
+
+            Innym sposobem formułowania zapytań do moduły wyszukującego jest reformulacja pytania. Na podstawie wcześniej
+            przygotowanych reguł możliwe jest stworzenie ciągu wyrazów będącego szablonem odpowiedzi. Na przykład
+            dla pytania ,,Jaka jest najwyższa budowla w~Polsce?'' szablonem odpowiedzi będzie: ,,Najwyższa budowla w
+            Polsce to''. Wykorzystanie wielu reguł dla danego typu pytania umożliwia uzyskanie wielu potencjalnych
+            zapytań. Wszystkie te zapytania mogą zostać przekazane do modułu wyszukującego, co może zwiększyć szansę na
+            wyszukanie dokumentów zawierających odpowiedź na pytanie\cite{SPEECHANDLANGUAGEPROCESSING}.
+
+            Istotnym zagadnieniem jest wybranie liczby wyszukanych dokumentów, które zostaną poddane szczegółowej
+            analizie, dla danego pytania. Zwiększenie liczby przetwarzanych dokumentów wpłynie negatywnie na wydajność
+            systemu QA, jednak znaczne jej zmniejszenie może doprowadzić do pominięcia istotnych z~punktu widzenia
+            pytania dokumentów. Dzięki uszeregowaniu słów z~pytania pod względem przydatności w~zapytaniu, możliwe
+            jest wykorzystanie algorytmu dynamicznego dostosowania zapytania z~wykorzystaniem sprzężenia zwrotnego.
+            W każdej iteracji zapytanie jest wysyłane do modułu wyszukującego a dalsze postępowanie zależy od liczby
+            wyszukanych dokumentów:
+            \begin{itemize}
+                \item w~przypadku, gdy liczba dokumentów jest większa niż założona górna granica, kolejne według ważności
+                    słowo zostaje dodane do zapytania w~celu zmniejszenia liczby wyszukanych dokumentów, jeśli dodane zostały już
+                    wszystkie słowa, pętla jest przerywana,
+                \item w~przypadku, gdy liczba dokumentów jest mniejsza niż założona dolna granica, kolejne według ważności
+                    słowo zostaje usunięte z~zapytania w~celu zwiększenia liczby wyszukanych dokumentów, jeśli nie można
+                    usunąć słowa z~zapytania (byłoby ono puste), pętla jest przerywana,
+                \item w~przypadku, gdy liczba dokumentów znajduje się w~przedziale określonym przez obie granice,
+                    oznacza to, że osiągnięto docelową liczbę dokumentów i~pętla jest przerywana.
+            \end{itemize}
+
+            Dokumenty zwrócone przez moduł wyszukujący są wstępnie uszeregowane według rankingu. Ranking dokumentów
+            odbywa się przy użyciu standardowych metod z~dziedziny wyszukiwania informacji. Zakłada się, że dla tych
+            dokumentów, które zawierają więcej słów kluczowych z~pytania w~bliskiej odległości od siebie, bardziej
+            prawdopodobne jest znalezienie odpowiedzi.
+
+        \subsection{Wydobycie odpowiedzi}
+            Wydobycie odpowiedzi jest kluczowym etapem przetwarzania pytania i~głównym zadaniem systemu QA. Działanie
+            wszystkich pozostałych faz odpowiadania na pytania użytkownika jest zaprojektowane w~taki sposób, aby
+            ułatwić ekstrakcję odpowiedzi z~nieustrukturyzowanego tekstu. Faza analizy pytania i~ustalania typu oczekiwanej
+            odpowiedzi dostarczają informacji niezbędnych do przeprowadzenia ekstrakcji, natomiast faza wyszukiwania
+            dokumentów źródłowych dostarcza odpowiednią liczbę dokumentów do jej przeprowadzenia. Moduł wydobywający
+            odpowiedzi jest odpowiedzialny za szczegółową analizę dokumentów i~lokalizację potencjalnych odpowiedzi.
+            Celem jest wydobycie fragmentów o długości do 50 lub do 250 znaków (standard TREC) zawierających informacje
+            oczekiwane przez użytkownika.
+
+            Szczegółowy opis algorytmów i~metod służących do wydobywania odpowiedzi znajduje się w~rozdziale
+            \ref{ANSWEREXTRACTION}, tutaj jedynie zaznaczono obecność etapu ekstrakcji odpowiedzi w~procesie przetwarzania
+            pytania i~wskazano jego cele.
+
+        \subsection{Walidacja i~ranking odpowiedzi}
+            Efektem procesu wydobycia odpowiedzi jest wiele odpowiedzi kandydujących. Bardzo ważne jest, aby z~tych
+            odpowiedzi wybrać jedynie, te które spełniają wszystkie ograniczenia wyrażone w~pytaniu. \emph{Walidacja odpowiedzi}
+            polega na upewnieniu się, czy odpowiedź kandydująca jest faktycznie poprawną odpowiedzią na zadane pytanie.
+            Inną kwestią jest przydatność danej odpowiedzi dla użytkownika i~jej istotność w~kontekście pytania.
+            Poprawne odpowiedzi wydobyte z~tekstu mogą się od siebie różnić na przykład poziomem szczegółowości.
+            \emph{Ranking odpowiedzi} ma za zadanie posortować wydobyte odpowiedzi według oceny ich przydatności
+            względem pytania użytkownika i~najlepiej zaspokajają jego potrzebę informacyjną.
+
+             Podstawową metodą walidacji, przedstawianą wcześniej jest wykorzystanie
+            oczekiwanego typu odpowiedzi i~upewnienie się, że odpowiedź kandydująca jest właśnie tego typu. W przypadku
+            niektórych typów odpowiedzi możliwa jest bardziej dogłębna walidacja, jak choćby sprawdzenie, czy odpowiedź
+            zawiera się w~dziedzinie poprawnych odpowiedzi. Przykładem takiej walidacji jest sprawdzenie, czy odpowiedzią
+            na pytanie o na przykład wymiary, bądź czyjś wiek nie jest liczba ujemna. Dla niektórych pytań należy
+            także sprawdzić ograniczenia zawarte w~samym pytaniu. Przykładowo dla pytania ,,Kto był \emph{pierwszym} królem
+            Polski?'' użytkownika nie interesuje dowolny król, a jedynie pierwszy, co więcej musi to być król Polski.
+
+            Prostą, ale nie zawsze skuteczną metodą walidacji odpowiedzi jest podejście statystyczne. Zakłada ono, że
+            im więcej razy dana odpowiedź występuje w~zbiorze odpowiedzi kandydujących, tym bardziej prawdopodobne
+            jest, że jest ona poprawna. Wielokrotne wystąpienie tej samej odpowiedzi wśród odpowiedzi kandydujących
+            oznacza, że odpowiedź ta wystąpiła w~wielu dokumentach źródłowych. Dokumenty te zwiększają wiarygodność
+            danej odpowiedzi kandydującej.
+
+            Rozwinięciem tej koncepcji jest weryfikacja odpowiedzi z~wykorzystaniem zewnętrznych zasobów, na przykład
+            wyszukiwarki internetowej. Dla danego
+            pytania i~odpowiedzi kandydującej budowany jest \emph{wzorzec walidujący}. Wzorzec ten zostaje przekazany
+            jako zapytanie do tradycyjnej wyszukiwarki internetowej takiej jak na przykład Google. Następnie zliczana
+            jest liczba zwróconych dokumentów, w~których ten wzorzec występuje, im jest ich więcej, tym bardziej
+            prawdopodobne, że odpowiedź jest poprawna\cite{WEBVERIFICATION}.
+
+            Najbardziej skomplikowane systemy weryfikują odpowiedzi na poziomie semantycznym, wykorzystując parsery
+            semantyczne do skonwertowania pytania i~odpowiedzi do reprezentacji semantycznej. Dzięki temu możliwe
+            jest uzyskanie logicznej reprezentacji pytania i~odpowiedzi, a następnie zweryfikowanie czy relacje
+            zdefiniowane w~pytaniu są spełnione w~odpowiedzi. Alternatywnie można wyliczyć podobieństwo semantyczne
+            pomiędzy pytaniem a odpowiedzią, obliczając liczbę relacji wspólnych zarówno dla pytania, jak i~odpowiedzi
+            kandydującej\cite{SEMANTICVERIFICATION}.
+
+            Pomimo że dokumenty, z~których wydobywane były wypowiedzi, przeszły ranking pod względem istotności dla danego
+            zapytania, po weryfikacji odpowiedzi przeprowadzany jest ich ranking. W odróżnieniu od rankingu przeprowadzanego
+            przez moduł wyszukujący, na podstawie cech wydobytych z~odpowiedzi z~wykorzystaniem metod przetwarzania
+            języka naturalnego.
+
+            Podstawową cechą pozwalającą ocenić istotność odpowiedzi kandydującej jest liczba wspólnych wyrazów między
+            odpowiedzią a pytaniem. Intuicja podpowiada, że im większa ta liczba, tym lepsza odpowiedź. W obliczeniach
+            często pomijane są zaimki pytające oraz wyrazy bez własnego znaczenia. Zakładając, że potencjalna odpowiedź
+            jest nazwą własną zidentyfikowaną przez tagger, można stworzyć cechę opartą na zliczaniu liczby wspólnych
+            wyrazów z~pytaniem jedynie w~tym zdaniu, w~którym znajduje się zidentyfikowana nazwa własna.
+
+            Oprócz tego, że wyrazy z~pytania będą znajdować się w~pobliżu odpowiedzi, ważna jest także odległość je
+            oddzielająca. W związku z~tym często jako jedna z~cech wykorzystywana jest liczba wyrazów z~pytania, dla
+            których odległość od odpowiedzi kandydującej jest mniejsza niż określona wartość. Dla przykładu w~\cite{PASZKA}
+            proponowane jest zliczenie liczby wyrazów z~pytania, które od odpowiedzi oddalone są maksymalnie o trzy słowa.
+
+            Wydobyte z~odpowiedzi kandydujące cech nie pozwalają same w~sobie na przeprowadzenie rankingu. Potrzebny jest
+            jeszcze sposób na porównanie zestawu cech uzyskanych przez dwie różne odpowiedzi i~zdecydowanie która z~nich
+            lepiej zaspokaja potrzebę informacyjną użytkownika. W tym celu cechy te są ze sobą łączone przy użyciu empirycznie
+            wyprowadzonego wzoru będącego kombinacją liniową cech. We wzorze tym każdej cesze przypisany jest
+            współczynnik mówiący o istotności danej cechy.
+            Współczynniki są wyznaczane doświadczalnie, w~taki sposób, aby zmaksymalizować wyniki osiągane podczas ewaluacji
+            systemu QA. Można tutaj zastosować ręczne ich dostosowywanie bądź też różnego rodzaju metody optymalizacyjne,
+            w~tym techniki sztucznej inteligencji, jak na przykład algorytmy genetyczne. Dzięki podstawieniu do wzoru
+            wartości cech uzyskanych dla danej odpowiedzi, otrzymujemy, jako wartość liczbową, ocenę istotności odpowiedzi
+            względem pytania.
+
+            Alternatywnym sposobem rankingu, który proponuje Pasca jest wykorzystanie \emph{perceptronu}\cite{PASZKA},
+            czyli najprostszej sieci neuronowej
+            składającej się z~pojedynczego neuronu. Posiada on tyle wejść, ile cech jest ekstrahowanych z~każdej odpowiedzi.
+            Każde z~wejść posiada przypisaną wagę, podobnie jak w~przypadku kombinacji liniowej. Na każde z~wejść
+            podawana jest różnica wartości danej cechy dla dwóch odpowiedzi kandydujących, a zadaniem perceptronu jest
+            ustalenie, która z~tych odpowiedzi jest lepsza. Wagi dla poszczególnych wejść oraz poziom, przy którym
+            określane jest, która z~odpowiedzi jest bardziej istotna, ustalane są w~procesie uczenia. Do nauki wykorzystywany
+            jest wcześniej przygotowany zbiór par cech wydobytych z~odpowiedzi. W każdej parze jeden zbiór cech reprezentuje
+            odpowiedź poprawną, a drugi niepoprawną.  W czasie nauki perceptron w~taki sposób dobiera wartości wag,
+            aby zmaksymalizować skuteczność działania dla zbioru treningowego.\cite{PERCEPTRONRANKING}
+
+    \section{Sposoby ewaluacji}
+        Początkowo w~rozwoju systemów odpowiadających na pytania brakowało spójnego i~ustandaryzowanego sposobu oceny i
+        ewaluacji tych systemów. Dzięki pojawieniu się tej dziedziny na konferencji TREC opracowane zostały metody
+        pozwalające porównywać osiągi poszczególnych systemów między sobą.
+
+        Aby ocenić system QA, po pierwsze potrzebne są dane testowe. Należy przygotować zarówno pytania, na które będzie
+        odpowiadał system, jak i~kolekcję dokumentów, w~których treści te odpowiedzi będą wyszukiwane. Trzeba zapewnić,
+        że w~co najmniej jednym dokumencie z~kolekcji znajduje się odpowiedź na dane pytanie. Zbiór zebranych
+        tekstów oraz pytań powinien być różnorodny i~przekrojowy, aby wykryć systemy dostosowane do konkretnego
+        rodzaju pytań bądź określonej dziedziny. Dokumenty testowe pochodzą zazwyczaj z~różnego rodzaju gazet, czasopism,
+        książek oraz encyklopedii.
+
+        Po zebraniu danych testowych należy każde z~wcześniej przygotowanych pytań zadać na wejście systemu QA i~zebrać
+        udzielone przez system odpowiedzi. Aby zweryfikować poprawność uzyskanych odpowiedzi, przygotowuje się tak zwany
+        \emph{złoty standard}. Standard ten zawiera wzorce oczekiwanych odpowiedzi, stworzone przez specjalistów takich
+        jak na przykład lingwiści na podstawie pytań i~dokumentów źródłowych. Wzorce te zapisane są w~postaci wzorców
+        regularnych, opisujących co powinno znajdować się w~odpowiedzi udzielonej przez system QA na dane pytanie.
+
+        Ze wzorcami odpowiedzi związanych jest kilka problemów. Po pierwsze, dla pytań o fakty, za poprawną zostanie
+        uznana każda odpowiedź zawierająca nazwę oczekiwanego bytu nazwanego. Oznacza to, że nawet odpowiedź, w~której
+        wymienionych jest kilka nazw z~tej samej semantycznej kategorii zostanie uznana za poprawną, mimo że odpowiedzią
+        na pytanie jest nazwa jednej określonej encji. Drugim problemem jest uwzględnienie kontekstu, z~którego została
+        wydobyta odpowiedź. Na przykład dla pytania ,,Jakim typem mostu jest Golden Gate Bridge?'', poprawną odpowiedzią
+        jest ,,most wiszący''. Powinna ona jednak zostać wyodrębniona z~kontekstu, który jawnie opisuje most Golden
+        Gate Bridge, a nie na przykład z~dokumentu opisującego wszystkie istniejące typy mostów.
+
+        Według standardu ewaluacji opracowanego na potrzeby konferencji TREC, dla każdego pytania, na które odpowiedział
+        system QA, przyznawane są punkty za odpowiedź. Liczba przyznanych punktów jest zależna od pozycji, na której
+        pojawiła się poprawna odpowiedź, wśród wszystkich odpowiedzi udzielonych przez system. Punktowanych jest
+        jedynie pięć pierwszych odpowiedzi udzielonych przez system, jeśli poprawna odpowiedź nie znajduje się wśród
+        pierwszych pięciu odpowiedzi, system otrzymuje za dane pytanie zero punktów. W przeciwnym wypadku liczbę punktów
+        wylicza się według wzoru: $$ P = \frac{1}{pozycjaOdpowiedzi} $$
+
+        Po obliczeniu punktów dla każdego z~pytań, ostateczny wynik systemu odpowiadającego na pytania, tak zwany
+        \emph{MRR (Mean reciprocal rank)} jest wyliczany według wzoru:
+        $$ MRR = \frac{\sum_{i=1}^{n} \frac{1}{pozycjaOdpowiedzi_i}}{n} $$
+        gdzie \( n \) to liczba pytań w~zbiorze testowym\cite{QATESTCOLLECTION}.
+
+    \section{Metody ekstrakcji odpowiedzi} \label{ANSWEREXTRACTION}
+        W celu ekstrakcji odpowiedzi z~nieustrukturyzowanego tekstu, systemy odpowiadające na pytania wykorzystują
+        najróżniejsze metody. Są one najczęściej inspirowane metodami wykorzystywanymi w~dziedzinie ekstrakcji informacji.
+
+        \subsection{Metody wykorzystujące tagger nazw własnych}
+            Jedną z~najwcześniej zaproponowanych metod ekstrakcji odpowiedzi było wykorzystanie taggera nazw własnych.
+            Jak wspomniano wcześniej, odpowiedzią na pytanie o fakt jest najczęściej nazwa własna, którą w~tekście
+            potrafi wykryć i~oznaczyć tagger. Dzięki użyciu taggera znalezienie odpowiedzi na tego typu pytania jest
+            łatwiejsze.  Każdy z~dokumentów zwróconych przez wyszukiwarkę wprowadzany jest na wejście taggera, który
+            oznacza znajdujące się w~nim nazwy miejsc, ludzi, organizacje, czas wydarzeń czy też wartości liczbowe.
+            Oczekiwany typ odpowiedzi, ustalony na wcześniejszym etapie, jest następnie rzutowany na jeden z~typów
+            bytów nazwanych rozpoznawanych przez tagger. Z oznaczonych w~dokumencie nazw własnych, jako potencjalne
+            odpowiedzi wybierane są te, których typ pasuje do typu oczekiwanej odpowiedzi. W niektórych systemach
+            taggery wykorzystywane są do ograniczenia ilości tekstu, który musi zostać przetworzony. W celu jego
+            zmniejszenia nie analizuje się fragmentów tekstu niezawierających nazw własnych.
+
+            Taggery świetnie odgrywają swoją rolę przy odpowiadaniu na pytania o fakty. Należy zwrócić szczególną uwagę
+            na wybór taggera, który będzie używany w~systemie QA, oraz jego konfigurację. Od wyboru taggera w~znacznej
+            mierze zależy precyzja oraz dokładność uzyskana przez system\cite{NERQA}. Nie można ich jednak
+            wykorzystać do odpowiadania na bardziej skomplikowane pytania, na przykład o definicję, pytań typu ,,czy?'',
+            ,,jak?'' i~innych.
+
+        \subsection{Metody wykorzystujące wzorce lingwistyczne}
+            Jak wspomniano przed chwilą, istnieją pytania, dla których oczekiwany typ odpowiedzi nie pasuje do żadnej
+            z~kategorii nazw własnych wykrywanych przez tagger, na przykład: ,,Co to jest gluten?''. Jedną z~proponowanych
+            technik ekstrakcji odpowiedzi na takie pytania o definicję, jest znajdowanie miejsc, które mogą zawierać
+            wytłumaczenie pojęcia, o które pyta użytkownik. W tym celu wykorzystuje się wzorce lingwistyczne. Wzorce te
+            określają i~dopasowują się do kontekstu, w~jakim może wystąpić odpowiedź na dane pytanie. Mogą one być zapisane
+            w~formie wyrażeń regularnych, ale możliwe jest także tworzenie bardziej ogólnych wzorców, które zamiast
+            konkretnych słów określają na przykład jedynie formę gramatyczną słowa na danej pozycji.
+
+            Podobnie jak w
+            przypadku innych omawianych wcześniej wzorców, mogą być one tworzone ręcznie, bądź z~wykorzystaniem
+            metod maszynowego uczenia. Wzorce są najczęściej uogólniane na podstawie obserwacji konstrukcji gramatycznych
+            służących do odpowiedzi na dany typ pytania. Zawierają one specjalnie oznaczone symbole zastępcze, w~miejsce
+            których podczas dopasowania wzorca podstawiany jest temat pytania. Gdy wzorzec zostanie poprawnie dopasowany
+            do fragmentu tekstu, fragment ten zostaje uznany za odpowiedź na pytanie. Możliwe jest także wykorzystanie
+            wzorców lingwistycznych do odpowiadania na standardowe pytania o fakty. W takim wypadku, we wzorcach znajduje
+            się dodatkowy symbol zastępczy, który wskazuje dokładne miejsce, w~którym znajduje się odpowiedź. Przykładowe
+            wzorce dla obu typów pytań zostały przedstawione w~tabeli \ref{TAB:PATTERNS}.
+
+            \begin{table}[h]
+                \begin{tabular}{ | c | c | }
+                  \hline
+                  \emph{Wzorzec pytania} & \emph{Wzorzec odpowiedzi} \\ \hline
+                  Kto napisał <TYTUŁ>? & Autorem <TYTUŁ> jest <ODPOWIEDŹ> \\
+                   & <TYTUŁ> napisał <ODPOWIEDŹ>\\ \hline
+                  Co to jest <POJĘCIE>? & <POJĘCIE> jest to \\
+                   & <POJĘCIE> - \\
+                  \hline
+                \end{tabular}
+                \caption{Przykładowe wzorce lingwistyczne dla pytań o fakty i~o definicje}
+                \label{TAB:PATTERNS}
+            \end{table}
+
+            Wzorce mogą być dopasowywane do tekstu w~sposób \emph{binarny} lub w~sposób \emph{probabilistyczny (przybliżony)}. Przy
+            zastosowaniu dopasowania binarnego tekst albo pasuje do wzorca i~wtedy zgłaszany jest jako kandydat na
+            odpowiedź lub nie. Wystarczy jeden dodatkowy wyraz bądź usunięcie lub zamiana  jednego wyrazu w~stosunku
+            do wzorca, aby całkowicie odrzucić dany fragment tekstu. W odróżnieniu od dopasowania binarnego, dopasowanie
+            probabilistyczne pozwala na uwzględnienie drobnych różnic w~tekście dokumentu w~stosunku do wzorca. Rezultatem
+            dopasowania probabilistycznego jest tak zwany \emph{stopień dopasowania}, który może przyjmować wartości z
+            zakresu od 0 (całkowity brak dopasowania) do 1 (całkowite dopasowanie). Przykładem wzorca, który dopasowywany
+            jest w~sposób przybliżony, jest n-gramowy model języka oraz ukryty model Markova\cite{SOFTPATTERNMATCHING}.
+            Dodatkową zaletą stosowania dopasowania probabilistycznego jest możliwość wykorzystania wartości stopnia
+            dopasowania pytania do odpowiedzi na etapie rankingu odpowiedzi.
+
+        \subsection{Metody wykorzystujące podobieństwo odpowiedzi i~pytania}
+            Bardzo często zdarza się, że zdanie, które jest odpowiedzią na dane pytanie, jest podobne do samego pytania.
+            Oznacza to, że w~odpowiedzi zazwyczaj występują te same wyrazy co w~pytaniu, bądź ich synonimy. Aby stwierdzić
+            czy dwa zdania są do siebie podobne, można na przykład policzyć słowa występujące zarówno w~pytaniu jak i~w
+            odpowiedzi bądź wykorzystać bardziej skomplikowaną miarę podobieństwa: \emph{ważenie częstością termów (TF-DF)},
+            lub \emph{odległość edycyjną}. Zasoby semantyczne
+            takie jak WordNet pozwalają na uwzględnienie synonimów dla słów użytych w~pytaniu.
+
+            Określanie podobieństwa nie musi być oparte jedynie o tekstową postać zdań. Możliwe jest obliczenie,
+            podobieństwa dla różnych reprezentacji zdań. Można do tego wykorzystać miary oparte o informacje syntaktyczne
+            i~semantyczne. Obecnie popularne jest reprezentowanie zdań w~formie grafów odzwierciedlających relacje
+            występujące pomiędzy słowami. Dla takich grafów można wyznaczyć między innymi \emph{największy wspólny podgraf},
+            natomiast niniejsza praca skupia się na opisie metody ekstrakcji odpowiedzi za pomocą zmodyfikowanego
+            algorytmu odległości edycyjnej dla grafu. Inną często wykorzystywaną reprezentacją jest \emph{model wektorowy},
+            w~którym teksty przedstawiane są jako wektory. Każdy wymiar wektora odpowiada innemu wyrazowi, a jego wartość
+            określa, ile razy wyraz wystąpił w~zdaniu reprezentowanym przez wektor. Posiadając takie wektory, możliwe jest
+            obliczenie \emph{podobieństwa kosinusowego}\cite{SPEECHANDLANGUAGEPROCESSING}.
+
+            Problemem bardzo podobny do określenia podobieństwa dwóch zdań jest problem \emph{parafrazowania} zdań.
+            Parafrazowanie polega na wyrażeniu tej samej informacji, myśli, za pomocą innych słów. Niektóre systemy
+            odpowiadające na pytania posiadają reguły dedukcyjne, które pozwalają na zakodowanie równoważnych sobie
+            zdań powstałych poprzez parafrazowanie\cite{INFERENCE}.
+
+            Podejście oparte o podobieństwo pytania i~odpowiedzi jest uzupełnieniem dla dwóch opisanych wcześniej podejść.
+            Niekiedy w~dokumencie nie znajdują się żadne nazwy własne pasujące do oczekiwanego typu odpowiedzi
+            oraz żaden z~przygotowanych wzorców lingwistycznych nie może zostać dopasowany do tekstu dokumentu.
+            W takiej sytuacji nadal można wykorzystać podobieństwo między pytaniem a odpowiedzią do znalezienia
+            zdania (fragmentu tekstu), które z~największym prawdopodobieństwem jest poprawną odpowiedzią.
+
+    \section{System ,,Borsuk''} \label{BORSUKDESC}
+        ,,Borsuk'' jest system QA stworzonym na Politechnice Wrocławskiej w~2013 roku. System ten dostosowany jest
+        do języka polskiego. Zarówno pytania zadawane przez użytkownika, jak i~zwracane odpowiedzi są w~języku polskim.
+        System ten działa zgodnie z~lekko zmodyfikowaną (np. przetwarzanie pytania i~ustalanie oczekiwanego typu odpowiedzi
+        zostało połączone w~jeden etap) ogólną architekturą systemów QA opisaną powyżej.
+        Na każdym z~etapów wykorzystywane są
+        różne metody przetwarzania języka naturalnego. Co więcej, jest on zbudowany w~sposób modułowy oraz ma
+        wysokie możliwości konfiguracyjne, pozwalające dowolnie wymieniać moduły używane na danym etapie na inne.
+        Ponadto każdy z~modułów posiada konfigurowalne parametry, które kontrolują jego prace, na przykład liczba
+        dokumentów zwracanych przez moduł wyszukujący.
+
+        Poszczególne moduły zaimplementowane w~systemie ,,Borsuk'' i~dostępne na poszczególnych etapach odpowiadania na
+        pytania zostały opisane poniżej.
+
+        \subsection{Analiza pytania}
+            \begin{itemize}
+                \item Moduł \emph{tagger} umożliwia uruchomienie taggera morfologicznego na treści pytania użytkownika,
+                    jako tagger morfosyntaktyczny wykorzystywany jest\emph{WCRFT}\cite{WCRFT}, oznaczający poszczególne części mowy występujące w~pytaniu,
+                    co jest przydatne na dalszych etapach analizy,
+                \item Moduł \emph{macaprocessor} pozwala na przepuszczenie treści pytania użytkownika przez narzędzie
+                    \emph{MACA}\cite{MACA}, pozwalające na zintegrowanie różnych źródeł danych morfologicznych takich jak tokenizator
+                    czy parser morfologiczny,
+                \item Moduł \emph{chunker} udostępnia możliwość przeprowadzenia płytkiej analizy semantycznej, czyli połączenia
+                    podstawowych części mowy w~grupy (ang. chunk) o określonym znaczeniu gramatycznym, takich jak
+                    fraza rzeczownikowa, z~użyciem narzędzia \emph{Iobber},
+                \item Moduł \emph{nerws} pozwala na wykorzystanie taggera nazw własnych \emph{NER-WS} w~celu rozpoznania
+                    i~oznaczenia nazw własnych występujących w~pytaniu,
+                \item Moduł \emph{wcclrules} umożliwia wykorzystanie reguł zapisanych w~języku
+                    \emph{WCCL (Wrocław Corpus Constraint Language)}\cite{WCCL}, który pozwala na tworzenie reguł opartych o oznakowany
+                    morfo-syntaktycznie tekst, wartości wyrażeń otrzymane dla danego pytania zostają zapisane,
+               \item Moduł \emph{classification} dostarcza przygotowane ręcznie reguły w~języku WCCL, które pozwalają
+                   na ustalenie oczekiwanego
+                   typu odpowiedzi dla danego pytania, wykorzystuje on informacje dostarczone przez moduł wcclrules,
+               \item Moduł \emph{tokenwieght} pozwala na przypisanie określonej wagi poszczególnym tokenom (wyrazom) z~pytania,
+                   pasującym do zdefiniowanego przy konfiguracji wzorca, waga ta może być potem wykorzystana przy
+                   generowaniu zapytania do wyszukiwarki bądź przy ekstrakcji odpowiedzi (przy obliczaniu podobieństwa).
+            \end{itemize}
+
+        \subsection{Generowanie zapytania do modułu wyszukującego}
+            W systemie ,,Borsuk'' jako moduł wyszukujący dokumenty źródłowe wykorzystywany jest silnik wyszukujący \emph{Solr}\cite{SOLR}.
+            Kolekcja dokumentów źródłowych jest zaindeksowana w~systemie Solr i~składa się z\cite{BORSUK}:
+            \begin{itemize}
+                \item artykułów z~polskiej Wikipedii (956 000 dokumentów),
+                \item artykułów prasowych pochodzących z~serwisu Rzeczpospolita (180 dokumentów),
+                \item trzech mniejszych, przygotowanych wcześniej korpusów: KPWr, CSEN oraz CSER (3 000 dokumentów).
+            \end{itemize}
+
+            Solr do wyszukiwania dokumentów pasujących do zapytania wykorzystuje \emph{boolowski model wyszukiwania informacji}.
+            Oznacza to, że słowa kluczowe w~zapytaniu mogą być łączone spójnikami logicznymi. Do rankingu zwróconych
+            dokumentów używany jest model wektorowy. Model ten nie bierze pod uwagę odległości pomiędzy poszczególnymi
+            słowami z~zapytania, dlatego ,,Borsuk'' implementuje własny algorytm rankingu dokumentów. Ten i~inne moduły
+            wykorzystywane na etapie generowania zapytania i~wyszukiwania dokumentów zostały opisane poniżej.
+            \begin{itemize}
+                \item Moduł \emph{simplequerygen} dostarcza algorytmy generowania zapytania do modułu wyszukującego
+                    na podstawie zapytania użytkownika, moduł faworyzuje nazwy własne zawarte w~pytaniu, oprócz tego
+                    wykorzystywane są wszystkie tokeny nie będące znakami interpunkcyjnymi oraz nie będące na wcześniej
+                    przygotowanej \emph{stop liście},
+                \item Moduł \emph{simplequerygen2} stanowi modyfikację modułu simplequerygen, polegającą głównie na
+                    nadaniu większego priorytetu rzeczownikom z~pytania nad innymi słowami,
+                \item Moduł \emph{simplequerygenpasca} zawiera implementację generacji zapytania zaproponowanej przez
+                    M. Pasca'e w~\cite{PASZKA}, metoda ta opiera się głównie na podziale słów z~pytania na trzy grupy o różnych
+                    stopniach ważności, a dokładniej została opisana w~punkcie \ref{QUERYGENERATION},
+                \item Moduł \emph{solr} implementuje komunikację z~silnikiem wyszukiwania Solr,
+                \item Moduł \emph{search} zapewnia implementację procesu iteracyjnego wyszukiwania, do momentu uzyskania
+                    oczekiwanej liczby dokumentów źródłowych, proces ten został wyjaśniony w~punkcie \ref{QUERYGENERATION}
+                \item Moduł \emph{reranking} pozwala na ponowny ranking dokumentów, dostosowany do potrzeb systemu QA,
+                    z~uwzględnieniem odległości pomiędzy poszczególnymi słowami kluczowymi z~pytania
+            \end{itemize}
+
+        \subsection{Ekstrakcja odpowiedzi}
+            \begin{itemize}
+                \item Moduł \emph{wordscountextractor} implementuje prostą metodę ekstrakcji odpowiedzi polegającą na
+                    wybraniu tego zdania z~dokumentu, które zawiera najwięcej słów wspólnych z~pytaniem,
+                \item Moduł \emph{tfidfextractor} wydobywa odpowiedź na podstawie obliczenia \emph{modelu TF-DF}, model
+                    ten obliczany jest dla każdego zdania z~dokumentu źródłowego oddzielnie, a następnie wybierany
+                    jest zdanie, dla którego obliczony wynik jest największy,
+                \item Moduł \emph{bestscoreextractor} pozwala na wybranie odpowiedzi na podstawie miar obliczonych na
+                    wcześniejszych etapach przetwarzania pytania, zwraca on jako odpowiedź zdanie, dla którego dana
+                    miara ma największą wartość.
+            \end{itemize}
+
+
+
+\chapter{Projekt proponowanego algorytmu ekstrakcji odpowiedzi}
+    \section{Reprezentacja pytań i~odpowiedzi jako grafy}
+        Jednym ze sposobów reprezentacji zdań w~języku naturalnym jest \emph{reprezentacja grafowa}. Pozwala ona, w~przeciwieństwie
+        do reprezentacji \emph{bag of words}, na zapisanie relacji występujących pomiędzy różnymi wyrazami w~zdaniu.
+
+        Do zrealizowania opisywanego w~tej pracy algorytmu ekstrakcji odpowiedzi, wykorzystano bibliotekę \emph{,,Grafon''},
+        której autorem jest Paweł Kędzia.
+        Pozwala ona na wygenerowanie dla danego zdania jego grafu, na podstawie pliku \emph{CCL}. Format CCL jest
+        rozwinięciem formatu \emph{XCES (XML Corpus Encoding Standard)}, pozwalającym na zapisywanie informacji na temat:
+        \begin{itemize}
+            \item Podziału dokumentu na poszczególne akapity i~zdania,
+            \item Podziału na poszczególne tokeny,
+            \item Oznaczeń morfosyntaktycznych poszczególnych wyrazów,
+            \item Oznaczeń dla całych fragmentów dokumentu, także nieciągłych,
+            \item Innych właściwości tokenów.
+        \end{itemize}
+
+        Poszczególne wierzchołki odpowiadają słowom występującym w~dokumencie, natomiast krawędzie między nimi
+        odwzorowują relacje zachodzące pomiędzy wyrazami w~tekście. ,,Grafon'' udostępnia następujące typy wierzchołków:
+        \begin{itemize}
+            \item \emph{LemmaNode} - wyrazy ze zdania reprezentowane są przez swoje formy słownikowe,
+            \item \emph{LemmaNodeLower} - wyrazy ze zdania reprezentowane są przez swoje formy słownikowe pisane małymi literami,
+            \item \emph{LemmaPosNode} - wyrazy ze zdania reprezentowane są przez swoje formy słownikowe, dodatkowo zachowywana
+                jest informacja o części mowy jaką jest dany wyraz,
+            \item \emph{LemmaPosNodeLower} - wyrazy ze zdania reprezentowane są przez swoje formy słownikowe pisane małymi
+                literami, dodatkowo zachowywana jest informacja o części mowy jaką jest dany wyraz,
+            \item \emph{SynsetNode} - wyrazy ze zdania są reprezentowane jako synsety pochodzące ze Słowosieci.
+        \end{itemize}
+
+        Wierzchołki mogą zostać przebudowane. Jedną z~opcji jest dodanie dodatkowych węzłów, reprezentujących wielowyrazowe
+        byty nazwane. Możliwe jest też połączenie czasowników z~zaimkiem zwrotnym (się) w~jeden węzeł. Ponadto dla każdego
+        wyrazu pochodzącego ze zdania możliwe jest dodanie do grafu jego sąsiedztwa ze Słowosieci.
+
+        W ,,Grafonie'' krawędzie pomiędzy wierzchołkami dodawane są przez specjalne obiekty zwane \emph{,,builderami''},
+        wśród których wyróżniamy:
+        \begin{itemize}
+            \item \emph{WordToWordEdgeBuilder} - tworzy krawędzie pomiędzy kolejnymi następującymi po sobie wyrazami ze
+                zdania,
+            \item \emph{HeadToHeadEdgeBuilder} - tworzy krawędzie pomiędzy kolejnymi frazami występującymi w~zdaniu,
+            \item \emph{SemRelEdgeBuilder} - tworzy krawędzie pomiędzy wyrazami tworzącymi frazy rzeczownikowe,
+            \item \emph{NEToNEEdgeBuilder} - tworzy krawędzie pomiędzy następującymi po sobie w~zdaniu bytami nazwanymi,
+            \item \emph{MaltEdgeBuilder} - tworzy krawędzie na podstawie wyjścia z~popularnego parser zależnościowego Maltparser.
+        \end{itemize}
+
+
+        \begin{figure}[h!]
+                \centering
+                \includegraphics[scale=0.65]{example_grafon_graph}
+                \caption{Przykładowy graf wygenerowany przez bibliotekę Grafon dla zdania ,,Umożliwia to obejrzenie każdej
+                wersji artykułu oraz jego porównanie''}
+                \label{GRAFON_EXAMPLE}
+        \end{figure}
+
+    \section{Odległość edycyjna dla ciągów znaków, zdań i~grafów}
+        Tradycyjna odległość edycyjna jest miarą podobieństwa dwóch ciągów znaków. Obliczana jest na podstawie liczby
+        operacji, które należy wykonać, aby zamienić pierwszy ciąg znaków w~drugi. Zbiór dostępnych atomowych operacji
+        transformujących jest zależny od konkretnej implementacji algorytmu. Zazwyczaj te operacje to: dodanie znaku,
+        usunięcie znaku oraz zastąpienie jednego znaku innym. W przypadku takiego zdefiniowania zbioru operacji
+        obliczona odległość nazywana jest \emph{odległością  Levenshtein'a}. Istnieje również \emph{ważona odległość edycyjna},
+        w~której każda operacja ma określony koszt. Można on być taki sam bądź różny dla różnych operacji. Można dzięki
+        temu wyrazić, że niektóre operacja można przeprowadzić łatwiej, niż inne i~zachęcić do ich wykorzystania.
+        W niniejszej pracy zostaną zaproponowane specjalne operacje ze starannie dobranymi kosztami, w~celu dostosowania
+        miary odległości edycyjnej do zadania ekstrakcji odpowiedzi w~systemie ,,Borsuk''.
+
+        Odległość edycyjna, dla dwóch ciągów znaków:
+        $$ a = a_1, ..., a_n $$
+        $$ b = b_1, ..., b_m $$
+        jest zdefiniowana w~sposób rekurencyjny\cite{CORMEN}:
+            $$ odl_{i0} = \sum\limits_{k=1}^{i} koszt_{usuniecie}(b_k) $$
+            $$ odl_{0j} = \sum\limits_{k=1}^{j} koszt_{dodanie}(b_k) $$
+
+            \[
+             odl_{ij} =
+              \begin{cases}
+                  odl_{i-1,j-1} & \text{gdy } a_j = b_i \\
+                  min
+                    \begin{cases}
+                        odl_{i-1,j} + koszt_{usuniecie}(b_i), \\
+                        odl_{i,j-1} + koszt_{dodanie}(a_j), \\
+                        odl_{i-1,j-1} + koszt_{zamiana}(a_j, b_i), \\
+                    \end{cases}
+                    & \text{gdy } a_j \neq b_i
+              \end{cases}
+            \]
+
+        Ze względu na złożoność obliczeniową, odległość edycyjna obliczana jest z~wykorzystaniem technik programowania
+        dynamicznego. Aktualnie najczęściej wykorzystywanym algorytmem jest \emph{algorytm Wagnera–Fischera}.
+
+        Miara odległości decyzyjnej jest również rozszerzana i~wykorzystywana do obliczania podobieństwa między grafami,
+        w~dziedzinie wykrywania wzorców. W przypadku obliczania odległości edycyjnej dla grafów wierzchołki traktowane
+        są tak jak znaki w~tradycyjnej odległości edycyjnej. Do zbioru dozwolonych operacji dochodzą jeszcze operacje
+        na krawędziach grafu. Mogą być one, podobnie jak wierzchołki, dodawane, usuwane, bądź zamieniane, ponadto każda
+        z~tych operacji może mieć przypisany indywidualny koszt.
+
+        Bibliotek ,,Grafon'' zawiera implementację algorytmu Wagnera–Fischera dostosowaną do obliczania odległości
+        edycyjnej pomiędzy wygenerowanymi grafami. Implementacja ta uwzględnia tylko operacje wykonywane na wierzchołkach,
+        różnice występujące w~krawędziach nie są brane pod uwagę.
+
+    \section{Wykorzystanie grafowej odległości edycyjnej w~systemie ,,Borsuk''}
+        Jednym z~wcześniej wspomnianych sposobów ekstrakcji odpowiedzi na pytania jest wykorzystania metod obliczających
+        podobieństwo między pytaniem a potencjalną odpowiedzią. W niniejszej pracy proponowane jest wykorzystanie grafowej
+        odległości edycyjnej jako miary podobieństwa między zdaniami. Ponadto proponowane i~testowane są trzy dodatkowe
+        operacje, oprócz standardowych, przygotowane specjalnie z~myślą o odpowiadaniu na pytania. Wykorzystują one
+        specyficzne dla odpowiadania na pytania informacje i~narzędzia takie jak tagger bytów nazwanych, czy informacja
+        o oczekiwanym typie odpowiedzi.
+
+        W ramach pracy został przygotowany nowy moduł w~systemie ,,Borsuk'', nazwany \emph{grapheditdistanceextractor}.
+        Przetwarzanie pytania przebiega zgodnie z~procesem opisanym w~rozdziale \ref{BORSUKDESC}, aż do momentu ekstrakcji
+        odpowiedzi. Na wejście modułu wyciągającego odpowiedzi, trafia przetworzone wcześniej pytanie użytkownika oraz
+        zbiór dokumentów, które zostały pobrane przez moduł wyszukujący. Dokumenty zaindeksowane w~systemie ,,Borsuk''
+        przechowywane są we wcześniej wspomnianym formacie CCL. W plikach tych zapisane są informacje o rozpoznanych
+        nazwach własnych, oraz oznaczenie taggera morfosyntaktycznego. Umożliwia to bezpośrednie wprowadzenie tych plików
+        do biblioteki ,,Grafon''.
+
+        Plik CCL zawiera również informację na temat podziału dokumentu na zdania, dzięki czemu ,,Grafon'' może dla każdego
+        zdania z~dokumentu wygenerować oddzielny graf. Grafy te są po kolei porównywane z~grafem utworzonym dla pytania
+        zadanego przez użytkownika, na podstawie obliczonej grafowej odległości edycyjnej. Dla każdego dokumentu otrzymanego
+        z~modułu wyszukującego wybierane jest jedno zdanie, które jest najbardziej podobne do pytania (najmniejsza grafowa
+        odległość edycyjna). Zdanie to jest zwracane jako odpowiedź kandydująca, pochodząca z~danego dokumentu, do modułu
+        rankingowego. Ponadto obliczona odległość edycyjna jest zapamiętywana i~wykorzystywana na etapie rankingu do porównywania
+        między sobą odpowiedzi kandydujących.
+
+    \section{Modyfikacja algorytmu obliczania odległości edycyjnej dla potrzeb ekstrakcji odpowiedzi na pytania}
+        Tradycyjny algorytm obliczania ważonej odległości edycyjnej stosuje na stałe ustalone koszty operacji, niezależnie
+        od tego, jakie znaki (węzły grafu) są poddawane tym operacjom. Podczas procesu odpowiadania na pytania, dostępne
+        jest wiele informacji, dzięki wykorzystaniu wcześniej wspomnianych narzędzi przetwarzania języka naturalnego,
+        takich jak na przykład tagger nazw własnych. Informacje te mogą zostać wykorzystane do większej kontroli nad
+        kosztami wykonywanych operacji. % tu może można by coś dopisać
+
+        Poniżej przedstawiono nowe operacje zaimplementowane w~algorytmie obliczania odległości edycyjnej wraz z~krótkim
+        uzasadnieniem ich wyboru. Opisane tutaj operacje są szczególnymi przypadkami standardowych operacji: dodawania
+        i~usuwanie węzłów. W przypadku gdy szczególne warunki dla danej operacji nie zachodzą, do obliczeń przyjmowany
+        jest koszt standardowej operacji.
+
+        \subsection{Dodanie zaimka pytającego do odpowiedzi}
+            Pierwszą proponowaną operacją jest dodanie zaimka pytającego do odpowiedzi. Prawidłowo ta operacja powinna być
+            nazwana usuwaniem zaimka pytającego z~pytania. W trakcie obliczania grafowej odległości edycyjnej
+            to odpowiedź kandydująca za pomocą operacji jest transformowana w~pytanie, stąd nazwa operacji.
+
+            Większość pytań zadawanych przez użytkowników zawiera zaimek pytający. Przykłady zaimków pytających to: co?,
+            kto?, gdzie?, i~tym podobne. Zgodnie z~definicją zaimka, zastępuje on inne części mowy, w~związku z~czym
+            zazwyczaj odpowiedź na dane pytanie może być bezpośrednio wstawiona w~miejsce
+            zaimka pytającego. Na przykład dla pytania \emph{,,Kto był pierwszym królem Polski?''}, po zastąpieniu zaimka
+            pytającego ,,kto'' odpowiedzią ,,Bolesław Chrobry'', powstaje odpowiedź kandydująca
+            \emph{,,Bolesław Chrobry był pierwszym królem Polski.''}. Łączy się to z~drugą proponowaną operacją, która
+            usuwa z~odpowiedzi nazwy własne zgodne z~przewidywanym typem odpowiedzi.
+
+            Wprowadzenie operacji dodania zaimka pytającego do odpowiedzi motywowane jest również chęcią zmniejszenia
+            szansy na wybranie, jako odpowiedzi kandydującej, dowolnego pytania występującego w~dokumencie źródłowym.
+            Bardzo rzadko zdarza się, żeby odpowiedzią na pytanie było inne pytanie, dlatego intuicyjnie można wyczuć,
+            że koszt tej operacji powinien być mniejszy niż tradycyjna operacja usuwania dowolnego innego wyrazu z
+            odpowiedzi kandydującej.
+
+        \subsection{Usunięcie bytów nazwanych zgodnych z~przewidywanym typem odpowiedzi}
+            Jak zostało wcześniej powiedziane, na etapie analizy pytania odbywa się ustalenie oczekiwanego typu odpowiedzi.
+            Informacja ta może zostać wykorzystana na etapie obliczania grafowej odległości edycyjnej do premiowania
+            zdań zawierających byty nazwane zgodne z~wcześniej ustalonym typem odpowiedzi.
+
+            Aby to zrealizować, dodana została operacja usuwania bytów nazwanych, których kategoria jest zgodna z
+            przewidywanym typem odpowiedzi. Dzięki małemu kosztowi pozwala ona w~łatwy sposób upodobnić odpowiedź
+            do pytania.
+
+            W celu zrealizowania tej operacji została stworzona lista, zawierająca mapowanie typów bytów nazwanych
+            wykrywanych przez tagger Liner2\cite{LINER2} na typy oczekiwanych odpowiedzi wykrywanych przez moduł analizujący pytania
+            zaimplementowany w~systemie ,,Borsuk''. Dla każdego usuwanego węzła sprawdzane jest, czy reprezentuje on
+            byt nazwany oraz czy jego kategoria odpowiada przewidywanemu typowi odpowiedzi. W przypadku, gdy oba warunki
+            są spełnione, zwracany jest koszt opisanej tutaj operacji, w~przeciwnym wypadku zwracany jest standardowy koszt
+            usunięcia węzła.
+
+            Przykład wykorzystania operacji można pokazać na już przytoczonym pytaniu \emph{,,Kto był pierwszym królem Polski?''}.
+            Przewidywany typ odpowiedzi dla tego pytania to OSOBA. Tagger nazw własnych oznacza w~kandydującej odpowiedzi
+            \emph{,,Bolesław Chrobry był pierwszym królem Polski.''} byt ,,Bolesław Chrobry'' jak encję typu OSOBA,
+            po czym zostaje on usunięty małym kosztem. Jak zostało wcześniej wspomniane, operacja ta uzupełnia się wzajemnie
+            z~operacją dodania zaimka pytającego.
+
+        \subsection{Dodanie bytów nazwanych do odpowiedzi}
+            Niektóre pytania zadawane przez użytkowników zawierają dodatkowe ograniczenia nałożone na odpowiedź. Mowa tutaj
+            o ograniczeniach mówiących o czasie (\emph{,,Kto wygrał Ligę Mistrzów w~2015 roku?''}), miejscu
+            (\emph{,,Jaka jest najwyższa góra w~Afryce?''}) oraz innych.
+
+            Aby zwiększyć szanse na znalezienie odpowiedzi spełniającej te dodatkowe ograniczenia, zdecydowano o wprowadzeniu
+            operacji dodania bytów nazwanych rozpoznanych przez tagger, z~pytania do odpowiedzi. W odróżnieniu od przedstawionych
+            wcześniej operacji, dodanie bytu nazwanego do odpowiedzi w~założeniu powinno być to operacją drogą.
+            Jej celem jest sprawienie, że odpowiedzi kandydujące niezawierające w~swojej treści tych samych ograniczeń
+            co pytanie zostaną gorzej ocenione.
+
+            Dla przykładu, jeżeli pytanie brzmi \emph{,,Kto wygrał Ligę Mistrzów w~2015 roku?''}, użytkownika nie interesuje
+            odpowiedź \emph{,,Real Madryt wygrał Ligę Mistrzów w~2016 roku''}, tylko
+            \emph{,,Zwycięzcą Ligi Mistrzów w~2015 została Barcelona''}. Przedstawiona operacja jest więc kluczowa dla
+            spełnienia ograniczeń narzuconych przez pytanie i~najlepiej będzie sprawdzać się w~pytaniach z~ograniczeniami.
+
+    \section{Optymalizacja kosztów operacji edycji dla potrzeb ekstrakcji odpowiedzi na pytania}
+        W algorytmie obliczania ważonej odległości edycyjnej każda z~operacji posiada przypisany koszt jej wykorzystania.
+        Istnieją gotowe, opublikowane zbiory wag, dopasowane do poszczególnych zastosowań, jednak ze względu na zastosowanie
+        autorskich operacji zdecydowano o wykorzystaniu algorytmu genetycznego do wyznaczenia takich wag dla poszczególnych
+        operacji, aby zmaksymalizować wskaźnik \emph{MRR} dla danych uczących.
+
+        Dane uczące pochodziły ze zbioru pytań, wraz z~oznaczonymi przez lingwistów odpowiedziami na pytania. Zbiór został
+        nazwany ,,Czywieszki'', od nazwy portalu wchodzącego w~skład Wikipedii, na podstawie którego powstał\cite{CZYWIESZKI}.
+        Zbiór składa się z~pytań, na podstawie których może być prowadzona nauka oraz pytań służących do końcowej ewaluacji.
+        Został on specjalnie stworzony pod kątem rozwoju systemów odpowiadających na pytania, w~związku z~czym składa się
+        z~różnorodnych pytań, dobrze reprezentujących pytania zadawane przez użytkowników.
+
+        Przedmiotem optymalizacji są wagi poszczególnych operacji w~algorytmie obliczania grafowej odległości edycyjnej.
+        Poniżej opisano parametry wykorzystanego algorytmu genetycznego.
+        \begin{itemize}
+            \item Pojedynczy osobnik w~algorytmie jest reprezentowany jako wektor siedmiu liczb rzeczywistych z
+                przedziału od 1 do 10, z~których każda reprezentuje wagę jednej z~operacji dostępnej podczas obliczania
+                odległości edycyjnej,
+            \item Populacja składała się z~50 osobników, początkowo losowo wygenerowanych,
+            \item Krzyżowanie osobników polega na wybraniu dwóch punktów wewnątrz chromosomów osobników, fragmenty
+                wektorów parametrów wyznaczone przez te punkty są wymieniane pomiędzy osobnikami,
+            \item Mutacja zaimplementowana została poprzez dodanie losowej wartości z~przedziału od \emph{-4} do \emph{4},
+            \item Selekcja osobników polega na przeprowadzeniu turnieju, rozmiar turnieju wynosi 2 osobników,
+            \item Funkcja przystosowania polegała na uruchomieniu procesu odpowiadania na 50 wcześniej przygotowanych
+                pytań, pochodzących
+                ze zbioru testowego, parametry algorytmu obliczania odległości edycyjnej były odpowiednio dostosowane do
+                tych, które reprezentował dany osobnik, dla każdego uruchomienia procesu, po odpowiedzeniu na wszystkie
+                pytania, obliczana była wartość wskaźnika MRR, która była wykorzystywana jako wartość funkcji przystosowania dla
+                danego osobnika,
+            % selekcja, tabelka z~parametrami, tabelka z~otrzymanymi wynikami
+        \end{itemize}
+
+        Poniżej przedstawiono parametry algorytmu genetycznego w~formie tabeli:
+            \begin{table}[h]
+                \centering
+                \begin{tabular}{ | c | c | }
+                  \hline
+                  \emph{Nazwa parametru} & \emph{Wartość parametru} \\ \hline
+                  Rozmiar populacji & 50 osobników \\ \hline
+                  Ilość pokoleń & 10 \\ \hline
+                  Prawdopodobieństwo krzyżowania & 0.5 \\ \hline
+                  Prawdopodobieństwo mutacji & 0.05 \\ \hline
+                  Rozmiar turnieju & 2 osobników \\ \hline
+                \end{tabular}
+                \caption{Parametry algorytmu genetycznego}
+                \label{TAB:GEN_PARAMS}
+            \end{table}
+
+        Algorytm genetyczny został uruchomiony kilkukrotnie, w~celu zwiększenia szansy na znalezienie rozwiązania
+        optymalnego. Liczba ponownych uruchomień została ograniczona, ze względu na długotrwałe pojedyncze wykonanie
+        funkcji przystosowania.
+
+        Parametry algorytmu grafowej odległości edycyjnej, będące wagami poszczególnych operacji zostały przedstawione
+        poniżej.
+
+            \begin{table}[h]
+                \centering
+                \begin{tabular}{ | c | r | }
+                  \hline
+                  \emph{Nazwa operacji} & \emph{Waga (koszt) operacji} \\ \hline
+                  Dodanie węzła & 8.6126\\ \hline
+                  Usunięcie węzła & 9.6834 \\ \hline
+                  Zamiana dwóch węzłów miejscami & 0.2086 \\ \hline
+                  Dopasowanie węzłów & 4.1973 \\ \hline
+                  Dodanie zaimka pytającego do odpowiedzi & 7.9080 \\ \hline
+                  Usunięcie encji odpowiadającej oczekiwanemu typowi odpowiedzi & 8.0895 \\ \hline
+                  Dodanie bytu nazwanego do odpowiedzi & 7.7131 \\ \hline
+                \end{tabular}
+                \caption{Parametry algorytmu genetycznego}
+                \label{TAB:WEIGHTS}
+            \end{table}
+
+        Wartości parametrów otrzymane z~wykorzystaniem algorytmu genetycznego są zgodne z~wcześniejszymi przewidywaniami.
+        Operacje zaproponowane w~celu zachęcenia do usuwania i~dodawania niektórych wyrazów do odpowiedzi niższym kosztem
+        faktycznie mają niższy koszt niż standardowe operacje dodawania i~usuwania węzłów.
+
+        Zastanawiające jest, że operacja dodania bytu nazwanego do odpowiedzi ma niższy koszt niż standardowa operacja
+        dodania węzła. Operacja ta została wprowadzona aby zwiększyć dokładność odpowiadania na pytania, w~których
+        znajdują się dodatkowe ograniczenia, na przykład \emph{,,Jaka jest najwyższa góra w~Afryce''}. Niska waga tej
+        operacji może oznaczać, że w~zbiorze pytań wykorzystanych do treningu, było mało pytań z~ograniczeniami.
+
+        Patrząc ogólnie na otrzymane wartości wag poszczególnych operacji można zauważyć, że są one stosunkowo duże.
+        Nie jest to jednak problem, ponieważ najważniejsze są zależności pomiędzy wagami operacji zaproponowanych
+        w~niniejszej pracy a wagami operacji standardowych. Jak zostało powyżej opisane, relacje te zgadzają się z
+        intuicyjnymi przewidywaniami
+
+\chapter{Badania dokładności w~odpowiadaniu na pytania uzyskanych dzięki zastosowaniu odległości edycyjnej}
+    \section{Wprowadzenie - zakres i~cel badań}
+        Zaplanowany i~przedstawiony w~dalszej części tego rozdziału eksperyment polegający na badaniu dokładności
+        odpowiadania na pytania przez system ,,Borsuk'' miał na celu weryfikację wyników uzyskiwanych przez zmodyfikowany
+        algorytm grafowej odległości edycyjnej. Ponadto zweryfikowana została poprawność doboru kosztów (wag) operacji
+        dokonana przy wykorzystaniu algorytmu genetycznego.
+
+        Do badań zostało wybrane 50 pytań ze zbiory ewaluacyjnego pochodzącego ze zbioru ,,Czywiesz''. Pytania wybrane
+        zostały w~sposób losowy. Dla każdego z~pytań występujących w~zbiorze został uruchomiony proces odpowiadania
+        na pytania. Po uzyskaniu odpowiedzi z~systemu ,,Borsuk'' zostały one porównane z~odpowiedziami przygotowanymi
+        przez lingwistów, pochodzącymi ze zbioru ,,Czywiesz''.
+
+    \section{Wskaźniki dokładności badane w~czasie eksperymentu}
+        \begin{itemize}
+            \item Wskaźnik MRR - wyliczany ze wzoru $ MRR = \frac{1}{pozycjaOdpowiedzi} $, w~przypadku gdy prawidłowa
+                odpowiedź znajduje się wśród pięciu pierwszych odpowiedzi udzielonych przez system, w~przeciwnym wypadku
+                wartość tej miary wynosi \emph{0},
+            \item Wskaźniki a@n - rodzina wskaźników mówiąca o tym czy poprawna poprawna odpowiedź znajduje się wśród
+                pierwszych \emph{n} odpowiedzi udzielonych przez system, w~przypadku opisywanych tutaj badań liczba
+                n zawierała się w~następującym zbiorze $ n \in \{1, 5, 10, 20, 25, 50\} $, ze względu na ograniczoną
+                liczbę dokumentów pobieranych przez system, większe wartości \emph{n} nie mają sensu, wartość tego
+                wskaźnika wynosi \emph{1} gdy poprawna odpowiedź znajduje się wśród pierwszych \emph{n} odpowiedziach
+                udzielonych przez system bądź \emph{0} w~przeciwnym wypadku,
+           \item Wskaźnik mówiący o ilości poprawnie wskazanych odpowiedzi - w~zbiorze pytań ,,Czywiesz'', dla niektórych
+               pytań lingwiści wskazali więcej niż jedną poprawną odpowiedź, poszczególne odpowiedzi mogą się między
+               sobą różnić na przykład szczegółowością, dzięki zwróceniu użytkownikowi wszystkich poprawnych odpowiedzi
+               może on wybrać tą, która jest dla niego najlepsza, dlatego zdecydowano się policzyć ilość wszystkich
+               poprawnie wskazanych przez system odpowiedzi dla zadanego pytania.
+        \end{itemize}
+
+        Po obliczeniu wyników cząstkowych dla każdego pytania ze zbioru ewaluacyjnego, zostały one zagregowane. Dla wskaźnika
+        MRR została policzona średnia, natomiast dla pozostałych wskaźników została policzona suma.
+
+     \section{Konfiguracja systemu ,,Borsuk'' w~czasie prowadzenie eksperymentów}
+        Aby nie zaciemniać wyników badań, zdecydowano o uruchomieniu systemu ,,Borsuk'' z~minimalną liczbą modułów
+        konieczną do pracy badanych modułów ekstrakcji odpowiedzi. W ten sposób możliwe jest uniknięcie wpływu pracy
+        dodatkowych modułów na wyniki osiągane przez moduły zajmujące się ekstrakcją odpowiedzi. Do działania modułu
+        ekstrakcji odpowiedzi z~użyciem grafowej odległości edycyjnej niezbędne jest określenie oczekiwanego typu
+        odpowiedzi na pytanie. Pociąga to za sobą konieczność aktywacji tego modułu i~wszystkich jego zależności.
+
+        Wśród modułów które pozostały włączone podczas prowadzenia badań można wyróżnić:
+        \begin{itemize}
+            \item Faza analizy pytania:
+                \begin{itemize}
+                    \item moduł \emph{tagger} - moduł uruchamiający tagger morfologiczny WCRFT, niezbędny do identyfikacji
+                        oczekiwanego typu odpowiedzi,
+                    \item moduł \emph{wcclrules} - moduł pozwalający na wykorzystanie reguł w~języku WCCL,
+                    \item moduł \emph{classification} - moduł dostarczający reguły WCCL pozwalające na ustalenie oczekiwanego
+                        typu odpowiedzi,
+                \end{itemize}
+            \item Faza generowania zapytania i~wyszukiwania dokumentów źródłowych:
+                \begin{itemize}
+                    \item moduł \emph{simplequerygen} - moduł generujący zapytanie do wyszukiwarki,
+                    \item moduł \emph{solr} - moduł implementujący komunikację z~silnikiem wyszukiwania Solr,
+                \end{itemize}
+            \item Faza ekstrakcji odpowiedzi:
+                \begin{itemize}
+                    \item moduł \emph{tfidfextractor} - moduł wydobywający odpowiedzi z~użyciem modelu TF-DF,
+                    \item moduł \emph{grapheditdistanceextractor} - moduł wydobywający odpowiedzi z~użyciem zmodyfikowanej
+                        grafowej odległości edycyjnej,
+                \end{itemize}
+        \end{itemize}
+
+        Konfiguracja aktywnych modułów w~większości nie była zmieniana, pozostawione zostały wartości domyślne. Jedynie
+        w~przypadku modułu \emph{solr} zmniejszona została ilość pobieranych dokumentów źródłowych do 50. Ponadto
+        format pobieranych dokumentów został zmieniony z~tekstowego na format CCL. Zmiany te nie wpłynęły w~żaden
+        sposób na wyniki uzyskane w~trakcie eksperymentu.
+
+    \section{Uzyskane wyniki}
+        Badania zostały przeprowadzone dla zaproponowanego w~pracy algorytmu ekstrakcji odpowiedzi z~użyciem
+        grafowej odległości decyzyjnej. W celach porównawczych przeprowadzono badania, na tych samych danych,
+        dla aktualnie wykorzystywanego w~systemie ,,Borsuk'' mechanizmu ekstrakcji odpowiedzi opartego o model \emph{TF-DF}.
+        Parametry działanie tego modułu zostały niezmienione w~stosunku do parametrów domyślnych. Oznacza to, że model
+        TF-DF jest obliczany dla pytania i~dwóch sąsiadujących ze sobą zdań. Jest odmienne podejście od zastosowanego
+        w~grafowej odległości edycyjnej, która jest obliczana dla pytania i~każdego zdania z~dokumentu oddzielnie.
+
+        Uzyskane wyniki został przedstawione poniżej:
+
+        \begin{table}[h]
+            \centering
+            \begin{tabular}{ | c | r | r | r | }
+              \hline
+              \emph{Nazwa wskażnika} & \emph{Grafowa odległość edycyjna} & \emph{TF-DF} & Zmiana \\ \hline
+              MRR & 30,2 & 27,61 & 9.38 \% \\ \hline
+              a@1 & 26 & 22 & 18,17 \% \\ \hline
+              a@5 & 37 & 37 & 0,00 \% \\ \hline
+              a@10 & 40 & 39 & 2,56 \% \\ \hline
+              a@20 & 41 & 40 & 2,50 \% \\ \hline
+              a@25 & 42 & 40 & 5,00 \% \\ \hline
+              a@50 & 43 & 41 & 4,87 \% \\ \hline
+              Liczba znalezionych odpowiedzi & 80 & 75 & 6,66 \% \\ \hline
+            \end{tabular}
+            \caption{Porównanie dokładności odpowiadania na pytania uzyskane przy pomocy grafowej odległości edycyjnej
+            oraz modelu TF-DF}
+            \label{TAB:RESULTS}
+        \end{table}
+
+        Analiza oraz wnioski płynące z~badań zostały przedstawione w~następnym rozdziale.
+
+        \begin{figure}[p]
+                \centering
+                \includegraphics[scale=0.5]{mrr}
+                \caption{Porównanie dokładności odpowiadania na pytania uzyskane przy pomocy grafowej odległości edycyjnej
+                    oraz modelu TF-DF}
+                \label{RESULTS1}
+        \end{figure}
+
+        \begin{figure}[p]
+                \centering
+                \includegraphics[scale=0.5]{znalezione_odpowiedzi}
+                \caption{Porównanie dokładności odpowiadania na pytania uzyskane przy pomocy grafowej odległości edycyjnej
+                    oraz modelu TF-DF}
+                \label{RESULTS2}
+        \end{figure}
+
+\chapter{Podsumowanie i~wnioski}
+    W niniejszej pracy opisane zostało wykorzystanie algorytmu grafowej odległości edycyjnej do ekstrakcji odpowiedzi
+    z~fragmentów dokumentów. Do optymalizacji parametrów (kosztów poszczególnych operacji) wykorzystany został
+    algorytm genetyczny. Przeprowadzone zostały badania mające na celu porównanie dokładności ekstrakcji odpowiedzi
+    dla zaproponowanego w~pracy mechanizmu oraz dotychczas wykorzystywanego rozwiązania.
+
+    Na podstawie przeprowadzonych badań można stwierdzić, że dokładność odpowiadania na pytania przez system ,,Borsuk''
+    została poprawiona na dwa sposoby:
+    \begin{itemize}
+        \item Można zaobserwować poprawienie kolejności wyświetlanych odpowiedzi, czyli ich ranking, dzięki posortowaniu
+            odpowiedzi według malejącej miary odległości edycyjnej względem pytania, poprawne odpowiedzi częściej
+            wyświetlane są przed odpowiedziami nieprawidłowymi, widać to szczególnie przy porównywaniu miary a@1,
+            mówiącej o tym dla jak wielu pytań poprawna odpowiedź została wyświetlona jako pierwsza, dla tej miary
+            udało się uzyskać ponad 18 \% poprawę w~stosunku do wykorzystania modelu TF-DF, również poprawa wskaźnika
+            MRR (9 \% w~stosunku do modelu TF-DF) świadczy o lepszym rankingu poprawnych odpowiedzi,
+        \item Poprawie uległa także ogólna liczba poprawnych odpowiedzi znalezionych dla pytań ewaluacyjnych (ponad 6 \%),
+            co oznacza, że wykorzystanie grafowej odległości edycyjnej pozwala nie tylko na lepszy ranking znalezionych
+            odpowiedzi, ale także na wydobycie odpowiedzi, których model TF-DF nie wskazał jako prawidłowych,
+            wynika z~tego, że w~sytuacji, gdy dla danego dokumentu model TF-DF jak odpowiedź kandydującą proponuje
+            nieprawidłowe zdanie, obliczenie podobieństwa z~użyciem odległości edycyjnej może pozwolić zidentyfikować
+            prawidłowe zdanie jako odpowiedź.
+    \end{itemize}
+
+    Po przeanalizowaniu wyników badań, sprawdzono na jakie pytania algorytm odległości edycyjnej nie był w~stanie znaleźć
+    odpowiedzi. Najczęściej jest to spowodowane tym, że odpowiedź na dane pytanie jest rozbita, znajduje się w~kilku
+    leżących w~bliskiej odległości od siebie zdaniach. Należy tutaj zaznaczyć, że w~domyślnej konfiguracji moduł wydobywający
+    odpowiedzi z~wykorzystaniem modelu TF-DF bierze pod uwagę zawsze dwa leżące koło siebie zdania. Porównywanie pytania
+    z~większą ilością zdań jednocześnie może dać przewagę nad algorytmem odległości edycyjnej, który porównuje każde
+    zdanie pojedynczo. Ta cecha zaproponowanego algorytmu może stanowić jego słabość, jednak w~kolejnym rozdziale
+    zaproponowane zostały metody jego rozszerzenia, w~taki sposób aby zminimalizować ten problem.
+
+\chapter{Możliwości rozwoju i~kontynuacji prac}
+    Pomimo osiągnięcia poprawy wyników dokładności odpowiadania na pytania, przy wykorzystaniu zmodyfikowanego algorytmu
+    obliczania grafowej odległości edycyjnej, nadal istnieją metody dalszej poprawy uzyskanych wyników.
+
+    Jednym z~najbardziej obiecujących kierunków dalszych prac jest wykorzystanie Słowosieci. Biblioteka ,,Grafon''
+    pozwala na dodanie do grafu reprezentującego zdanie dodatkowych węzłów pochodzących ze Słowosieci. Dla każdego
+    węzła reprezentującego wyraz z~pytania, dodawane są węzły pochodzące z~synsetu, w~którym się on znajduje. Mówiąc
+    krótko synset jest zbiorem synonimów danego słowa. Dodanie synonimów słowa do grafu reprezentującego zdanie pozwala
+    na porównanie zdań, które wyrażają tą samą myśl za pomocą różnych słów, na przykład
+    \emph{,,Pierwszym królem Polski był Bolesław Chrobry''} oraz \emph{,,Pierwszym władcą Polski był Bolesław Chrobry''}.
+    W obecnej implementacji konieczne jest usunięcie węzła grafu zawierającego synonim słowa występującego w~pytaniu i
+    wstawienie na jego miejsce słowa z~pytania. Zarówno usuwanie jak i~dodawanie węzłów są to operacje kosztowne,
+    co może wpłynąć na ich gorszą ocenę w~stosunku do zdań zawierających nieprawidłową odpowiedź. Uwzględnienie synonimów
+    jest bardzo istotne w~kontekście opisywanej wcześniej różnorodności językowej z~którą boryka się cała dziedzina
+    przetwarzania języka naturalnego, szczególnie dla języka polskiego.
+
+    Aktualna implementacja ekstrakcji odpowiedzi z~dokumentu polega na porównywaniu kolejnych zdań z~dokumentu źródłowego,
+    zamienionych na reprezentację grafową, z~reprezentacją grafową pytania. Rodzi to następujące problemy:
+    \begin{itemize}
+        \item Zdania złożone - niektóre zdania są bardzo długie, zawierają nie tylko odpowiedź na pytanie użytkownika,
+            ale także dodatkowe informacje na temat opisywanego obiektu, tego typu zdania zawierają zwykle znaczenie
+            więcej wyrazów w~stosunku do pytania, co powoduje, że konieczne jest wykonanie wielu operacji usuwania węzłów
+            z~grafu odpowiedzi kandydującej, co jest drogie i~prowadzi do gorzej oceny zdania, które zawiera prawidłową
+            odpowiedź na pytanie, potencjalnym rozwiązaniem tego problemu jest podział długich zdań złożonych na zdania
+            podrzędne i~porównywanie mniejszych grafów zdań podrzędnych z~grafem pytania, poniżej przedstawiony został
+            przykład pytania i~odpowiedzi będącej długim zdaniem złożonym, pochodzący ze zbioru pytań Czywieszki.
+
+            Pytanie: \emph{Kiedy introdukowano w~Polsce bażanty?}
+
+            Odpowiedź: \emph{W Polsce bażanty zaczęto wprowadzać w~latach 60. XVI wieku, na Mazurach i~Pomorzu pojawiły się w~połowie XIX wieku}
+
+        \item Odpowiedź znajdująca się w~kilku zdaniach - niekiedy odpowiedź w~dokumencie znajduje się w~kilku leżących w
+            bliskim sąsiedztwie zdaniach, zazwyczaj tylko jedno z~tych zdań jest podobne (zawiera te same wyrazy) do pytania,
+            wprowadza ono kontekstu opisu obiektu, o który pyta użytkownik, pozostałe natomiast przedstawiają informacje
+            będące odpowiedzią na pytanie, w~takiej sytuacji algorytm ekstrakcji jako odpowiedź błędnie wybiera pierwsze
+            zdanie, uznając je za podobne do pytania, prostym sposobem na zapobiegnięcie tej sytuacji jest wprowadzenie
+            okna odpowiedzi, zamiast porównywać z~pytaniem każde zdanie oddzielnie, można połączyć ze sobą zdania sąsiadujące
+            i~porównywać je jako jedno długie zdanie z~pytaniem, liczba zdań, które należy ze sobą połączyć oraz ile wziąć
+            zdań z~lewej strony a ile z~prawej, powinny być przedmiotem badań, aby zoptymalizować te parametry pod kątem
+            odpowiadania na pytania, poniżej przedstawiony został przykład pytania i~odpowiedzi składającej się z~kilku
+            zdań, pochodzący ze zbioru Czywieszki.
+
+            Pytanie: \emph{Jaką strukturę ma Kapituła Prymasowska w~Gnieźnie?}
+
+            Odpowiedź: \emph{Następnej zmiany w~strukturze kapituły dokonał kard. Stefan Wyszyński w~1957 roku. Powiększył liczbę kanoników gremialnych do 12, w~tym zachowując cztery prałatury: prepozyt, dziekan, kustosz i~czwartą bez nazwy.}
+    \end{itemize}
+
+    Baza dokumentów źródłowych w~systemie ,,Borsuk'' składa się głównie z~artykułów pochodzących z~internetowej encyklopedii
+    Wikipedia. Artykuły ty mają zazwyczaj uporządkowaną strukturę, to znaczy zawierają nagłówki dla poszczególnych
+    części (akapitów) artykułu. Powoduje to, że w~treści konkretnego akapitu często wykorzystywane są powiązania anaforyczne.
+    Polegają one na użyciu zaimka anaforycznego (na przykład ,,on'') zamiast konkretnej nazwy opisywanego bytu. Powoduje
+    to, że zaproponowane w~niniejszej pracy operacje związane z~dodawaniem i~usuwaniem bytów nazwanych stają się bezużyteczne.
+    Zaimplementowanie rozpoznawania i~rozwiązywania powiązań anaforycznych mogłoby znacznie zwiększyć skuteczność
+    prezentowanych tutaj technik.
+
 
 \clearpage
 \addcontentsline{toc}{chapter}{Bibliografia}

@@ -1,0 +1,202 @@
+\begin{thebibliography}{10}
+
+\bibitem{SEMANTICPARSING}
+J.~Berant, A.~Chou, R.~Frostig, and P.~Liang.
+\newblock Semantic parsing on freebase from question-answer pairs.
+\newblock volume~2, page~6, 2013.
+
+\bibitem{CORMEN}
+T.~H. Cormen, Clifford Stein, Ronald~L. Rivest, and Charles~E. Leiserson.
+\newblock {\em Introduction to Algorithms}.
+\newblock McGraw-Hill Higher Education, 2nd edition, 2001.
+
+\bibitem{SEARCHENGINES}
+W.~B. Croft, D.~Metzler, and T.~Strohman.
+\newblock {\em Search Engines - Information Retrieval in Practice}.
+\newblock Pearson, 2009.
+
+\bibitem{SOFTPATTERNMATCHING}
+H.~Cui, MY. Kan, and TS~Chua.
+\newblock Soft pattern matching models for definitional question answering.
+\newblock 25(2):8, 2007.
+
+\bibitem{QUESTIONFOCUS}
+D.~Damljanovic, M.~Agatonovic, and H.~Cunningham.
+\newblock Identification of the question focus: Combining syntactic analysis
+  and ontology-based lookup through the user interaction.
+\newblock may 2010.
+
+\bibitem{SOLR}
+Apache~Software Foundation.
+\newblock Apache solr, 2004.
+
+\bibitem{BASEBALL}
+B.~F. Green, Jr., A.~K. Wolf, C.~Chomsky, and K.~Laughery.
+\newblock Baseball: An automatic question-answerer.
+\newblock pages 219--224, 1961.
+
+\bibitem{QASURVEY}
+L.~Hirschman and R.~Gaizauskas.
+\newblock Natural language question answering: the view from here.
+\newblock {\em Communications of the ACM}, 2001.
+
+\bibitem{SPELLCHECKING}
+V.~J Hodge and J.~Austin.
+\newblock A comparison of standard spell checking algorithms and a novel binary
+  neural approach.
+\newblock {\em IEEE Transactions on Knowledge and Data Engineering},
+  15(5):1073--1081, 2003.
+
+\bibitem{INTROTOMACHINETRANSLATION}
+W.~J. Hutchins.
+\newblock {\em An Introduction to Machine Translation}.
+\newblock London: Academic Press, January 1992.
+
+\bibitem{HANDBOOKNLP}
+N.~Indurkhya and F.~J. Damerau.
+\newblock {\em Handbook of Natural Language Processing}.
+\newblock CRC Press, 2010.
+
+\bibitem{NLPHISTORY}
+K.~S. Jones.
+\newblock Natural language processing: A historical review.
+\newblock {\em Current issues in computational linguistic}, 9-10, 1994.
+
+\bibitem{SPEECHANDLANGUAGEPROCESSING}
+D.~l. Jurafsky and J.~H. Martin.
+\newblock {\em Speech and Language Processing: An introduction to natural
+  language processing, computational linguistics, and speech recognition.}
+\newblock Prentice Hall, Pearson Education International, 2014.
+
+\bibitem{WATSONMEDICINE}
+A.~Levas.
+\newblock Watson: Beyond jeopardy!
+\newblock {\em Artificial Intelligence}, 2013.
+
+\bibitem{INFERENCE}
+D.~Lin and P.~Pantel.
+\newblock Discovery of inference rules for question-answering.
+\newblock 7(4):343--360, 2001.
+
+\bibitem{WEBVERIFICATION}
+B.~Magnini, M.~Negri, R.~Prevete, and H.~Tanev.
+\newblock Is it the right answer?: exploiting web redundancy for answer
+  validation.
+\newblock pages 425--432, 2002.
+
+\bibitem{CZYWIESZKI}
+M.~Marcinczuk, M.~Ptak, A.~Radziszewski, and M.~Piasecki.
+\newblock Open dataset for development of polish question answering systems.
+\newblock 2013.
+
+\bibitem{BORSUK}
+M.~Marci{\'n}czuk, A.~Radziszewski, M.~Piasecki, D.~Piasecki, and M.~Ptak.
+\newblock Evaluation of a baseline information retrieval for a polish
+  open-domain question answering system.
+\newblock 2013.
+
+\bibitem{LINER2}
+M.~Marcińczuk, J.~Kocoń, and M.~Janicki.
+\newblock {L}iner2 – a customizable framework for proper names recognition
+  for {P}olish.
+\newblock In {\em Intelligent Tools for Building a Scientific Information
+  Platform}, pages 231--253. 2013.
+
+\bibitem{SEMANTICVERIFICATION}
+D.~Moll{\'a}, M.~Gardiner, et~al.
+\newblock Answerfinder-question answering by combining lexical, syntactic and
+  semantic information.
+\newblock 2004.
+
+\bibitem{NERQA}
+D.~Moll{\'a}, M.~van Zaanen, and D.~Smith.
+\newblock Named entity recognition for question answering.
+\newblock {\em Proceedings of the Australasian Language Technology Workshop},
+  2007.
+
+\bibitem{NERSURVEY}
+D.~Nadeau and S.~Sekine.
+\newblock A survey of named entity recognition and classification.
+\newblock {\em National Research Council Canada}, 30:3--26, 2007.
+
+\bibitem{PASZKA}
+M.~Pasca.
+\newblock {\em Open-Domain Question Answering from Large Text Collections}.
+\newblock CSLI Publications, 2003.
+
+\bibitem{NATURALLANGUGEANNOTATION}
+J.~Peustejovsky and A.~Stubbs.
+\newblock {\em Natural Language Annotation}.
+\newblock O’Reilly Media, Inc., November 2013.
+
+\bibitem{INFORMATIONEXTRACTION}
+J.~Piskorski and R.~Yangarber.
+\newblock Information extraction: Past, present and future.
+\newblock 2013.
+
+\bibitem{MLQUESTIONFOCUS}
+B.~Qu, G.~Cong, C.~Li, A.~Sun, and H.~Chen.
+\newblock An evaluation of classification models for question topic
+  categorization.
+\newblock 63(5):889--903, May 2012.
+
+\bibitem{WCRFT}
+A.~Radziszewski.
+\newblock A tiered {CRF} tagger for {P}olish.
+\newblock In {\em Intelligent Tools for Building a Scientific Information
+  Platform: Advanced Architectures and Solutions}. Springer Verlag, 2013.
+
+\bibitem{WCCL}
+A.~Radziszewski, A.~Wardyński, and A.~Śniatowski.
+
+\bibitem{MACA}
+A.~Radziszewski and T.~Śniatowski.
+\newblock Maca --- a configurable tool to integrate {P}olish morphological
+  data.
+\newblock In {\em Proceedings of the Second International Workshop on
+  Free/Open-Source Rule-Based Machine Translation}, 2011.
+
+\bibitem{PASSAGERETRIVAL}
+I.~Roberts and R.~Gaizauskas.
+\newblock Evaluating passage retrieval approaches for question answering.
+\newblock pages 72--84, 2004.
+
+\bibitem{SUMMARIZATIONOVERVIEW}
+H.~Saggion.
+\newblock Automatic summarization: An overwiev.
+\newblock {\em Revue française de linguistique appliquée}, 13(1):63--81,
+  2008.
+
+\bibitem{FIRSTWORKQA}
+R.~F. Simmons.
+\newblock Answering english questions by computer: A survey.
+\newblock {\em Communications of the ACM}, 8(1):53--70, 1965.
+
+\bibitem{PERCEPTRONRANKING}
+M.~Surdeanu, M.~Ciaramita, and H.~Zaragoza.
+\newblock Learning to rank answers on large online qa collections.
+\newblock 8:719--727, 2008.
+
+\bibitem{SENTIMENTANALYSIS}
+M.~Taboada, J.~Brooke, M.~Tofiloski, K.~Voll, and M.~Stede.
+\newblock Lexicon-based methods for sentiment analysis.
+\newblock {\em Computational Linguistics}, 37(2):267--307, 2011.
+
+\bibitem{QATESTCOLLECTION}
+E.~M. Voorhees and D.~M. Tice.
+\newblock Building a question answering test collection.
+\newblock pages 200--207, 2000.
+
+\bibitem{COLLABORATIVELEARNING}
+Chun-Chia Wang, J.~C. Hung, Che-Yu Yang, and T.~K. Shih.
+\newblock An application of question answering system for collaborative
+  learning.
+\newblock pages 49--49, July 2006.
+
+\bibitem{LUNAR}
+W~A. Woods.
+\newblock Lunar rocks in natural {E}nglish: {E}xplorations in natural language
+  question answering.
+\newblock pages 521--569, 1977.
+
+\end{thebibliography}
