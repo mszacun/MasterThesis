@@ -1,10 +1,11 @@
-\documentclass[a4paper, twoside, 12pt]{report}
+\documentclass[a4paper, twoside, openright, 12pt]{report}
 
 \usepackage{titlesec}
 \usepackage{polski}
 \usepackage[english, polish]{babel}
 \usepackage{graphicx}
 \usepackage{amsmath}
+\usepackage{setspace}
 \usepackage{enumitem}
 \usepackage[hidelinks]{hyperref}
 \usepackage{pdfpages}
@@ -26,11 +27,70 @@
              \begin{center}\bfseries\abstractname\end{center}}
            {\par\bigskip}
 
+\def\changemargin#1#2{\list{}{\rightmargin#2\leftmargin#1}\item[]}
+\let\endchangemargin=\endlist
 \begin{document}
 
 \includepdf{stronatytulowa.pdf}
+\thispagestyle{empty}
 
+\null\newpage
+\includepdf{motto.pdf}
+\thispagestyle{empty}
+\cleardoublepage
 
+\thispagestyle{empty}
+\begin{center}
+\thispagestyle{empty}
+    \vfill
+    \doublespacing
+    \Large{Promotor} \\
+    \singlespacing
+    ..........................................................................................................
+    \doublespacing
+    \small\emph{(dr inż. Maciej Piasecki)} \\
+    \large{Ocena} \\
+    ............................................................................ \\
+    \vspace{15mm}
+    \Large{Recenzent} \\
+    \singlespacing
+    ..........................................................................................................
+    \doublespacing
+    \small\emph{(prof. dr hab. inż. Halina Kwaśnicka)} \\
+    \large{Ocena} \\
+    ............................................................................ \\
+
+    \vspace{15mm}
+    \Large{Komisja egzaminacyjna} \\
+    \singlespacing
+    \begin{tabular}{c c c}
+    .................................. &  .................................. & .................................. \\
+    \doublespacing
+    \scriptsize\emph{(dr hab. inż. U. Markowska-Kaczmar, prof. PWr.)} & \scriptsize\emph{(dr inż. Maciej Piasecki)} & \scriptsize\emph{(dr inż. Tomasz Kajdanowicz )}\\
+    \end{tabular}
+    \\
+    \hfill \\
+    \large{Ocena} \\
+    \hfill \\
+    ............................................................................ \\
+
+    \vspace{15mm}
+    \Large{Redaktor naczelny} \\
+    \singlespacing
+    ..........................................................................................................
+    \doublespacing
+    \small\emph{(Barbara Kęsik)} \\
+    \vfill
+\end{center}
+\thispagestyle{empty}
+\cleardoublepage
+
+\thispagestyle{empty}
+\null\newpage
+\thispagestyle{empty}
+\cleardoublepage
+
+\thispagestyle{empty}
 \begin{abstractpage}
 \begin{abstract}{polish}
     W dzisiejszych czasach Internet pełen jest informacji na praktycznie dowolny temat. Wraz ze wzrastającą ilością
